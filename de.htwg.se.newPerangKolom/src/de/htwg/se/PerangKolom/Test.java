@@ -10,7 +10,7 @@ package de.htwg.se.PerangKolom;
 public class Test {
 	
 	public String test() {
-		String value = "Hallo Welt!";
+		String value = "Hallo Christian!";
 		
 		return value;
 	}
