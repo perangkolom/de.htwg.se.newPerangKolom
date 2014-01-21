@@ -9,8 +9,12 @@ package de.htwg.se.PerangKolom;
  */
 public class Test {
 	
+	/**
+	 * Test for conflict
+	 * @return Some output
+	 */
 	public String test() {
-		String value = "Hallo Welt!";
+		String value = "Hallo David!";
 		
 		return value;
 	}
