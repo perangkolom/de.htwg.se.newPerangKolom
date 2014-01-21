@@ -9,7 +9,7 @@ import java.util.TreeSet;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.htwg.se.PerangKolom.controller.impl.PerangKolomControllerBOOOOM;
+import de.htwg.se.PerangKolom.controller.impl.PerangKolomController;
 import de.htwg.se.PerangKolom.model.KI.impl.KIChose;
 import de.htwg.se.PerangKolom.model.impl.Cell;
 import de.htwg.se.PerangKolom.model.impl.CellArray;

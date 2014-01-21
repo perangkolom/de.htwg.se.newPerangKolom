@@ -14,14 +14,14 @@ import de.htwg.se.PerangKolom.model.impl.CellArray;
 
 public class PerangKolomControllerTest {
 
-	PerangKolomControllerBOOOOM controller;
+	PerangKolomController controller;
 	public TreeSet<Cell> CellArraySet;
 	Cell[][] cellArray;
 	Cell cell;
 
 	@Before
 	public void setUp() {
-		controller = new PerangKolomControllerBOOOOM();
+		controller = new PerangKolomController();
 		CellArraySet = new TreeSet<Cell>();
 		cellArray = CellArray.getInstance().getCellArray();
 		cell = new Cell(1, 1);
@@ -31,7 +31,7 @@ public class PerangKolomControllerTest {
 
 	@Test
 	public void testGetController() {
-		controller = new PerangKolomControllerBOOOOM();
+		controller = new PerangKolomController();
 		assertNotNull(controller);
 	}
 
