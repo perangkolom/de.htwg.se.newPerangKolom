@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Map;
 import java.util.TreeMap;
 import java.util.prefs.BackingStoreException;
 
@@ -17,6 +18,9 @@ import javax.swing.OverlayLayout;
 
 import org.apache.log4j.helpers.AbsoluteTimeDateFormat;
 
+import de.htwg.se.PerangKolom.controller.IPerangKolomController;
+import de.htwg.se.PerangKolom.controller.impl.PerangKolomController;
+
 public class ButtonObject extends JFrame{
 
 	private JPanel buttonPanel;
@@ -27,9 +31,11 @@ public class ButtonObject extends JFrame{
 	private JButton buttonBottom;
 	private JButton buttonLeft;
 	
+	private IPerangKolomController controller;
+	
 	private final int BUTTONWIDE = 45;
 	private final int BUTTONHEIGHT = 10;
-	private TreeMap<Integer, JButton> treeMap;
+	private Map<Integer, JButton> treeMap;
 	
 	public ButtonObject(int x, int y, String cellValue){
 		
@@ -41,6 +47,8 @@ public class ButtonObject extends JFrame{
 		this.buttonBottom = new JButton("");
 		this.buttonLeft = new JButton("");
 		this.treeMap = new TreeMap<Integer, JButton>();
+		this.controller = new PerangKolomController();
+		
 		treeMap.put(1, buttonTop);
 		treeMap.put(2, buttonRight);
 		treeMap.put(3, buttonBottom);
@@ -75,10 +83,11 @@ public class ButtonObject extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				buttonPanel.setOpaque(true);
 				buttonTop.setContentAreaFilled(true);
 				buttonTop.setBackground(Color.gray);
 				buttonTop.setEnabled(false);
+				
+//				controller.;
 				
 			}
 		});
@@ -87,7 +96,6 @@ public class ButtonObject extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				buttonPanel.setOpaque(true);
 				buttonRight.setContentAreaFilled(true);
 				buttonRight.setBackground(Color.gray);
 				buttonRight.setEnabled(false);
@@ -99,7 +107,6 @@ public class ButtonObject extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				buttonPanel.setOpaque(true);
 				buttonBottom.setContentAreaFilled(true);
 				buttonBottom.setBackground(Color.gray);
 				buttonBottom.setEnabled(false);
@@ -111,7 +118,6 @@ public class ButtonObject extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				buttonPanel.setOpaque(true);
 				buttonLeft.setContentAreaFilled(true);
 				buttonLeft.setBackground(Color.gray);
 				buttonLeft.setEnabled(false);
@@ -148,7 +154,7 @@ public class ButtonObject extends JFrame{
 		return buttonPanel;
 	}
 	
-	public TreeMap<Integer, JButton> getMap(){
+	public Map<Integer, JButton> getMap(){
 		return this.treeMap;
 	}
 	

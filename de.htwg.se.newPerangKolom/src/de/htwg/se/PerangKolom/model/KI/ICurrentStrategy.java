@@ -1,10 +1,11 @@
-package de.htwg.se.PerangKolom.controller;
+package de.htwg.se.PerangKolom.model.KI;
 
 import de.htwg.se.PerangKolom.model.impl.Cell;
 
-public interface CurrentStrategy {
+public interface ICurrentStrategy {
 	
 	public void StrategyAlgorithm(Cell cell);
+	
 	
 }
 

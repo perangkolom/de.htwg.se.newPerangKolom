@@ -27,14 +27,12 @@ public interface IPerangKolomController extends IObservable{
 	 * - chose one of the three strategies
 	 * - calls function 'fillBorder()'
 	 */
-	public void ComputerLogic();
 	
 	/*
 	 * 
 	 */
-	//public void ();
-	
-	public Cell getCell(int x, int y);
 	
 	public int getRandNumber(int x, int y);
+
+	public Cell getCell(int i, int j);
 }
