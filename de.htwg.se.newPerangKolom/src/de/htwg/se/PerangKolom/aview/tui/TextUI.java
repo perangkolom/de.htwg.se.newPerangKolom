@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
-import de.htwg.se.PerangKolom.controller.IPerangKolomChrisController;
+import de.htwg.se.PerangKolom.controller.IPerangKolomController;
 import de.htwg.se.PerangKolom.model.impl.CellArray;
 import de.htwg.se.PerangKolom.model.impl.MessagesForUser2;
 import de.htwg.se.PerangKolom.util.observer.Event;
@@ -13,12 +13,12 @@ import de.htwg.se.PerangKolom.util.observer.IObserver;
 
 public class TextUI implements IObserver  {
 
-	private IPerangKolomChrisController controller;
+	private IPerangKolomController controller;
 	//private Logger logger = Logger.getLogger("de.htwg.se.perangkolom.aview.tui.TextUI");
 	private Logger logger = Logger.getLogger(this.getClass().toString());
 	private String newLine = System.getProperty("line.separator");
 	
-	public TextUI(IPerangKolomChrisController controller) {
+	public TextUI(IPerangKolomController controller) {
 		this.controller = controller;
 		controller.addObserver(this);
 	}

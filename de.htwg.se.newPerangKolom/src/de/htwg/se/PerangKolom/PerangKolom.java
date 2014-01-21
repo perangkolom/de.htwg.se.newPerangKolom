@@ -6,22 +6,22 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import de.htwg.se.PerangKolom.aview.tui.TextUI;
-import de.htwg.se.PerangKolom.controller.IPerangKolomChrisController;
-import de.htwg.se.PerangKolom.controller.impl.PerangKolomChrisController;
+import de.htwg.se.PerangKolom.controller.IPerangKolomController;
+import de.htwg.se.PerangKolom.controller.impl.PerangKolomController;
 import de.htwg.se.PerangKolom.model.impl.MessagesForUser2;
 
 
 public final class PerangKolom {
 
 	private static Scanner scanner;
-	private IPerangKolomChrisController controller;
+	private IPerangKolomController controller;
 	private static TextUI tui;
 	private static PerangKolom instance = null;
 	private Logger logger;
 	
 	private PerangKolom() {
-		controller = new PerangKolomChrisController();
-		tui = new TextUI(new PerangKolomChrisController());
+		controller = new PerangKolomController();
+		tui = new TextUI(new PerangKolomController());
 		logger = Logger.getLogger("de.htwg.se.PerangKolom.PerangKolom");
 	}
 	

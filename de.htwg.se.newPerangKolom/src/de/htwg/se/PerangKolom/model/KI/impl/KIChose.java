@@ -11,39 +11,27 @@ import de.htwg.se.PerangKolom.model.impl.CellArray;
 
 public class KIChose implements IKIChose{
 	
-	public TreeSet<Cell> CellArraySet = new TreeSet<Cell>();
+	private TreeSet<Cell> cellArraySet;
 	
-	@Override
+	public KIChose(){
+		this.cellArraySet = new TreeSet<Cell>();
+	}
+	
+
 	public void ComputerLogic() {
 
 		List<Cell> CellSetBufferWithThreeBorders = new ArrayList<Cell>();
 		List<Cell> CellSetBufferLessThanTwoBorders = new ArrayList<Cell>();
 		List<Cell> CellSetBufferWithTwoBorder = new ArrayList<Cell>();
 		
-		/* fills a Set with all cells */
-		for(int i = 0; i < CellArray.getNumberOfRows(); i++){
-			for(int j = 0; j < CellArray.getNumberOfColums(); j++){
-				Cell[][] tmp = CellArray.getCellArray();
-				CellArraySet.add(tmp[i][j]);
-			}
-		}
+		/* fills CellArraySet with all Cells */
+		fillSet();
 		
 		/**** rout all cells in different Lists ****/
-		for(Cell c : CellArraySet){
-				/*** 'NotPutForward' Algorithm ***/
-			if(c.getNumberOfFilledBorders() < 2){
-				CellSetBufferLessThanTwoBorders.add(c);
-			/*** 'SacrificeLowestValue' Algorithm ***/
-			}else if(c.getNumberOfFilledBorders() == 2){
-				CellSetBufferWithTwoBorder.add(c);
-			/*** 'ClosePossibleBorder' Algorithm ***/
-			} else if(c.getNumberOfFilledBorders() == 3){
-				CellSetBufferWithThreeBorders.add(c);
-			} 
-		}
+		switchCellsInLists(CellSetBufferWithThreeBorders, CellSetBufferLessThanTwoBorders, CellSetBufferWithTwoBorder);
+		
 		
 		/* CHOOSE ALGO */
-		
 		/****** IF-Clause for the 'ClosePossibleBorder' Algorithm ******/
 		if(!CellSetBufferWithThreeBorders.isEmpty()){
 			ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
@@ -55,7 +43,32 @@ public class KIChose implements IKIChose{
 			SacrificeLowestValueAlgo(CellSetBufferWithTwoBorder);
 		}
 	}
+	
+	private void fillSet(){
+		/* fills the Set with all cells */
+		for(int i = 0; i < CellArray.getNumberOfRows(); i++){
+			for(int j = 0; j < CellArray.getNumberOfColums(); j++){
+				Cell[][] tmp = CellArray.getCellArray();
+				cellArraySet.add(tmp[i][j]);
+			}
+		}
+	}
 
+	private void switchCellsInLists(List<Cell> CellSetBufferWithThreeBorders, List<Cell> CellSetBufferLessThanTwoBorders, List<Cell> CellSetBufferWithTwoBorder){
+		
+		for(Cell c : cellArraySet){
+				/*** 'NotPutForward' Algorithm ***/
+			if(c.getNumberOfFilledBorders() < 2){
+				CellSetBufferLessThanTwoBorders.add(c);
+			/*** 'SacrificeLowestValue' Algorithm ***/
+			}else if(c.getNumberOfFilledBorders() == 2){
+				CellSetBufferWithTwoBorder.add(c);
+			/*** 'ClosePossibleBorder' Algorithm ***/
+			} else if(c.getNumberOfFilledBorders() == 3){
+				CellSetBufferWithThreeBorders.add(c);
+			} 
+		}
+	}
 	
 	/* 'ClosePossibleBorder' Algorithm */
 	public void ClosePossibleBorderAlgo(List<Cell> CellSetBufferWithThreeBorders){
@@ -113,7 +126,5 @@ public class KIChose implements IKIChose{
 		}
 		algorithmThree.chooseStrategy(cellBuf);
 	}
-	
-	
 
 }
