@@ -69,26 +69,6 @@ public class PerangKolomController extends Observable implements IPerangKolomCon
 		notifyObservers();
 		
 	}
-
-	@Override
-	public void fillCell(Cell cell) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getCellValue(Cell cell) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getNumberOfFilledBorderOfCell(Cell cell) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
 	@Override
 	public String getStartGameString() {
 		return MessagesForUser2.startOfTheGame;
@@ -106,6 +86,25 @@ public class PerangKolomController extends Observable implements IPerangKolomCon
 		return MessagesForUser2.shortInstruction;
 	}
 	
+	/**************************************************************/
+	
+	@Override
+	public void fillCell(Cell cell) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getCellValue(Cell cell) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getNumberOfFilledBorderOfCell(Cell cell) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	/************** VON DAVID's Controller METHODEN***************/
 	
@@ -129,5 +128,7 @@ public class PerangKolomController extends Observable implements IPerangKolomCon
 			Cell tmpCell = cellArray[x][y];
 		return tmpCell;
 	}
+	
+	
 
 }
