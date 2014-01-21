@@ -39,16 +39,19 @@ public class TextUI implements IObserver  {
 	public boolean processInputLine(String line) {
 		boolean continueGame = true;
 		boolean finishedAfterSwitchCase = false;
-		switch (line) {
+		
+		char c = line.charAt(0);
+		
+		switch (c) {
 	
 		//test-case that prints only one cell
-		case "t":
+		case 't':
 //			askForGameFieldParameters();
 			controller.createNewGrid(1,1);
 			finishedAfterSwitchCase = true;
 			break;
 		//test-scenario that prints everything as if borders were all true
-		case "r":
+		case 'r':
 //			askForGameFieldParameters();
 			controller.createNewGrid(2,2);
 			CellArray.setAllBordersTrue();
@@ -56,22 +59,22 @@ public class TextUI implements IObserver  {
 			finishedAfterSwitchCase = true;
 			break;
 
-		case "n":
+		case 'n':
 //			askForGameFieldParameters();
 			controller.createNewGrid(3,3);
 			finishedAfterSwitchCase = true;
 			break;
-		case "b":
+		case 'b':
 //			askForGameFieldParameters();
 			controller.createNewGrid(7,7);
 			finishedAfterSwitchCase = true;
 			break;
-		case "q":
+		case 'q':
 			continueGame = false;
 			logger.info("You decided to quit the game. Nethertheless, we hope you enjoyed playing this AWESOME game!");
 			finishedAfterSwitchCase = true;
 			break;
-		case "h":
+		case 'h':
 			logger.info(controller.showHelp());
 			finishedAfterSwitchCase = true;
 			break;

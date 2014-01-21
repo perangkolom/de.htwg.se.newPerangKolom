@@ -15,7 +15,7 @@ public class ComputerPlayerLogicTest {
 	
 	@Before 
 	public void setUp() {
-		cell = new Cell(0, 0, 100);
+		cell = new Cell(0, 0);
 		cpl = new ComputerPlayerLogic();
 	}
 	
