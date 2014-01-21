@@ -35,9 +35,15 @@ public class ButtonObject extends JFrame{
 	
 	private final int BUTTONWIDE = 45;
 	private final int BUTTONHEIGHT = 10;
+	private final int BUTTON_TOP = 1;
+	private final int BUTTON_RIGHT = 2;
+	private final int BUTTON_BOTTOM = 3;
+	private final int BUTTON_LEFT = 4;
+	private final int x;
+	private final int y;
 	private Map<Integer, JButton> treeMap;
 	
-	public ButtonObject(int x, int y, String cellValue){
+	public ButtonObject(int coordinateX, int coordinateY, final int x, final int y, String cellValue){
 		
 		this.buttonPanel = new JPanel();
 		this.centrePanel = new JPanel();
@@ -48,6 +54,8 @@ public class ButtonObject extends JFrame{
 		this.buttonLeft = new JButton("");
 		this.treeMap = new TreeMap<Integer, JButton>();
 		this.controller = new PerangKolomController();
+		this.x = x;
+		this.y = y;
 		
 		treeMap.put(1, buttonTop);
 		treeMap.put(2, buttonRight);
@@ -87,7 +95,7 @@ public class ButtonObject extends JFrame{
 				buttonTop.setBackground(Color.gray);
 				buttonTop.setEnabled(false);
 				
-//				controller.;
+				controller.setBorderFilled(x, y, BUTTON_TOP);;
 				
 			}
 		});
@@ -100,6 +108,8 @@ public class ButtonObject extends JFrame{
 				buttonRight.setBackground(Color.gray);
 				buttonRight.setEnabled(false);
 				
+				controller.setBorderFilled(x, y, BUTTON_RIGHT);
+				
 			}
 		});
 		
@@ -111,6 +121,7 @@ public class ButtonObject extends JFrame{
 				buttonBottom.setBackground(Color.gray);
 				buttonBottom.setEnabled(false);
 				
+				controller.setBorderFilled(x, y, BUTTON_BOTTOM);
 			}
 		});
 		
@@ -121,12 +132,13 @@ public class ButtonObject extends JFrame{
 				buttonLeft.setContentAreaFilled(true);
 				buttonLeft.setBackground(Color.gray);
 				buttonLeft.setEnabled(false);
-				
+			
+				controller.setBorderFilled(x, y, BUTTON_LEFT);
 			}
 		});
 
 		
-		buttonPanel.setBounds(x, y, 75, 75);
+		buttonPanel.setBounds(coordinateX, coordinateY, 75, 75);
 		buttonPanel.setOpaque(false);
 		centrePanel.setBounds(10, 10, 50, 50);
 		centrePanel.setBackground(Color.BLUE);

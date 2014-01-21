@@ -194,7 +194,7 @@ public class GraphicalUI<E> extends JFrame {
 		for(int i = 0; i < 7; i++){
 			for(int j = 0; j < 7; j++){
 				int randomNumber = perangKolomController.getRandNumber(i, j);
-				ButtonObject btnObject = new ButtonObject(counterX, counterY, Integer.toString(randomNumber));
+				ButtonObject btnObject = new ButtonObject(counterX, counterY, i, j, Integer.toString(randomNumber));
 				JPanel btnPanel = btnObject.getPanel();
 				label.add(btnPanel);
 				hashMapButton.put(perangKolomController.getCell(i, j), btnObject);
