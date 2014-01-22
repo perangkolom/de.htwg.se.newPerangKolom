@@ -62,12 +62,12 @@ public final class CellArray {
 		return cellArray;
 	}
 
-	private static void setNumberOfRows(int x) {
+	public static void setNumberOfRows(int x) {
 		if (cellArray == null) 
 			numberOfRows = x;
 	}
 
-	private static void setNumberOfColums(int x) {
+	public static void setNumberOfColums(int x) {
 		if (cellArray == null) 
 			numberOfColums = x;
 	}

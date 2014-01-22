@@ -7,6 +7,7 @@ import de.htwg.se.PerangKolom.model.ICell;
 import de.htwg.se.PerangKolom.model.impl.Cell;
 import de.htwg.se.PerangKolom.model.impl.CellArray;
 import de.htwg.se.PerangKolom.model.impl.MessagesForUser2;
+import de.htwg.se.PerangKolom.model.impl.Player;
 import de.htwg.se.PerangKolom.util.observer.Observable;
 
 public class PerangKolomController extends Observable implements IPerangKolomController {
@@ -14,13 +15,20 @@ public class PerangKolomController extends Observable implements IPerangKolomCon
 	public CellArray CellArrayDummy = CellArray.getInstance();
 	public Cell[][] cellArray = CellArray.getCellArray();
 	private final int FOUR = 4;
+	Player player;
 	
 	private String notYet = "(no code written until now. Don't forget to do so!)";
 	//private Logger logger = Logger.getLogger("de.htwg.se.PerangKolom.controller.impl.IPerangKolomController");
 	private Logger logger = Logger.getLogger(this.getClass().toString());
 
 	
-	public PerangKolomController() {}
+	public PerangKolomController() {
+		
+//		if(PlayerIsHuman == false){
+//			KIChose.ComputerLogic();
+//		}
+		
+	}
 	
 
 	@Override
@@ -141,5 +149,9 @@ public class PerangKolomController extends Observable implements IPerangKolomCon
 		return false;
 	}
 	
+	public void setGridSize(int x, int y){
+		CellArrayDummy.setNumberOfColums(x);
+		CellArrayDummy.setNumberOfRows(y);
+	}
 
 }

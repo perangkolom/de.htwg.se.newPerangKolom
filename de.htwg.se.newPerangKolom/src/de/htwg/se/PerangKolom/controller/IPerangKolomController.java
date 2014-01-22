@@ -44,7 +44,7 @@ public interface IPerangKolomController extends IObservable {
 	
 	public boolean fourBordersFilled(int x, int y);
 	
-	
+	public void setGridSize(int numberOfColumns, int numberOfRows);
 	
 	
 }

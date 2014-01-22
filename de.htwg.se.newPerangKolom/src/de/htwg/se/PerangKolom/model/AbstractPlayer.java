@@ -34,8 +34,9 @@ public abstract class AbstractPlayer implements IPlayer{
 	}
 	
 	public static char getPlayerChar(boolean isPlayerOne) {
-		if (isPlayerOne) 
+		if (isPlayerOne){
 			return CHAR_PLAYER_1;
+		}
 		return CHAR_PLAYER_2;
 	}
 
