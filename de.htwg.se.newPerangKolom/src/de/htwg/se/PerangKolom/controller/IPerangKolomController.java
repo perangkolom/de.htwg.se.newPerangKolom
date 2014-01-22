@@ -42,6 +42,8 @@ public interface IPerangKolomController extends IObservable {
 	
 	public Cell getCell(int x, int y);
 	
+	public boolean fourBordersFilled(int x, int y);
+	
 	
 	
 	

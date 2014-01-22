@@ -3,6 +3,7 @@ package de.htwg.se.PerangKolom.controller.impl;
 import java.util.logging.Logger;
 
 import de.htwg.se.PerangKolom.controller.IPerangKolomController;
+import de.htwg.se.PerangKolom.model.ICell;
 import de.htwg.se.PerangKolom.model.impl.Cell;
 import de.htwg.se.PerangKolom.model.impl.CellArray;
 import de.htwg.se.PerangKolom.model.impl.MessagesForUser2;
@@ -12,6 +13,7 @@ public class PerangKolomController extends Observable implements IPerangKolomCon
 
 	public CellArray CellArrayDummy = CellArray.getInstance();
 	public Cell[][] cellArray = CellArray.getCellArray();
+	private final int FOUR = 4;
 	
 	private String notYet = "(no code written until now. Don't forget to do so!)";
 	//private Logger logger = Logger.getLogger("de.htwg.se.PerangKolom.controller.impl.IPerangKolomController");
@@ -129,6 +131,15 @@ public class PerangKolomController extends Observable implements IPerangKolomCon
 		return tmpCell;
 	}
 	
+	public boolean fourBordersFilled(int x, int y){
+		Cell cell = getCell(x, y);
+		System.out.printf("NUMBER of Filled Borders: %d%n", cell.getNumberOfFilledBorders());
+
+		if(cell.getNumberOfFilledBorders() == FOUR){
+			return true;
+		}
+		return false;
+	}
 	
 
 }

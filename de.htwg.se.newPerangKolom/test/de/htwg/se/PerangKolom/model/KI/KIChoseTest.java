@@ -72,7 +72,7 @@ public class KIChoseTest {
 		cell.setBorder(cell.BORDER_LEFT, false);
 		CellSetBufferWithThreeBorders.add(cell);
 		ikiChose.ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
-		assertTrue(cell.getBorder(cell.BORDER_LEFT));
+		assertTrue(cell.getBorderState(cell.BORDER_LEFT));
 		
 		cell.setBorder(cell.BORDER_BOTTOM, true);
 		cell.setBorder(cell.BORDER_RIGHT, true);
@@ -80,7 +80,7 @@ public class KIChoseTest {
 		cell.setBorder(cell.BORDER_LEFT, true);
 		CellSetBufferWithThreeBorders.add(cell);
 		ikiChose.ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
-		assertTrue(cell.getBorder(cell.BORDER_LEFT));
+		assertTrue(cell.getBorderState(cell.BORDER_LEFT));
 		
 		/* case Border BOTTOM */
 		cell.setBorder(cell.BORDER_BOTTOM, false);
@@ -89,7 +89,7 @@ public class KIChoseTest {
 		cell.setBorder(cell.BORDER_LEFT, true);
 		CellSetBufferWithThreeBorders.add(cell);
 		ikiChose.ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
-		assertTrue(cell.getBorder(cell.BORDER_BOTTOM));
+		assertTrue(cell.getBorderState(cell.BORDER_BOTTOM));
 		
 		cell.setBorder(cell.BORDER_BOTTOM, true);
 		cell.setBorder(cell.BORDER_RIGHT, true);
@@ -97,7 +97,7 @@ public class KIChoseTest {
 		cell.setBorder(cell.BORDER_LEFT, true);
 		CellSetBufferWithThreeBorders.add(cell);
 		ikiChose.ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
-		assertTrue(cell.getBorder(cell.BORDER_BOTTOM));
+		assertTrue(cell.getBorderState(cell.BORDER_BOTTOM));
 		
 		/* case Border RIGHT */
 		cell.setBorder(cell.BORDER_BOTTOM, true);
@@ -106,7 +106,7 @@ public class KIChoseTest {
 		cell.setBorder(cell.BORDER_LEFT, true);
 		CellSetBufferWithThreeBorders.add(cell);
 		ikiChose.ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
-		assertTrue(cell.getBorder(cell.BORDER_RIGHT));
+		assertTrue(cell.getBorderState(cell.BORDER_RIGHT));
 		
 		cell.setBorder(cell.BORDER_BOTTOM, true);
 		cell.setBorder(cell.BORDER_RIGHT, true);
@@ -114,7 +114,7 @@ public class KIChoseTest {
 		cell.setBorder(cell.BORDER_LEFT, true);
 		CellSetBufferWithThreeBorders.add(cell);
 		ikiChose.ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
-		assertTrue(cell.getBorder(cell.BORDER_RIGHT));
+		assertTrue(cell.getBorderState(cell.BORDER_RIGHT));
 		
 		/* case Border TOP */
 		cell.setBorder(cell.BORDER_BOTTOM, true);
@@ -123,7 +123,7 @@ public class KIChoseTest {
 		cell.setBorder(cell.BORDER_LEFT, true);
 		CellSetBufferWithThreeBorders.add(cell);
 		ikiChose.ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
-		assertTrue(cell.getBorder(cell.BORDER_TOP));
+		assertTrue(cell.getBorderState(cell.BORDER_TOP));
 		
 		cell.setBorder(cell.BORDER_BOTTOM, true);
 		cell.setBorder(cell.BORDER_RIGHT, true);
@@ -131,7 +131,7 @@ public class KIChoseTest {
 		cell.setBorder(cell.BORDER_LEFT, true);
 		CellSetBufferWithThreeBorders.add(cell);
 		ikiChose.ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
-		assertTrue(cell.getBorder(cell.BORDER_TOP));
+		assertTrue(cell.getBorderState(cell.BORDER_TOP));
 		
 	}
 	@Test
@@ -145,7 +145,7 @@ public class KIChoseTest {
 		CellSetBufferLessThanTwoBorders.clear();
 		CellSetBufferLessThanTwoBorders.add(cell);
 		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
-		assertTrue(cell.getBorder(cell.BORDER_BOTTOM));
+		assertTrue(cell.getBorderState(cell.BORDER_BOTTOM));
 		
 		/* case border BOTTOM */
 		cell.setBorder(cell.BORDER_BOTTOM, false);
@@ -155,7 +155,7 @@ public class KIChoseTest {
 		CellSetBufferLessThanTwoBorders.clear();
 		CellSetBufferLessThanTwoBorders.add(cell);
 		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
-		assertTrue(cell.getBorder(cell.BORDER_BOTTOM));
+		assertTrue(cell.getBorderState(cell.BORDER_BOTTOM));
 		
 		cell.setBorder(cell.BORDER_BOTTOM, false);
 		cell.setBorder(cell.BORDER_RIGHT, false);
@@ -164,7 +164,7 @@ public class KIChoseTest {
 		CellSetBufferLessThanTwoBorders.clear();
 		CellSetBufferLessThanTwoBorders.add(cell);
 		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
-		assertTrue(cell.getBorder(cell.BORDER_BOTTOM));
+		assertTrue(cell.getBorderState(cell.BORDER_BOTTOM));
 	
 		cell.setBorder(cell.BORDER_BOTTOM, false);
 		cell.setBorder(cell.BORDER_RIGHT, false);
@@ -173,7 +173,7 @@ public class KIChoseTest {
 		CellSetBufferLessThanTwoBorders.clear();
 		CellSetBufferLessThanTwoBorders.add(cell);
 		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
-		assertTrue(cell.getBorder(cell.BORDER_BOTTOM));
+		assertTrue(cell.getBorderState(cell.BORDER_BOTTOM));
 		
 		/* case border RIGHT */
 		cell.setBorder(cell.BORDER_BOTTOM, true);
@@ -183,7 +183,7 @@ public class KIChoseTest {
 		CellSetBufferLessThanTwoBorders.clear();
 		CellSetBufferLessThanTwoBorders.add(cell);
 		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
-		assertTrue(cell.getBorder(cell.BORDER_RIGHT));
+		assertTrue(cell.getBorderState(cell.BORDER_RIGHT));
 		
 		cell.setBorder(cell.BORDER_BOTTOM, true);
 		cell.setBorder(cell.BORDER_RIGHT, true);
@@ -192,7 +192,7 @@ public class KIChoseTest {
 		CellSetBufferLessThanTwoBorders.clear();
 		CellSetBufferLessThanTwoBorders.add(cell);
 		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
-		assertTrue(cell.getBorder(cell.BORDER_RIGHT));
+		assertTrue(cell.getBorderState(cell.BORDER_RIGHT));
 		
 		/* case border TOP */
 		cell.setBorder(cell.BORDER_BOTTOM, true);
@@ -202,7 +202,7 @@ public class KIChoseTest {
 		CellSetBufferLessThanTwoBorders.clear();
 		CellSetBufferLessThanTwoBorders.add(cell);
 		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
-		assertTrue(cell.getBorder(cell.BORDER_TOP));
+		assertTrue(cell.getBorderState(cell.BORDER_TOP));
 		
 		cell.setBorder(cell.BORDER_BOTTOM, true);
 		cell.setBorder(cell.BORDER_RIGHT, true);
@@ -211,7 +211,7 @@ public class KIChoseTest {
 		CellSetBufferLessThanTwoBorders.clear();
 		CellSetBufferLessThanTwoBorders.add(cell);
 		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
-		assertTrue(cell.getBorder(cell.BORDER_TOP));
+		assertTrue(cell.getBorderState(cell.BORDER_TOP));
 
 		/* case border LEFT */
 		cell.setBorder(cell.BORDER_BOTTOM, true);
@@ -221,7 +221,7 @@ public class KIChoseTest {
 		CellSetBufferLessThanTwoBorders.clear();
 		CellSetBufferLessThanTwoBorders.add(cell);
 		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
-		assertTrue(cell.getBorder(cell.BORDER_LEFT));
+		assertTrue(cell.getBorderState(cell.BORDER_LEFT));
 		
 		cell.setBorder(cell.BORDER_BOTTOM, true);
 		cell.setBorder(cell.BORDER_RIGHT, true);
@@ -230,7 +230,7 @@ public class KIChoseTest {
 		CellSetBufferLessThanTwoBorders.clear();
 		CellSetBufferLessThanTwoBorders.add(cell);
 		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
-		assertTrue(cell.getBorder(cell.BORDER_LEFT));
+		assertTrue(cell.getBorderState(cell.BORDER_LEFT));
 		
 		
 	

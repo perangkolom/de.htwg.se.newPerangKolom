@@ -25,6 +25,7 @@ public class ButtonObject extends JFrame{
 
 	private JPanel buttonPanel;
 	private JPanel centrePanel;
+	private Color centrePanelColor;
 	private JLabel valueOfCellLabel;
 	private JButton buttonTop;
 	private JButton buttonRight;
@@ -47,6 +48,7 @@ public class ButtonObject extends JFrame{
 		
 		this.buttonPanel = new JPanel();
 		this.centrePanel = new JPanel();
+		this.centrePanelColor = Color.BLUE;
 		this.valueOfCellLabel = new JLabel(cellValue);
 		this.buttonTop = new JButton("");
 		this.buttonRight = new JButton("");
@@ -85,18 +87,13 @@ public class ButtonObject extends JFrame{
 		buttonLeft.setOpaque(false);
 		buttonLeft.setRolloverEnabled(false);
 		
-		centrePanel.setOpaque(false);
+//		entrePanel.setOpaque(false);
 		
 		buttonTop.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				buttonTop.setContentAreaFilled(true);
-				buttonTop.setBackground(Color.gray);
-				buttonTop.setEnabled(false);
-				
-				controller.setBorderFilled(x, y, BUTTON_TOP);;
-				
+				buttonMethod(buttonTop, BUTTON_TOP);
 			}
 		});
 		
@@ -104,12 +101,7 @@ public class ButtonObject extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				buttonRight.setContentAreaFilled(true);
-				buttonRight.setBackground(Color.gray);
-				buttonRight.setEnabled(false);
-				
-				controller.setBorderFilled(x, y, BUTTON_RIGHT);
-				
+				buttonMethod(buttonRight, BUTTON_RIGHT);
 			}
 		});
 		
@@ -117,11 +109,7 @@ public class ButtonObject extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				buttonBottom.setContentAreaFilled(true);
-				buttonBottom.setBackground(Color.gray);
-				buttonBottom.setEnabled(false);
-				
-				controller.setBorderFilled(x, y, BUTTON_BOTTOM);
+				buttonMethod(buttonBottom, BUTTON_BOTTOM);
 			}
 		});
 		
@@ -129,11 +117,7 @@ public class ButtonObject extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				buttonLeft.setContentAreaFilled(true);
-				buttonLeft.setBackground(Color.gray);
-				buttonLeft.setEnabled(false);
-			
-				controller.setBorderFilled(x, y, BUTTON_LEFT);
+				buttonMethod(buttonLeft, BUTTON_LEFT);
 			}
 		});
 
@@ -141,7 +125,7 @@ public class ButtonObject extends JFrame{
 		buttonPanel.setBounds(coordinateX, coordinateY, 75, 75);
 		buttonPanel.setOpaque(false);
 		centrePanel.setBounds(10, 10, 50, 50);
-		centrePanel.setBackground(Color.BLUE);
+		centrePanel.setBackground(centrePanelColor);
 //		centrePanel.setOpaque(false); //sets the cell invisible
 		
 		
@@ -168,6 +152,30 @@ public class ButtonObject extends JFrame{
 	
 	public Map<Integer, JButton> getMap(){
 		return this.treeMap;
+	}
+	
+	public void fillCellTest(){
+		
+		System.out.printf("FOUR BORDERS FILLED??? :  %s\n", controller.fourBordersFilled(x, y));
+		
+		if(controller.fourBordersFilled(x, y)){
+			centrePanel.setOpaque(true);
+			centrePanel.setBackground(Color.yellow);
+			valueOfCellLabel.setBackground(centrePanelColor);
+		}
+	}
+	
+	/*******button management method ****/
+	public void buttonMethod(JButton button, int buttonNumber){
+		button.setContentAreaFilled(true);
+		button.setBackground(Color.gray);
+		button.setEnabled(false);
+		centrePanel.setOpaque(true);
+		centrePanel.validate();
+		
+		controller.setBorderFilled(x, y, buttonNumber);
+		fillCellTest();
+		System.out.printf("is Border %d filled??? %s%n", buttonNumber, (controller.getCell(x, y).getBorderState(buttonNumber)));
 	}
 	
 }

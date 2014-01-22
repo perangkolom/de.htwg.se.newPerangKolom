@@ -145,7 +145,7 @@ public abstract class AbstractCell implements ICell{
 	}
 	
 	
-	public boolean getBorder(int borderNr) {
+	public boolean getBorderState(int borderNr) {
 		if (borderNr < 1 || borderNr > 4)
 			throw new IndexOutOfBoundsException();
 		
@@ -168,13 +168,13 @@ public abstract class AbstractCell implements ICell{
 		} else {
 			//print chars for the...
 			//...top-Border:
-			printHorizontalBorders(true, getBorder(BORDER_TOP));
+			printHorizontalBorders(true, getBorderState(BORDER_TOP));
 			//...bottom-Border:
-			printHorizontalBorders(false, getBorder(BORDER_BOTTOM));
+			printHorizontalBorders(false, getBorderState(BORDER_BOTTOM));
 			//...left-Border:
-			printVerticalBorders(true, getBorder(BORDER_LEFT));
+			printVerticalBorders(true, getBorderState(BORDER_LEFT));
 			//...right-Border:
-			printVerticalBorders(false, getBorder(BORDER_RIGHT));
+			printVerticalBorders(false, getBorderState(BORDER_RIGHT));
 		}
 		
 		insertValueIntoCharMatrix();

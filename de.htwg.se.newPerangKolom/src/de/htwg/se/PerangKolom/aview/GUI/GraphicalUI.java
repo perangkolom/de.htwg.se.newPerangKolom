@@ -209,15 +209,5 @@ public class GraphicalUI<E> extends JFrame {
 		this.validate();
 	}
 	
-	public int makeRandomNumber() {
-		
-		double random = Math.random();
-		double tmp = (random * RANDOM_MAX);
-		if (tmp < RANDOM_MIN) 
-			tmp = RANDOM_MIN;
-		int result = (int) Math.ceil(tmp);
-		
-		result = result * 25;
-		return result;		
-	}
+
 }

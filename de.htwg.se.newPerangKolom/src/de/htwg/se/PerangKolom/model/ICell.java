@@ -20,7 +20,7 @@ public interface ICell {
 
 	public void setBorder(int borderNr, boolean fillBorder);
 	
-	public boolean getBorder(int borderNr);
+	public boolean getBorderState(int borderNr);
 	
 	public void fillCharArray();
 	
