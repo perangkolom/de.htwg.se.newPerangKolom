@@ -1,41 +1,27 @@
 #ToDo.txt
 
-heute:
+CHRIS HEUTE:
 
- Tui-Funktionen festlegen
- String-Methoden aus dem Model in die Tui
-Controller überprüfen
-Tui-Funktionen umsetzen
- 
- 
- 
- 
-Tui-Funktionen:
+model erneuern:
+	interfaces mit bedacht festlegen
+	Tests für die Methoden schreiben
+	abstrakte Klassen erneuern
+	Implementierungsklassen erneuern
+	
 
--neues Spiel  
-	private chooseGameOptions() {
-		choseGridSize();
-		choseOpponent();
-		enterNames();
-		showOverviewOfGameOptions();
-		
-		spiel starten
-			(via createNewGrid oder wie auch immer)
-	}
-	 
--Spiel beenden
-	controller.quitGame 
-
-sonst: Border füllen
-	controller.fillBorder(int x, int y, int z)
-
-
-
-
-
-
-
-
+Controller erneuern 
+	controller-interface mit bedacht festlegen
+	tests schreiben
+	controller implementieren
+	
+	
+Tui:
+	methodenaufrufe durch controller-methoden ersetzen
+	ganze Input-Verarbeitung in andere Klasse auslagern
+	String-Methoden aus dem Model in die Tui
+	tui ausprobieren
+	Tui-ausgaben anpassen 
+		(z.b. passende short-instruction, ...)
 
 
 Tui-Standartausgabe:
@@ -50,8 +36,8 @@ n - new game | x - close game | 123 - fill Border 3 of Cell(1,2)
 					
 					
 					
-					
-					
+=====================					
+=====================					
 =====================
 Generell noch machen:
 

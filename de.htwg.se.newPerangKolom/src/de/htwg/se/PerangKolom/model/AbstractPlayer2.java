@@ -2,38 +2,38 @@ package de.htwg.se.PerangKolom.model;
 
 public class AbstractPlayer2 implements IPlayer2 {
 
-	private Player2 
+	private String nameOfPlayer;
+	private char playersTuiChar;
+	private boolean isHuman;
+	private int sumOfPoints;
 	
+
+	@Override
+	public void setPlayerHuman(boolean isHuman) {
+		if (isHuman == true) {
+			isHuman = true;
+		} 
+		else {
+			isHuman = false;
+		}	
+	}	
+			
 	
 	@Override
 	public boolean isPlayerAHuman() {
-		// TODO Auto-generated method stub
-		return false;
+		return isHuman;
 	}
 
-	@Override
-	public IPlayer2 whoseTurnIsIt() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void changeWhoseTurnItIs() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public int getNumberOfPoints() {
-		// TODO Auto-generated method stub
-		return 0;
+		return sumOfPoints;
 	}
 
+	
 	@Override
-	public int addPointsToPlayersAccount() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void addPointsToPlayersAccount(int newPoints) {
+		sumOfPoints += newPoints;
 	}
 	
-
 }

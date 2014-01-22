@@ -2,15 +2,13 @@ package de.htwg.se.PerangKolom.model;
 
 public interface IPlayer2 {
 	
+	void setPlayerHuman(boolean isHuman);
+	
 	boolean isPlayerAHuman();
 	
-	IPlayer2 whoseTurnIsIt();
+	int getNumberOfPoints();
 	
-	void changeWhoseTurnItIs();
-	
-	public int getNumberOfPoints();
-	
-	public int addPointsToPlayersAccount();	
+	void addPointsToPlayersAccount(int newPoints);	
 	
 	
 	 
