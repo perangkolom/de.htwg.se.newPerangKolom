@@ -35,5 +35,17 @@ public class AbstractPlayer2 implements IPlayer2 {
 	public void addPointsToPlayersAccount(int newPoints) {
 		sumOfPoints += newPoints;
 	}
+
+
+	@Override
+	public void setPlayersName(String name) {
+		nameOfPlayer = name;
+	}
+
+
+	@Override
+	public String getPlayersName() {
+		return nameOfPlayer;
+	}
 	
 }

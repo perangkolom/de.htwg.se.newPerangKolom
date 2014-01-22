@@ -10,6 +10,8 @@ public interface IPlayer2 {
 	
 	void addPointsToPlayersAccount(int newPoints);	
 	
+	void setPlayersName(String name);
 	
+	String getPlayersName();
 	 
 }

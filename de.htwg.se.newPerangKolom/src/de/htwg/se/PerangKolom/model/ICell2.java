@@ -3,23 +3,42 @@ package de.htwg.se.PerangKolom.model;
 
 public interface ICell2 {
 
-	public int getPositionX();
+	int getPositionX();
 	
-	public int getPositionY();
+	void setPositionX(int x);
+		
+	int getPositionY();
 	
-	public boolean isCellFilled();
+	void setPositionY(int y);
+	
+	boolean isCellFilled();
+	
+	int getCellValue();
+	
+	void setCellValue(int value);
 
-	public int getCellValue();
-
-	public IPlayer2 getCellOwner();
-
-	public void setBorder(int borderNr, boolean fillBorder);
+	IPlayer2 getCellOwner();
 	
-	public boolean getBorder(int borderNr);
-	
-	public String toString();
-	
+	void setCellOwner(IPlayer2 player);
 
+	void setBorder(int borderNr, boolean fillBorder);
+	
+	boolean getBorder(int borderNr);
+	
+	String toString();
+	
+	int makeRandomNumber();
+	
+	int getCellSize();
+	
+	void setCellSize(int size);
+	
+	char[][] getCharArray();
+	
+	void setCharArray(char[][] charArray);
+	
+	int getNumberOfFilledBorders();
+	
 }
 
 /*
