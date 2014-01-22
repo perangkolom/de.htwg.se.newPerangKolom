@@ -1,0 +1,66 @@
+#ToDo.txt
+
+heute:
+
+ Tui-Funktionen festlegen
+ String-Methoden aus dem Model in die Tui
+Controller überprüfen
+Tui-Funktionen umsetzen
+ 
+ 
+ 
+ 
+Tui-Funktionen:
+
+-neues Spiel  
+	private chooseGameOptions() {
+		choseGridSize();
+		choseOpponent();
+		enterNames();
+		showOverviewOfGameOptions();
+		
+		spiel starten
+			(via createNewGrid oder wie auch immer)
+	}
+	 
+-Spiel beenden
+	controller.quitGame 
+
+sonst: Border füllen
+	controller.fillBorder(int x, int y, int z)
+
+
+
+
+
+
+
+
+
+
+Tui-Standartausgabe:
+
+Whose turn is it: Player X		Points Player1:	XXXX	Points Player2: XXXX 		last move: Player X: 321
+OptString:
+n - new game | x - close game | 123 - fill Border 3 of Cell(1,2) 
+
+
+					
+
+					
+					
+					
+					
+					
+=====================
+Generell noch machen:
+
+-Dependency Injection (guice)
+-Interfaces mit JavaDoc dokumentieren
+-Readme.md (von GitHub füllen)
+-Tests schreiben
+-Werte auf Jenkins/von Sonar erfüllen
+
+Präsentation:
+
+					

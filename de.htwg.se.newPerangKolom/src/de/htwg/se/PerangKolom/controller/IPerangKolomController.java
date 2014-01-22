@@ -31,8 +31,8 @@ public interface IPerangKolomController extends IObservable {
 	String showHelp();
 	
 	String getShortInstructions();
-	
-//David specifisch
+
+//David specific
 	
 	public void setCellValue(int row, int column, int value);
 	

@@ -11,14 +11,16 @@ import de.htwg.se.PerangKolom.model.impl.MessagesForUser2;
 import de.htwg.se.PerangKolom.util.observer.Event;
 import de.htwg.se.PerangKolom.util.observer.IObserver;
 
-public class TextUI implements IObserver  {
+public class TextUI2 implements IObserver  {
 
 	private IPerangKolomController controller;
 	//private Logger logger = Logger.getLogger("de.htwg.se.perangkolom.aview.tui.TextUI");
 	private Logger logger = Logger.getLogger(this.getClass().toString());
 	private String newLine = System.getProperty("line.separator");
+	//needed to be able to ask for extra input (to be able to leave the loop)
+	private int optionChoice = 0;
 	
-	public TextUI(IPerangKolomController controller) {
+	public TextUI2(IPerangKolomController controller) {
 		this.controller = controller;
 		controller.addObserver(this);
 	}
@@ -43,43 +45,55 @@ public class TextUI implements IObserver  {
 		char c = line.charAt(0);
 		
 		switch (c) {
-	
-		//test-case that prints only one cell
-		case 't':
-//			askForGameFieldParameters();
-			controller.createNewGrid(1,1);
-			finishedAfterSwitchCase = true;
-			break;
-		//test-scenario that prints everything as if borders were all true
-		case 'r':
-//			askForGameFieldParameters();
-			controller.createNewGrid(2,2);
-			CellArray.setAllBordersTrue();
-			controller.getGridString();
-			finishedAfterSwitchCase = true;
-			break;
-
+		//new game
 		case 'n':
-//			askForGameFieldParameters();
-			controller.createNewGrid(3,3);
+			optionChoice = 1;
 			finishedAfterSwitchCase = true;
 			break;
-		case 'b':
-//			askForGameFieldParameters();
-			controller.createNewGrid(7,7);
-			finishedAfterSwitchCase = true;
-			break;
+		
+		//quit
 		case 'q':
 			continueGame = false;
 			logger.info("You decided to quit the game. Nethertheless, we hope you enjoyed playing this AWESOME game!");
 			finishedAfterSwitchCase = true;
 			break;
+		//show help
 		case 'h':
 			logger.info(controller.showHelp());
 			finishedAfterSwitchCase = true;
 			break;
 		}
 		
+		//choose Game Options
+		if (optionChoice != 0) {
+			switch (optionChoice) {
+			case 1:
+				
+			
+			
+			//finally create the new grid and set optionChoice = 0 again
+			case 5:
+				logger.info("Please type in number to determine the size of the game-field: \n");
+				if (line.matches("[0-9]")) {
+					createNewGrid(c,c);
+					optionChoice = 0;
+				}
+				
+				
+				
+			}
+			
+			
+			choseGridSize();
+			choseOpponent();
+			enterNames();
+			showOverviewOfGameOptions();
+		}
+		
+		
+		
+		
+		//determine border to fill
 		if ( !finishedAfterSwitchCase) {
 			boolean isFine = true;
 			//format to fill Border z of a given cell(x,y)
@@ -120,27 +134,32 @@ public class TextUI implements IObserver  {
 		}
 		return arg;
 	}
+	
+	
+	private void chooseGameOptions() {
+		logger.info("Before the game starts, you have to make choose your gaming options:\n");
+		chooseSizeOfGameField();
+		chooseKindOfOpponent();
+		enterNames();
+		showOverviewOfGameOptions();
+	};
 
-/*
 	
-	this method could be used to parse arguments for x parameters. but it is not finished yet. maybe useful later?
-	
-	private int[] askForGameFieldParameters(int x) {
-		logger.info("Please type in "+ x +" numbers (between 0-9 and not seperated by a newline) to set the number of rows and colums for the game-field\n"
-				+ "(e.g. an input of \'34\' means that the game-field will have 3 rows and 2 colums.\n");
-		boolean running = true;
-		while (running) {
-		Scanner tmpScan = new Scanner(System.in);
-		String tmpString = tmpScan.next();
-		if (tmpString.length() != x) {
-			logger.info("Your input was not correct. You have to type in " +x+ " numbers. Please try to type it in correctly now: \n");
-			askForGameFieldParameters(x);
-			return null;
-		}
+	private void chooseSizeOfGameField() {
+		logger.info("Please enter );
 	}
-*/
+	
+	private void chooseKindOfOpponent() {
+		
+	}
+
+	private void enterNames() {
+		
+	}
+	
+	private void showOverviewOfGameOptions() {
+		
+	}
 	
 	
 }
-
-
