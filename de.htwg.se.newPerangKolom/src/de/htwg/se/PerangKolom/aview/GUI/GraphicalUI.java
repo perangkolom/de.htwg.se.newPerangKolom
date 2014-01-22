@@ -43,6 +43,7 @@ import javax.swing.JButton;
 
 import de.htwg.se.PerangKolom.controller.IPerangKolomController;
 import de.htwg.se.PerangKolom.controller.impl.PerangKolomController;
+import de.htwg.se.PerangKolom.controller.impl.PerangKolomControllerTest;
 import de.htwg.se.PerangKolom.model.impl.Cell;
 import de.htwg.se.PerangKolom.model.impl.CellArray;
 
@@ -54,6 +55,9 @@ public class GraphicalUI<E> extends JFrame {
 
 	private final int BIG_SIZE = 7;
 	private final int SMALL_SIZE = 3;
+	private final int XCOORDINATES_BUTTON_OBJECT = 33;
+	private final int YCOORDINATES_BUTTON_OBJECT = 35;
+	private final int ADDITIONER_BUTTON_OBJECT = 60;
 	
 	IPerangKolomController perangKolomController;
 	public CellArray cellArrayDummy = CellArray.getInstance();
@@ -250,20 +254,33 @@ public class GraphicalUI<E> extends JFrame {
 		menuGridSize.add(menuItemSmallSize);
 		
 		
-		/* MENU Action Listener */
+		/*** MENU Action Listener ***/
 		menuItemSmallSize.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				perangKolomController.setGridSize(SMALL_SIZE, SMALL_SIZE);
+//				perangKolomController.setGridSize(SMALL_SIZE, SMALL_SIZE);
+				perangKolomController.createNewGrid(SMALL_SIZE, SMALL_SIZE);
+				System.out.println("Spiel sollte hier mit KLEINEM Spielfeld neu gestartet werden");
 			}
 		});
 		
 		menuItemBigSize.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				perangKolomController.setGridSize(BIG_SIZE, BIG_SIZE);
+//				perangKolomController.setGridSize(BIG_SIZE, BIG_SIZE);
+				perangKolomController.createNewGrid(BIG_SIZE, BIG_SIZE);
+				System.out.println("Spiel sollte hier mit GROSSEM Spielfeld neu gestartet werden");
 			}
 		});
+		
+		menuItemRerun.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Spiel sollte hier neu gestartet werden");
+			}
+		});
+		
+		
 		
 		backgroundplay = new ImageIcon("src/utilities/PerangKolomGameField.jpg");
 		PanelBackground.setOpaque(false);
@@ -289,37 +306,46 @@ public class GraphicalUI<E> extends JFrame {
 		
 		/* Labels for Player and Points*/
 		JLabel lblPlayer1 = new JLabel();
-		lblPlayer1.setBounds(124, 50, 100, 25);
+		lblPlayer1.setBounds(124, 50, 140, 25);
 		lblPlayer1.setFont (lblPlayer1.getFont ().deriveFont (25.0f));
-		lblPlayer1.setText("Olaf");
+		lblPlayer1.setText("Olaf Bibirossssooososo");
 		lblPlayer1.setForeground(Color.gray);
 		schriftLabel.add(lblPlayer1);
 		
 		JLabel lblPoints1 = new JLabel();
-		lblPoints1.setBounds(100, 80, 100, 25);
+		lblPoints1.setBounds(100, 80, 140, 25);
 		lblPoints1.setFont (lblPoints1.getFont ().deriveFont (25.0f));
 		lblPoints1.setText("100000");
 		lblPoints1.setForeground(Color.gray);
 		schriftLabel.add(lblPoints1);
 		
 		JLabel lblPlayer2 = new JLabel();
-		lblPlayer2.setBounds(384, 50, 100, 25);
+		lblPlayer2.setBounds(384, 50, 120, 25);
 		lblPlayer2.setFont (lblPlayer2.getFont ().deriveFont (25.0f));
-		lblPlayer2.setText("Boris");
+		lblPlayer2.setText("Boris Becker");
 		lblPlayer2.setForeground(Color.gray);
 		schriftLabel.add(lblPlayer2);
 		
 		JLabel lblPoints2 = new JLabel();
-		lblPoints2.setBounds(360, 80, 100, 25);
+		lblPoints2.setBounds(360, 80, 120, 25);
 		lblPoints2.setFont (lblPoints2.getFont ().deriveFont (25.0f));
-		lblPoints2.setText("200000");
+		lblPoints2.setText("200");
 		lblPoints2.setForeground(Color.gray);
 		schriftLabel.add(lblPoints2);
 		
 		/******* BUILD Cells ********/
-		int counterX = 33;
-		int counterY = 35;
+
+		createCellObjects();
 		
+        PanelMenu.add(schriftLabel);
+		PanelBackground.add(label);
+		setVisible(true); 
+		this.validate();
+	}
+	
+	public void createCellObjects(){
+		int counterX = XCOORDINATES_BUTTON_OBJECT;
+		int counterY = YCOORDINATES_BUTTON_OBJECT;
 		
 		for(int i = 0; i < cellArrayDummy.getNumberOfColums(); i++){
 			for(int j = 0; j < cellArrayDummy.getNumberOfRows(); j++){
@@ -328,15 +354,11 @@ public class GraphicalUI<E> extends JFrame {
 				JPanel btnPanel = btnObject.getPanel();
 				label.add(btnPanel);
 				hashMapButton.put(perangKolomController.getCell(i, j), btnObject);
-				counterX += 60;
+				counterX += ADDITIONER_BUTTON_OBJECT;
 			}
-			counterX = 33;
-			counterY += 60; 
+			counterX = XCOORDINATES_BUTTON_OBJECT;
+			counterY += ADDITIONER_BUTTON_OBJECT; 
 		}
-        PanelMenu.add(schriftLabel);
-		PanelBackground.add(label);
-		setVisible(true); 
-		this.validate();
 	}
 	
 
