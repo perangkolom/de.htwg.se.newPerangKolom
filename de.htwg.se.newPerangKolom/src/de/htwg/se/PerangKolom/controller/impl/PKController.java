@@ -6,42 +6,13 @@ import de.htwg.se.PerangKolom.model.IPlayer2;
 import de.htwg.se.PerangKolom.model.impl.Grid;
 import de.htwg.se.PerangKolom.util.observer.Event;
 import de.htwg.se.PerangKolom.util.observer.IObserver;
+import de.htwg.se.PerangKolom.util.observer.Observable;
 
-public class PKController implements IPKController{
-
-	@Override
-	public void addObserver(IObserver s) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeObserver(IObserver s) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeAllObservers() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void notifyObservers() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void notifyObservers(Event e) {
-		//TODO Auto-generated method stub
-		
-	}
+public class PKController extends Observable implements IPKController{
 
 	@Override
 	public Grid getInstance() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
