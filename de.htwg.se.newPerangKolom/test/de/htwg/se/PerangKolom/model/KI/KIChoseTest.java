@@ -72,6 +72,7 @@ public class KIChoseTest {
 		cell.setBorder(cell.BORDER_LEFT, false);
 		CellSetBufferWithThreeBorders.add(cell);
 		ikiChose.ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
+<<<<<<< HEAD
 		assertTrue(cell.getBorderState(cell.BORDER_LEFT));
 		
 		cell.setBorder(cell.BORDER_BOTTOM, true);
@@ -231,6 +232,167 @@ public class KIChoseTest {
 		CellSetBufferLessThanTwoBorders.add(cell);
 		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
 		assertTrue(cell.getBorderState(cell.BORDER_LEFT));
+=======
+		assertTrue(cell.getBorder(cell.BORDER_LEFT));
+		
+		cell.setBorder(cell.BORDER_BOTTOM, true);
+		cell.setBorder(cell.BORDER_RIGHT, true);
+		cell.setBorder(cell.BORDER_TOP, true);
+		cell.setBorder(cell.BORDER_LEFT, true);
+		CellSetBufferWithThreeBorders.add(cell);
+		ikiChose.ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
+		assertTrue(cell.getBorder(cell.BORDER_LEFT));
+		
+		/* case Border BOTTOM */
+		cell.setBorder(cell.BORDER_BOTTOM, false);
+		cell.setBorder(cell.BORDER_RIGHT, true);
+		cell.setBorder(cell.BORDER_TOP, true);
+		cell.setBorder(cell.BORDER_LEFT, true);
+		CellSetBufferWithThreeBorders.add(cell);
+		ikiChose.ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
+		assertTrue(cell.getBorder(cell.BORDER_BOTTOM));
+		
+		cell.setBorder(cell.BORDER_BOTTOM, true);
+		cell.setBorder(cell.BORDER_RIGHT, true);
+		cell.setBorder(cell.BORDER_TOP, true);
+		cell.setBorder(cell.BORDER_LEFT, true);
+		CellSetBufferWithThreeBorders.add(cell);
+		ikiChose.ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
+		assertTrue(cell.getBorder(cell.BORDER_BOTTOM));
+		
+		/* case Border RIGHT */
+		cell.setBorder(cell.BORDER_BOTTOM, true);
+		cell.setBorder(cell.BORDER_RIGHT, false);
+		cell.setBorder(cell.BORDER_TOP, true);
+		cell.setBorder(cell.BORDER_LEFT, true);
+		CellSetBufferWithThreeBorders.add(cell);
+		ikiChose.ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
+		assertTrue(cell.getBorder(cell.BORDER_RIGHT));
+		
+		cell.setBorder(cell.BORDER_BOTTOM, true);
+		cell.setBorder(cell.BORDER_RIGHT, true);
+		cell.setBorder(cell.BORDER_TOP, true);
+		cell.setBorder(cell.BORDER_LEFT, true);
+		CellSetBufferWithThreeBorders.add(cell);
+		ikiChose.ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
+		assertTrue(cell.getBorder(cell.BORDER_RIGHT));
+		
+		/* case Border TOP */
+		cell.setBorder(cell.BORDER_BOTTOM, true);
+		cell.setBorder(cell.BORDER_RIGHT, true);
+		cell.setBorder(cell.BORDER_TOP, false);
+		cell.setBorder(cell.BORDER_LEFT, true);
+		CellSetBufferWithThreeBorders.add(cell);
+		ikiChose.ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
+		assertTrue(cell.getBorder(cell.BORDER_TOP));
+		
+		cell.setBorder(cell.BORDER_BOTTOM, true);
+		cell.setBorder(cell.BORDER_RIGHT, true);
+		cell.setBorder(cell.BORDER_TOP, true);
+		cell.setBorder(cell.BORDER_LEFT, true);
+		CellSetBufferWithThreeBorders.add(cell);
+		ikiChose.ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
+		assertTrue(cell.getBorder(cell.BORDER_TOP));
+		
+	}
+	@Test
+	public void testNotPutForwardAlgo(){
+		List<Cell> CellSetBufferLessThanTwoBorders = new ArrayList<Cell>();
+		
+		cell.setBorder(cell.BORDER_BOTTOM, false);
+		cell.setBorder(cell.BORDER_RIGHT, false);
+		cell.setBorder(cell.BORDER_TOP, false);
+		cell.setBorder(cell.BORDER_LEFT, false);
+		CellSetBufferLessThanTwoBorders.clear();
+		CellSetBufferLessThanTwoBorders.add(cell);
+		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
+		assertTrue(cell.getBorder(cell.BORDER_BOTTOM));
+		
+		/* case border BOTTOM */
+		cell.setBorder(cell.BORDER_BOTTOM, false);
+		cell.setBorder(cell.BORDER_RIGHT, true);
+		cell.setBorder(cell.BORDER_TOP, false);
+		cell.setBorder(cell.BORDER_LEFT, false);
+		CellSetBufferLessThanTwoBorders.clear();
+		CellSetBufferLessThanTwoBorders.add(cell);
+		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
+		assertTrue(cell.getBorder(cell.BORDER_BOTTOM));
+		
+		cell.setBorder(cell.BORDER_BOTTOM, false);
+		cell.setBorder(cell.BORDER_RIGHT, false);
+		cell.setBorder(cell.BORDER_TOP, true);
+		cell.setBorder(cell.BORDER_LEFT, false);
+		CellSetBufferLessThanTwoBorders.clear();
+		CellSetBufferLessThanTwoBorders.add(cell);
+		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
+		assertTrue(cell.getBorder(cell.BORDER_BOTTOM));
+	
+		cell.setBorder(cell.BORDER_BOTTOM, false);
+		cell.setBorder(cell.BORDER_RIGHT, false);
+		cell.setBorder(cell.BORDER_TOP, false);
+		cell.setBorder(cell.BORDER_LEFT, true);
+		CellSetBufferLessThanTwoBorders.clear();
+		CellSetBufferLessThanTwoBorders.add(cell);
+		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
+		assertTrue(cell.getBorder(cell.BORDER_BOTTOM));
+		
+		/* case border RIGHT */
+		cell.setBorder(cell.BORDER_BOTTOM, true);
+		cell.setBorder(cell.BORDER_RIGHT, false);
+		cell.setBorder(cell.BORDER_TOP, false);
+		cell.setBorder(cell.BORDER_LEFT, false);
+		CellSetBufferLessThanTwoBorders.clear();
+		CellSetBufferLessThanTwoBorders.add(cell);
+		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
+		assertTrue(cell.getBorder(cell.BORDER_RIGHT));
+		
+		cell.setBorder(cell.BORDER_BOTTOM, true);
+		cell.setBorder(cell.BORDER_RIGHT, true);
+		cell.setBorder(cell.BORDER_TOP, false);
+		cell.setBorder(cell.BORDER_LEFT, false);
+		CellSetBufferLessThanTwoBorders.clear();
+		CellSetBufferLessThanTwoBorders.add(cell);
+		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
+		assertTrue(cell.getBorder(cell.BORDER_RIGHT));
+		
+		/* case border TOP */
+		cell.setBorder(cell.BORDER_BOTTOM, true);
+		cell.setBorder(cell.BORDER_RIGHT, true);
+		cell.setBorder(cell.BORDER_TOP, false);
+		cell.setBorder(cell.BORDER_LEFT, false);
+		CellSetBufferLessThanTwoBorders.clear();
+		CellSetBufferLessThanTwoBorders.add(cell);
+		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
+		assertTrue(cell.getBorder(cell.BORDER_TOP));
+		
+		cell.setBorder(cell.BORDER_BOTTOM, true);
+		cell.setBorder(cell.BORDER_RIGHT, true);
+		cell.setBorder(cell.BORDER_TOP, true);
+		cell.setBorder(cell.BORDER_LEFT, false);
+		CellSetBufferLessThanTwoBorders.clear();
+		CellSetBufferLessThanTwoBorders.add(cell);
+		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
+		assertTrue(cell.getBorder(cell.BORDER_TOP));
+
+		/* case border LEFT */
+		cell.setBorder(cell.BORDER_BOTTOM, true);
+		cell.setBorder(cell.BORDER_RIGHT, true);
+		cell.setBorder(cell.BORDER_TOP, true);
+		cell.setBorder(cell.BORDER_LEFT, false);
+		CellSetBufferLessThanTwoBorders.clear();
+		CellSetBufferLessThanTwoBorders.add(cell);
+		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
+		assertTrue(cell.getBorder(cell.BORDER_LEFT));
+		
+		cell.setBorder(cell.BORDER_BOTTOM, true);
+		cell.setBorder(cell.BORDER_RIGHT, true);
+		cell.setBorder(cell.BORDER_TOP, true);
+		cell.setBorder(cell.BORDER_LEFT, true);
+		CellSetBufferLessThanTwoBorders.clear();
+		CellSetBufferLessThanTwoBorders.add(cell);
+		ikiChose.NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
+		assertTrue(cell.getBorder(cell.BORDER_LEFT));
+>>>>>>> refs/heads/newModel1
 		
 		
 	

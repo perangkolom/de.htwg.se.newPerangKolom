@@ -1,0 +1,122 @@
+#ToDo.txt
+
+CHRIS HEUTE:
+
+model erneuern:
+	interfaces mit bedacht festlegen
+	Tests für die Methoden schreiben
+	abstrakte Klassen erneuern
+	Implementierungsklassen erneuern
+	
+
+Controller erneuern 
+	controller-interface mit bedacht festlegen
+	tests schreiben
+	controller implementieren
+	
+	
+Tui:
+	methodenaufrufe durch controller-methoden ersetzen
+	ganze Input-Verarbeitung in andere Klasse auslagern
+	String-Methoden aus dem Model in die Tui
+	tui ausprobieren
+	Tui-ausgaben anpassen 
+		(z.b. passende short-instruction, ...)
+
+
+Tui-Standartausgabe:
+
+Whose turn is it: Player X		Points Player1:	XXXX	Points Player2: XXXX 		last move: Player X: 321
+OptString:
+n - new game | x - close game | 123 - fill Border 3 of Cell(1,2) 
+
+
+Spielzug-Logik btw. -Ablauf überlegen
+	was brauchst dazu?
+	wo wirds gespeichert..
+	wie wird KI aufgerufen..
+	ist für den Algo-Wechsel human/pc das Strategy-Pattern geeignet?
+	
+	
+					
+
+					
+					
+					
+=====================					
+=====================					
+=====================
+Generell noch machen:
+
+-Dependency Injection (guice)
+-Interfaces mit JavaDoc dokumentieren
+-Readme.md (von GitHub füllen)
+-Tests schreiben
+-Werte auf Jenkins/von Sonar erfüllen
+
+Präsentation:
+
+
+
+
+=====================
+=====================
+Variablen und Methoden für die TUI:
+
+private static void copyCelltoGameFieldMatrix(int gameFieldRow, int gameFieldColumn, Cell cell) 
+public static void fillGameMatrix() 
+public static void printGameFieldString()
+
+=====================
+=====================
+Logik eines Spielzuges
+
+Spieler ist dran, macht einmal setBorder();
+
+
+tui liest input ein und bei eingabe von 3 Zahlen:
+
+
+controller.macheZug(int x, int y, int z) {
+
+
+	cellArray.getCell(x,y).setBorder(z, true)
+	//falls Zelle gefüllt darf der gleiche Spieler nochmal
+	if ( cell(x,y).isFilled() ) {
+		
+		if (isGameFinished()) {
+			gameIsOver();
+		}
+
+		addPointsToPlayer;
+		notify();
+	} 
+	else {
+		whoseTurnIsIt = changePlayer();
+		notify();
+	}
+	
+	
+		
+		
+	 
+		
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					

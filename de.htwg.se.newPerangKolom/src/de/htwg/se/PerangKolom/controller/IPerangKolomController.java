@@ -31,6 +31,7 @@ public interface IPerangKolomController extends IObservable {
 	String showHelp();
 	
 	String getShortInstructions();
+<<<<<<< HEAD
 	
 //David specifisch
 	
@@ -45,6 +46,20 @@ public interface IPerangKolomController extends IObservable {
 	public boolean fourBordersFilled(int x, int y);
 	
 	public void setGridSize(int numberOfColumns, int numberOfRows);
+=======
+
+//David specific
+	
+	public void setCellValue(int row, int column, int value);
+	
+	public int getRandNumber(int x, int y);
+	
+	public void setBorderFilled(int x, int y, int borderType);
+	
+	public Cell getCell(int x, int y);
+	
+	
+>>>>>>> refs/heads/newModel1
 	
 	
 }
