@@ -8,9 +8,6 @@ public interface IGameSettings {
 	
 	void changeTurn();
 	
-	
-	
-	
 	int getGridSize();
 	
 	void setGridSize(int size);

@@ -56,4 +56,67 @@ Generell noch machen:
 
 Präsentation:
 
+
+
+
+=====================
+=====================
+Variablen und Methoden für die TUI:
+
+private static void copyCelltoGameFieldMatrix(int gameFieldRow, int gameFieldColumn, Cell cell) 
+public static void fillGameMatrix() 
+public static void printGameFieldString()
+
+=====================
+=====================
+Logik eines Spielzuges
+
+Spieler ist dran, macht einmal setBorder();
+
+
+tui liest input ein und bei eingabe von 3 Zahlen:
+
+
+controller.macheZug(int x, int y, int z) {
+
+
+	cellArray.getCell(x,y).setBorder(z, true)
+	//falls Zelle gefüllt darf der gleiche Spieler nochmal
+	if ( cell(x,y).isFilled() ) {
+		
+		if (isGameFinished()) {
+			gameIsOver();
+		}
+
+		addPointsToPlayer;
+		notify();
+	} 
+	else {
+		whoseTurnIsIt = changePlayer();
+		notify();
+	}
+	
+	
+		
+		
+	 
+		
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 					

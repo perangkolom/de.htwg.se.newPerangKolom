@@ -6,6 +6,8 @@ public abstract class AbstractGameSettings implements IGameSettings {
 	private static IPlayer2 player1;
 	private static IPlayer2 player2;
 	private static IPlayer2 playerWhoseTurnItIs = player1;
+	private static IPlayer2 winner;
+	
 	
 	//data concerning grid
 	private static int cellSize;
