@@ -12,13 +12,12 @@ public class PKController extends Observable implements IPKController{
 
 	@Override
 	public Grid getInstance() {
-		
-		return null;
+		return Grid.getInstance();
 	}
 
 	@Override
 	public ICell2[][] getCellArray() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
