@@ -306,62 +306,94 @@ public class PKControllerTest {
 
 	@Test
 	public void testSetPlayer() {
-		
+		contr.setPlayer(player, ONE);
+		assertEquals(player, settings.getPlayer(ONE));
 	}
 
+	
 	@Test
 	public void testSetWhoseTurnItIs() {
-		fail("Not yet implemented");
+		contr.setWhoseTurnItIs(player);
+		assertEquals(player, settings.getWhoseTurnItIs());
 	}
 
+	
 	@Test
 	public void testGetWhoseTurnItIs() {
-		fail("Not yet implemented");
+		settings.setWhoseTurnItIs(player);
+		assertEquals(player, contr.getWhoseTurnItIs());
 	}
 
+	
 	@Test
 	public void testChangeTurn() {
-		fail("Not yet implemented");
+		settings.setWhoseTurnItIs(player);
+		assertEquals(player, contr.getWhoseTurnItIs());
 	}
 
+	
 	@Test
 	public void testGetWinner() {
-		fail("Not yet implemented");
+		settings.setWinner(player);
+		assertEquals(player, contr.getWinner());
 	}
 
+	
 	@Test
 	public void testSetWinner() {
-		fail("Not yet implemented");
+		contr.setWinner(player);;
+		assertEquals(player, settings.getWinner());
 	}
 
+	
 	@Test
 	public void testSetPlayerHuman() {
-		fail("Not yet implemented");
+		contr.setPlayerHuman(true, player);
+		assertTrue(contr.isPlayerAHuman(player));
+		
+		contr.setPlayerHuman(false, player);
+		assertFalse(contr.isPlayerAHuman(player));
+		
+		contr.setPlayerHuman(true, player);
+		assertTrue(contr.isPlayerAHuman(player));
 	}
 
+	
 	@Test
 	public void testIsPlayerAHuman() {
-		fail("Not yet implemented");
+		player.setPlayerHuman(true);
+		assertTrue(contr.isPlayerAHuman(player));
+		
+		player.setPlayerHuman(false);
+		assertFalse(contr.isPlayerAHuman(player));
 	}
 
+	
 	@Test
 	public void testGetNumberOfPoints() {
-		fail("Not yet implemented");
+		player.addPointsToPlayersAccount(123);
+		assertEquals(123, contr.getNumberOfPoints(player));
 	}
 
+	
 	@Test
 	public void testAddPointsToPlayersAccount() {
-		fail("Not yet implemented");
+		contr.addPointsToPlayersAccount(456, player);
+		assertEquals(456, player.getNumberOfPoints());
 	}
 
+	
 	@Test
 	public void testSetPlayersName() {
-		fail("Not yet implemented");
+		contr.setPlayersName("birte", player);
+		assertSame("birte", player.getPlayersName());
 	}
 
+	
 	@Test
 	public void testGetPlayersName() {
-		fail("Not yet implemented");
+		player.setPlayersName("putin");
+		assertSame("putin", contr.getPlayersName(player));
 	}
 
 }
