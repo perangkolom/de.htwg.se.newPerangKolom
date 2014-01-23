@@ -2,14 +2,14 @@ package de.htwg.se.PerangKolom.model.impl;
 
 import de.htwg.se.PerangKolom.model.ICell2;
 
-public class CellArray2 {
+public class Grid {
 
-	private static CellArray2 instance;
+	private static Grid instance;
 	private Cell2[][] cellArray;
 	private static int numberOfRows = 3;
 	private static int numberOfCols = 3;
 	
-	private CellArray2(int x, int y) {
+	private Grid(int x, int y) {
 		numberOfRows = x;
 		numberOfCols = y;
 		cellArray = new Cell2[x][y];
@@ -22,9 +22,9 @@ public class CellArray2 {
 	}
 	
 		
-	public static CellArray2 getInstance() {
+	public static Grid getInstance() {
 		if (instance == null) {
-			return new CellArray2(numberOfRows, numberOfCols);
+			return new Grid(numberOfRows, numberOfCols);
 		} 
 		else {
 			return instance;

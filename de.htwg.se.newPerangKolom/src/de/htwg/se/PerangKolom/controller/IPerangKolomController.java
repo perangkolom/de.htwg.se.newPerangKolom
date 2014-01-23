@@ -9,10 +9,10 @@ public interface IPerangKolomController extends IObservable {
 	
 //general
 		
-	void createNewGrid(int rows, int cols);
+	void createNewGrid(int rows, int cols); 
 	
 	void exit();
-	
+
 	void endThisPlayersTurn();
 	
 //TUI/GUI-specific

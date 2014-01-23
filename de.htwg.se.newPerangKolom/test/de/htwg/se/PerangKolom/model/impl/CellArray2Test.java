@@ -9,22 +9,22 @@ import de.htwg.se.PerangKolom.model.ICell2;
 
 public class CellArray2Test {
 
-	CellArray2 test1;
+	Grid test1;
 	ICell2[][] array;
 	
 	@Before
 	public void setUp() throws Exception {
-		test1 = CellArray2.getInstance();
+		test1 = Grid.getInstance();
 		array = test1.getCellArray();
 	}
 
 	@Test
 	public void testGetInstance() {
-		assertNotNull(CellArray2.getInstance());
+		assertNotNull(Grid.getInstance());
 		//assertEquals(test1, CellArray2.getInstance());
 		
-		for (int i = 0; i < CellArray2.getNumberOfRows(); i++) {
-			for (int j = 0; j < CellArray2.getNumberOfCols(); j++) {
+		for (int i = 0; i < Grid.getNumberOfRows(); i++) {
+			for (int j = 0; j < Grid.getNumberOfCols(); j++) {
 				assertNotNull(test1.getCellArray()[i][j]);
 			}
 		}
@@ -38,26 +38,26 @@ public class CellArray2Test {
 
 	@Test
 	public void testGetNumberOfRows() {
-		CellArray2.setNumberOfRows(5);
-		assertEquals(5, CellArray2.getNumberOfRows());
+		Grid.setNumberOfRows(5);
+		assertEquals(5, Grid.getNumberOfRows());
 	}
 
 	@Test
 	public void testSetNumberOfRows() {
-		CellArray2.setNumberOfRows(5);
-		assertEquals(5, CellArray2.getNumberOfRows());
+		Grid.setNumberOfRows(5);
+		assertEquals(5, Grid.getNumberOfRows());
 	}
 
 	@Test
 	public void testGetNumberOfCols() {
-		CellArray2.setNumberOfCols(5);
-		assertEquals(5, CellArray2.getNumberOfCols());
+		Grid.setNumberOfCols(5);
+		assertEquals(5, Grid.getNumberOfCols());
 	}
 
 	@Test
 	public void testSetNumberOfCols() {
-		CellArray2.setNumberOfCols(5);
-		assertEquals(5, CellArray2.getNumberOfCols());
+		Grid.setNumberOfCols(5);
+		assertEquals(5, Grid.getNumberOfCols());
 	}
 
 	@Test

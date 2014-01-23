@@ -1,0 +1,96 @@
+methodensammlung für controllererstellung:
+
+===================================
+
+aus Grid:
+
+public static Grid getInstance()
+public ICell2[][] getCellArray() {
+public static int getNumberOfRows() {
+public static void setNumberOfRows(int x) {
+public static int getNumberOfCols() {
+public static void setNumberOfCols(int y) {
+public ICell2 getCell(int x, int y) {
+	
+
+===================================
+
+public interface ICell2 {
+
+			int getPositionX();
+	
+			void setPositionX(int x);
+		
+			int getPositionY();
+	
+			void setPositionY(int y);
+	
+boolean isCellFilled();
+
+int getCellValue();
+	
+			void setCellValue(int value);
+
+IPlayer2 getCellOwner();
+
+void setCellOwner(IPlayer2 player);
+
+void setBorder(int borderNr, boolean fillBorder);
+
+boolean getBorder(int borderNr);
+
+String toString();
+	
+			int makeRandomNumber();
+	
+int getCellSize();
+
+void setCellSize(int size);
+
+char[][] getCharArray();
+
+void setCharArray(char[][] charArray);
+	
+			int getNumberOfFilledBorders();
+	
+===================================
+
+public interface IGameSettings {
+
+IPlayer2 getPlayer(int playerNumber);
+
+void setPlayer(IPlayer2 player, int numberOfPlayer);
+
+void setWhoseTurnItIs(IPlayer2 player);
+
+IPlayer2 getWhoseTurnItIs();
+
+void changeTurn();
+
+IPlayer2 getWinner();
+
+void setWinner(IPlayer2 player);
+	
+}
+===================================
+
+public interface IPlayer2 {
+	
+void setPlayerHuman(boolean isHuman);
+
+boolean isPlayerAHuman();
+
+int getNumberOfPoints();
+
+void addPointsToPlayersAccount(int newPoints);	
+
+void setPlayersName(String name);
+
+String getPlayersName();
+===================================
+===================================
+===================================
+===================================
+===================================
+===================================
+===================================
