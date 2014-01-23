@@ -17,7 +17,6 @@ public class PKController extends Observable implements IPKController{
 
 	@Override
 	public ICell2[][] getCellArray() {
-
 		return null;
 	}
 
@@ -52,61 +51,121 @@ public class PKController extends Observable implements IPKController{
 	}
 
 	@Override
-	public boolean isCellFilled() {
+	public boolean isCellFilled(int row, int col) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public int getCellValue() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public IPlayer2 getCellOwner() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setCellOwner(IPlayer2 player) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setBorder(int borderNr, boolean fillBorder) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean getBorder(int borderNr) {
+	public boolean isCellFilled(ICell2 cell) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public int getCellSize() {
+	public int getCellValue(int row, int col) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public void setCellSize(int size) {
+	public int getCellValue(ICell2 cell) {
 		// TODO Auto-generated method stub
-		
+		return 0;
 	}
 
 	@Override
-	public char[][] getCharArray() {
+	public IPlayer2 getCellOwner(int row, int col) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void setCharArray(char[][] charArray) {
+	public IPlayer2 getCellOwner(ICell2 cell) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setCellOwner(IPlayer2 player, int row, int col) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setCellOwner(IPlayer2 player, ICell2 cell) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setBorder(int borderNr, boolean fillBorder, int row, int col) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setBorder(int borderNr, boolean fillBorder, ICell2 cell) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean getBorder(int borderNr, int row, int col) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean getBorder(int borderNr, ICell2 cell) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int getCellSize(int row, int col) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getCellSize(ICell2 cell) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setCellSize(int size, int row, int col) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setCellSize(int size, ICell2 cell) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public char[][] getCharArray(int row, int col) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public char[][] getCharArray(ICell2 cell) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setCharArray(char[][] charArray, int row, int col) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setCharArray(char[][] charArray, ICell2 cell) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -154,37 +213,37 @@ public class PKController extends Observable implements IPKController{
 	}
 
 	@Override
-	public void setPlayerHuman(boolean isHuman) {
+	public void setPlayerHuman(boolean isHuman, IPlayer2 player) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public boolean isPlayerAHuman() {
+	public boolean isPlayerAHuman(IPlayer2 player) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public int getNumberOfPoints() {
+	public int getNumberOfPoints(IPlayer2 player) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public void addPointsToPlayersAccount(int newPoints) {
+	public void addPointsToPlayersAccount(int newPoints, IPlayer2 player) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void setPlayersName(String name) {
+	public void setPlayersName(String name, IPlayer2 player) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public String getPlayersName() {
+	public String getPlayersName(IPlayer2 player) {
 		// TODO Auto-generated method stub
 		return null;
 	}

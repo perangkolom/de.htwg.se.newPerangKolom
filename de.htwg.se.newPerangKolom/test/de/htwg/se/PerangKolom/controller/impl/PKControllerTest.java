@@ -7,8 +7,11 @@ import org.junit.Test;
 
 import de.htwg.se.PerangKolom.controller.IPKController;
 import de.htwg.se.PerangKolom.model.ICell2;
+import de.htwg.se.PerangKolom.model.IPlayer2;
+import de.htwg.se.PerangKolom.model.impl.Cell;
 import de.htwg.se.PerangKolom.model.impl.Cell2;
 import de.htwg.se.PerangKolom.model.impl.Grid;
+import de.htwg.se.PerangKolom.model.impl.Player2;
 
 public class PKControllerTest {
 
@@ -16,13 +19,19 @@ public class PKControllerTest {
 	Grid grid;
 	ICell2[][] array;
 	ICell2 cell;
+	int ROW;
+	int COL;
+	IPlayer2 player;
 	
 	@Before
 	public void setUp() throws Exception {
 		contr = new PKController();
 		grid = Grid.getInstance();
 		array = grid.getCellArray();
-		cell = array[0][0];
+		ROW = 0;
+		COL = 0;
+		cell = array[ROW][COL];
+		player = new Player2();
 		
 	}
 
@@ -63,7 +72,7 @@ public class PKControllerTest {
 	}
 
 	@Test
-	public void testGetCell() {
+	public void testGetCellIntInt() {
 		assertNotNull(contr.getInstance().getCell(1, 1));
 		ICell2[][] array = contr.getCellArray();
 		Cell2 cell = new Cell2(99, 99);
@@ -72,62 +81,161 @@ public class PKControllerTest {
 	}
 
 	@Test
-	public void testIsCellFilled() {
+	public void testIsCellFilledCell2() {
+		
+		assertFalse(contr.isCellFilled(cell));
+		
 		cell.setBorder(Cell2.BORDER_BOTTOM, true);
 		cell.setBorder(Cell2.BORDER_LEFT, true);
 		cell.setBorder(Cell2.BORDER_RIGHT, true);
 		cell.setBorder(Cell2.BORDER_TOP, true);
-		assertTrue(contr.isCellFilled());
+		assertTrue(contr.isCellFilled(cell));
 		
 		cell.setBorder(Cell2.BORDER_LEFT, false);
-		assertFalse(contr.isCellFilled());
+		assertFalse(contr.isCellFilled(cell));
 		
 		cell.setBorder(Cell2.BORDER_LEFT, true);
-		assertTrue(contr.isCellFilled());
+		assertTrue(contr.isCellFilled(cell));
+	}
+
+
+	@Test
+	public void testIsCellFilledIntInt() {
+		
+		assertFalse(contr.isCellFilled(ROW, COL));
+		
+		cell.setBorder(Cell2.BORDER_BOTTOM, true);
+		cell.setBorder(Cell2.BORDER_LEFT, true);
+		cell.setBorder(Cell2.BORDER_RIGHT, true);
+		cell.setBorder(Cell2.BORDER_TOP, true);
+		assertTrue(contr.isCellFilled(ROW, COL));
+		
+		cell.setBorder(Cell2.BORDER_LEFT, false);
+		assertFalse(contr.isCellFilled(ROW, COL));
+		
+		cell.setBorder(Cell2.BORDER_LEFT, true);
+		assertTrue(contr.isCellFilled(ROW, COL));
+	}
+
+	
+	@Test
+	public void testGetCellValueIntInt() {
+		cell.setCellValue(3200);
+		assertEquals(3200, contr.getCellValue(ROW, COL));
+		assertEquals(3200, contr.getCellValue(ROW, COL));;
+	}
+
+	
+	@Test
+	public void testGetCellValueICell2() {
+		cell.setCellValue(3200);
+		assertEquals(3200, contr.getCellValue(cell));
+		assertEquals(3200, contr.getCellValue(cell));
+	}
+
+
+	@Test
+	public void testGetCellOwnerIntInt() {
+		cell.setCellOwner(player);
+		assertEquals(player, contr.getCellOwner(ROW, COL));
 	}
 
 	@Test
-	public void testGetCellValue() {
+	public void testGetCellOwnerICell2() {
+		cell.setCellOwner(player);
+		assertEquals(player, contr.getCellOwner(cell));
+	}
+
+	@Test
+	public void testSetCellOwnerIPlayer2IntInt() {
+		contr.setCellOwner(player, ROW, COL);
+		assertEquals(player, cell.getCellOwner());
+	}
+
+	
+	@Test
+	public void testSetCellOwnerIPlayer2ICell2() {
+		contr.setCellOwner(player, cell);
+		assertEquals(player, cell.getCellOwner());
+	}
+
+	@Test
+	public void testSetBorderIntBooleanIntInt() {
+		contr.setBorder(Cell2.BORDER_BOTTOM, true, ROW, COL);
+		assertTrue(cell.getBorder(Cell.BORDER_BOTTOM));
+		
+		contr.setBorder(Cell2.BORDER_BOTTOM, false, ROW, COL);
+		assertFalse(cell.getBorder(Cell.BORDER_BOTTOM));
+		
+		contr.setBorder(Cell2.BORDER_RIGHT, true, ROW, COL);
+		assertTrue(cell.getBorder(Cell.BORDER_RIGHT));
+		
+		contr.setBorder(Cell2.BORDER_BOTTOM, false, ROW, COL);
+		assertFalse(cell.getBorder(Cell.BORDER_RIGHT));
+	}
+
+	@Test
+	public void testSetBorderIntBooleanICell2() {
+		contr.setBorder(Cell2.BORDER_BOTTOM, true, cell);
+		assertTrue(cell.getBorder(Cell.BORDER_BOTTOM));
+		
+		contr.setBorder(Cell2.BORDER_BOTTOM, false, cell);
+		assertFalse(cell.getBorder(Cell.BORDER_BOTTOM));
+		
+		contr.setBorder(Cell2.BORDER_RIGHT, true, cell);
+		assertTrue(cell.getBorder(Cell.BORDER_RIGHT));
+		
+		contr.setBorder(Cell2.BORDER_BOTTOM, false, cell);
+		assertFalse(cell.getBorder(Cell.BORDER_RIGHT));
+	}
+
+	@Test
+	public void testGetBorderIntIntInt() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetCellOwner() {
+	public void testGetBorderIntICell2() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testSetCellOwner() {
+	public void testGetCellSizeIntInt() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testSetBorder() {
+	public void testGetCellSizeICell2() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetBorder() {
+	public void testSetCellSizeIntIntInt() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetCellSize() {
+	public void testSetCellSizeIntICell2() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testSetCellSize() {
+	public void testGetCharArrayIntInt() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetCharArray() {
+	public void testGetCharArrayICell2() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testSetCharArray() {
+	public void testSetCharArrayCharArrayArrayIntInt() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetCharArrayCharArrayArrayICell2() {
 		fail("Not yet implemented");
 	}
 
