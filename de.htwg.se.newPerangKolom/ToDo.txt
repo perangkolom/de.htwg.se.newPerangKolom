@@ -31,6 +31,13 @@ OptString:
 n - new game | x - close game | 123 - fill Border 3 of Cell(1,2) 
 
 
+Spielzug-Logik btw. -Ablauf überlegen
+	was brauchst dazu?
+	wo wirds gespeichert..
+	wie wird KI aufgerufen..
+	ist für den Algo-Wechsel human/pc das Strategy-Pattern geeignet?
+	
+	
 					
 
 					

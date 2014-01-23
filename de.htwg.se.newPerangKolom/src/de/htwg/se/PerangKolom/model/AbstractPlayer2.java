@@ -10,12 +10,7 @@ public class AbstractPlayer2 implements IPlayer2 {
 
 	@Override
 	public void setPlayerHuman(boolean isHuman) {
-		if (isHuman == true) {
-			isHuman = true;
-		} 
-		else {
-			isHuman = false;
-		}	
+		this.isHuman = isHuman;
 	}	
 			
 	

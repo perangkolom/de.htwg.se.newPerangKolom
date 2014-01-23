@@ -8,17 +8,20 @@ import de.htwg.se.PerangKolom.model.ICell2;
 import de.htwg.se.PerangKolom.model.impl.Cell2;
 import de.htwg.se.PerangKolom.model.IPlayer2;
 import de.htwg.se.PerangKolom.model.impl.Player2;
+import de.htwg.se.PerangKolom.model.impl.CellArray;
 
 
 public class CellTest2 {
 	
 	ICell2 cell;
 	IPlayer2 player;
+	CellArray array;
 
 	@Before
 	public void setUp() throws Exception {
 		 cell = new Cell2(0, 0);
 		 player = new Player2();
+		 array = CellArray.getInstance();
 	}
 	
 	
@@ -79,6 +82,7 @@ public class CellTest2 {
 			if ( value >= 25 && value <= 100 ) {
 				isInRange = true;
 			}
+
 			assertTrue(isInRange);
 		}
 		
@@ -119,11 +123,11 @@ public class CellTest2 {
 		
 		assertEquals(1, cell.getNumberOfFilledBorders());
 		
-//		cell.setBorder(Cell2.BORDER_LEFT, true);
-//		assertEquals(2, cell.getNumberOfFilledBorders());
+		cell.setBorder(Cell2.BORDER_LEFT, true);
+		assertEquals(2, cell.getNumberOfFilledBorders());
 		
-//		cell.setBorder(Cell2.BORDER_BOTTOM, true);
-//		assertEquals(2, cell.getNumberOfFilledBorders());
+		cell.setBorder(Cell2.BORDER_BOTTOM, true);
+		assertEquals(2, cell.getNumberOfFilledBorders());
 	}
 
 	
@@ -157,6 +161,7 @@ public class CellTest2 {
 			if ( value >= 25 && value <= 100 ) {
 				isInRange = true;
 			}
+			
 			assertTrue(isInRange);
 		}
 	}
