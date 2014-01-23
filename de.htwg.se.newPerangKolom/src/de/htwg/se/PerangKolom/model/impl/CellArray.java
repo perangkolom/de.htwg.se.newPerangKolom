@@ -13,8 +13,8 @@ public final class CellArray {
 	 */
 	
 	private static CellArray instance;
-	private static final int DEFAULT_NUMBEROFROWS = 7;
-	private static final int DEFAULT_NUMBEROFCOLUMS = 7;
+	private static final int DEFAULT_NUMBEROFROWS = 3;
+	private static final int DEFAULT_NUMBEROFCOLUMS = 3;
 	private static Cell[][] cellArray = null;
 	private static int numberOfRows = DEFAULT_NUMBEROFROWS;
 	private static int numberOfColums = DEFAULT_NUMBEROFCOLUMS;
@@ -63,12 +63,12 @@ public final class CellArray {
 	}
 
 	public static void setNumberOfRows(int x) {
-		if (cellArray == null) 
+//		if (cellArray == null) 
 			numberOfRows = x;
 	}
 
 	public static void setNumberOfColums(int x) {
-		if (cellArray == null) 
+//		if (cellArray == null) 
 			numberOfColums = x;
 	}
 

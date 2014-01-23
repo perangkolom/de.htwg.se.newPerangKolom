@@ -150,14 +150,6 @@ public class PerangKolomController extends Observable implements IPerangKolomCon
 		}
 		return false;
 	}
-	
-	public void setGridSize(int x, int y){
-
-		CellArray cellArrayDummy = CellArray.getInstance();
-		
-		cellArrayDummy.setNumberOfColums(x);
-		cellArrayDummy.setNumberOfRows(y);
-	}
 
 	public int getNumberOfRows(){
 		CellArray cellArrayDummy = CellArray.getInstance();
@@ -173,6 +165,12 @@ public class PerangKolomController extends Observable implements IPerangKolomCon
 	public CellArray getCellArray(){
 		CellArray cellArrayDummy = CellArray.getInstance();
 		return cellArrayDummy;
+	}
+	
+	public void setGridSize(int x, int y){
+		CellArray cellArrayDummy = CellArray.getInstance();
+		cellArrayDummy.setNumberOfColums(x);
+		cellArrayDummy.setNumberOfRows(y);
 	}
 	
 
