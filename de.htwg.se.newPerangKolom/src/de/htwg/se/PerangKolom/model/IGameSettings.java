@@ -2,18 +2,19 @@ package de.htwg.se.PerangKolom.model;
 
 public interface IGameSettings {
 
-	IPlayer2 getPlayer(int playerNr);
+	IPlayer2 getPlayer(int playerNumber);
 	
-	IPlayer2 whoseTurnIsIt();
+	void setPlayer(IPlayer2 player, int numberOfPlayer);
+	
+	void setWhoseTurnItIs(IPlayer2 player);
+	
+	IPlayer2 getWhoseTurnItIs();
 	
 	void changeTurn();
 	
-	int getGridSize();
+	IPlayer2 getWinner();
 	
-	void setGridSize(int size);
-	
-	
-	
+	void setWinner(IPlayer2 player);
 	
 }
 
