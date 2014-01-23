@@ -3,9 +3,8 @@ package de.htwg.se.PerangKolom.controller.impl;
 import de.htwg.se.PerangKolom.controller.IPKController;
 import de.htwg.se.PerangKolom.model.ICell2;
 import de.htwg.se.PerangKolom.model.IPlayer2;
+import de.htwg.se.PerangKolom.model.impl.GameSettings;
 import de.htwg.se.PerangKolom.model.impl.Grid;
-import de.htwg.se.PerangKolom.util.observer.Event;
-import de.htwg.se.PerangKolom.util.observer.IObserver;
 import de.htwg.se.PerangKolom.util.observer.Observable;
 
 public class PKController extends Observable implements IPKController{
@@ -22,230 +21,207 @@ public class PKController extends Observable implements IPKController{
 
 	@Override
 	public int getNumberOfRows() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Grid.getNumberOfRows();
 	}
 
 	@Override
 	public void setNumberOfRows(int x) {
-		// TODO Auto-generated method stub
-		
+		Grid.setNumberOfRows(x);
 	}
 
 	@Override
 	public int getNumberOfCols() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Grid.getNumberOfCols();
 	}
 
 	@Override
 	public void setNumberOfCols(int y) {
-		// TODO Auto-generated method stub
+		Grid.setNumberOfCols(y);
 		
 	}
 
 	@Override
 	public ICell2 getCell(int x, int y) {
-		// TODO Auto-generated method stub
-		return null;
+		ICell2[][] array = Grid.getInstance().getCellArray();
+		return array[x][y]; 
 	}
-
+	
 	@Override
 	public boolean isCellFilled(int row, int col) {
-		// TODO Auto-generated method stub
-		return false;
+		ICell2[][] array = Grid.getInstance().getCellArray();
+		return array[row][col].isCellFilled();
 	}
 
 	@Override
 	public boolean isCellFilled(ICell2 cell) {
-		// TODO Auto-generated method stub
-		return false;
+		return cell.isCellFilled();
 	}
 
 	@Override
 	public int getCellValue(int row, int col) {
-		// TODO Auto-generated method stub
-		return 0;
+		ICell2[][] array = Grid.getInstance().getCellArray();
+		return array[row][col].getCellValue();
+		
 	}
 
 	@Override
 	public int getCellValue(ICell2 cell) {
-		// TODO Auto-generated method stub
-		return 0;
+		return cell.getCellValue();
 	}
 
 	@Override
 	public IPlayer2 getCellOwner(int row, int col) {
-		// TODO Auto-generated method stub
-		return null;
+		ICell2[][] array = Grid.getInstance().getCellArray();
+		return array[row][col].getCellOwner();
 	}
 
 	@Override
 	public IPlayer2 getCellOwner(ICell2 cell) {
-		// TODO Auto-generated method stub
-		return null;
+		return cell.getCellOwner();
 	}
 
 	@Override
 	public void setCellOwner(IPlayer2 player, int row, int col) {
-		// TODO Auto-generated method stub
-		
+		ICell2[][] array = Grid.getInstance().getCellArray();
+		array[row][col].setCellOwner(player);
 	}
 
 	@Override
 	public void setCellOwner(IPlayer2 player, ICell2 cell) {
-		// TODO Auto-generated method stub
-		
+		cell.setCellOwner(player);
 	}
 
 	@Override
 	public void setBorder(int borderNr, boolean fillBorder, int row, int col) {
-		// TODO Auto-generated method stub
-		
+		ICell2[][] array = Grid.getInstance().getCellArray();
+		array[row][col].setBorder(borderNr, fillBorder);
 	}
 
 	@Override
 	public void setBorder(int borderNr, boolean fillBorder, ICell2 cell) {
-		// TODO Auto-generated method stub
-		
+		cell.setBorder(borderNr, fillBorder);
 	}
 
 	@Override
 	public boolean getBorder(int borderNr, int row, int col) {
-		// TODO Auto-generated method stub
-		return false;
+		ICell2[][] array = Grid.getInstance().getCellArray();
+		return array[row][col].getBorder(borderNr);
 	}
 
 	@Override
 	public boolean getBorder(int borderNr, ICell2 cell) {
-		// TODO Auto-generated method stub
-		return false;
+		return cell.getBorder(borderNr);
 	}
 
 	@Override
 	public int getCellSize(int row, int col) {
-		// TODO Auto-generated method stub
+		ICell2[][] array = Grid.getInstance().getCellArray();
+		array[row][col].getCellSize();
 		return 0;
 	}
 
 	@Override
 	public int getCellSize(ICell2 cell) {
-		// TODO Auto-generated method stub
-		return 0;
+		return cell.getCellSize();
 	}
 
 	@Override
 	public void setCellSize(int size, int row, int col) {
-		// TODO Auto-generated method stub
-		
+		ICell2[][] array = Grid.getInstance().getCellArray();
+		array[row][col].setCellSize(size);
 	}
 
 	@Override
 	public void setCellSize(int size, ICell2 cell) {
-		// TODO Auto-generated method stub
-		
+		cell.setCellSize(size);
 	}
 
 	@Override
 	public char[][] getCharArray(int row, int col) {
-		// TODO Auto-generated method stub
-		return null;
+		ICell2[][] array = Grid.getInstance().getCellArray();
+		return array[row][col].getCharArray();
 	}
 
 	@Override
 	public char[][] getCharArray(ICell2 cell) {
-		// TODO Auto-generated method stub
-		return null;
+		return cell.getCharArray();
 	}
 
 	@Override
 	public void setCharArray(char[][] charArray, int row, int col) {
-		// TODO Auto-generated method stub
-		
+		ICell2[][] array = Grid.getInstance().getCellArray();
+		array[row][col].setCharArray(charArray);
 	}
 
 	@Override
 	public void setCharArray(char[][] charArray, ICell2 cell) {
-		// TODO Auto-generated method stub
-		
+		cell.setCharArray(charArray);
 	}
 
 	@Override
 	public IPlayer2 getPlayer(int playerNumber) {
-		// TODO Auto-generated method stub
-		return null;
+		return GameSettings.getPlayer(playerNumber);
 	}
 
 	@Override
 	public void setPlayer(IPlayer2 player, int numberOfPlayer) {
-		// TODO Auto-generated method stub
-		
+		GameSettings.setPlayer(player, numberOfPlayer);
 	}
 
 	@Override
 	public void setWhoseTurnItIs(IPlayer2 player) {
-		// TODO Auto-generated method stub
-		
+		GameSettings.setWhoseTurnItIs(player);
 	}
 
 	@Override
 	public IPlayer2 getWhoseTurnItIs() {
-		// TODO Auto-generated method stub
-		return null;
+		return GameSettings.getWhoseTurnItIs();
 	}
 
 	@Override
 	public void changeTurn() {
-		// TODO Auto-generated method stub
-		
+		GameSettings.changeTurn();
 	}
 
 	@Override
 	public IPlayer2 getWinner() {
-		// TODO Auto-generated method stub
-		return null;
+		return GameSettings.getWinner();
 	}
 
 	@Override
 	public void setWinner(IPlayer2 player) {
-		// TODO Auto-generated method stub
-		
+		GameSettings.setWinner(player);
 	}
 
 	@Override
 	public void setPlayerHuman(boolean isHuman, IPlayer2 player) {
-		// TODO Auto-generated method stub
-		
+		IPlayer2 tmp = GameSettings.getPlayer(player);
+		tmp.setPlayerHuman(isHuman);
 	}
 
 	@Override
 	public boolean isPlayerAHuman(IPlayer2 player) {
-		// TODO Auto-generated method stub
-		return false;
+		return player.isPlayerAHuman();
 	}
 
 	@Override
 	public int getNumberOfPoints(IPlayer2 player) {
-		// TODO Auto-generated method stub
-		return 0;
+		return player.getNumberOfPoints();
 	}
 
 	@Override
 	public void addPointsToPlayersAccount(int newPoints, IPlayer2 player) {
-		// TODO Auto-generated method stub
-		
+		player.addPointsToPlayersAccount(newPoints);
 	}
 
 	@Override
 	public void setPlayersName(String name, IPlayer2 player) {
-		// TODO Auto-generated method stub
-		
+		player.setPlayersName(name);
 	}
 
 	@Override
 	public String getPlayersName(IPlayer2 player) {
-		// TODO Auto-generated method stub
-		return null;
+		return player.getPlayersName();
 	}
 
 }
