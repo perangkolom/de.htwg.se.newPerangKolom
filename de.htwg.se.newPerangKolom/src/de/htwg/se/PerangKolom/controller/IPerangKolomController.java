@@ -1,6 +1,7 @@
 package de.htwg.se.PerangKolom.controller;
 
 import de.htwg.se.PerangKolom.model.impl.Cell;
+import de.htwg.se.PerangKolom.model.impl.CellArray;
 import de.htwg.se.PerangKolom.util.observer.IObservable;
 
 public interface IPerangKolomController extends IObservable {
@@ -45,6 +46,12 @@ public interface IPerangKolomController extends IObservable {
 	public boolean fourBordersFilled(int x, int y);
 	
 	public void setGridSize(int numberOfColumns, int numberOfRows);
+	
+	public int getNumberOfRows();
+	
+	public int getNumberOfColumns();
+	
+	public CellArray getCellArray();
 
 	
 }

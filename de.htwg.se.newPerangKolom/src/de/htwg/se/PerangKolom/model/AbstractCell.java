@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 
 import de.htwg.se.PerangKolom.model.impl.Cell;
 import de.htwg.se.PerangKolom.model.impl.CellArray;
-import de.htwg.se.PerangKolom.model.impl.GameData;
 import de.htwg.se.PerangKolom.model.impl.Player;
 
 public abstract class AbstractCell implements ICell{

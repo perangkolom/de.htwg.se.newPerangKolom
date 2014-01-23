@@ -5,22 +5,25 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
+import de.htwg.se.PerangKolom.aview.GUI.GraphicalUI;
 import de.htwg.se.PerangKolom.aview.tui.TextUI;
 import de.htwg.se.PerangKolom.controller.IPerangKolomController;
 import de.htwg.se.PerangKolom.controller.impl.PerangKolomController;
 import de.htwg.se.PerangKolom.model.impl.MessagesForUser2;
 
 
-public final class PerangKolom {
+public final class PerangKolom<E> {
 
 	private static Scanner scanner;
 	private IPerangKolomController controller;
+	private static GraphicalUI graphicalUI;
 	private static TextUI tui;
 	private static PerangKolom instance = null;
 	private Logger logger;
 	
 	private PerangKolom() {
 		controller = new PerangKolomController();
+		graphicalUI = new GraphicalUI<E>();
 		tui = new TextUI(new PerangKolomController());
 		logger = Logger.getLogger("de.htwg.se.PerangKolom.PerangKolom");
 	}

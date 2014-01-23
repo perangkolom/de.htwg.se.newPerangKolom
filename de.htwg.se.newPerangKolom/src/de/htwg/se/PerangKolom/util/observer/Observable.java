@@ -7,7 +7,7 @@ import java.util.List;
 import de.htwg.se.PerangKolom.util.observer.Event;
 import de.htwg.se.PerangKolom.util.observer.IObserver;
 
-public class Observable {
+public class Observable implements IObservable{
 	private List<IObserver> subscribers = new ArrayList<IObserver>(2);
 
 	public void addObserver(IObserver s) {

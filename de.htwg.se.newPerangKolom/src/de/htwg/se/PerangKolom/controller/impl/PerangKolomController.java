@@ -12,8 +12,7 @@ import de.htwg.se.PerangKolom.util.observer.Observable;
 
 public class PerangKolomController extends Observable implements IPerangKolomController {
 
-	public CellArray CellArrayDummy = CellArray.getInstance();
-	public Cell[][] cellArray = CellArray.getCellArray();
+
 	private final int FOUR = 4;
 	Player player;
 	
@@ -119,23 +118,26 @@ public class PerangKolomController extends Observable implements IPerangKolomCon
 	/************** VON DAVID's Controller METHODEN***************/
 	
 	public void setCellValue(int row, int column, int value){
+		Cell[][] cellArray = CellArray.getCellArray();
 		cellArray[row][column].setCellValue(value);
 	}
 	
 	public int getRandNumber(int x, int y){
-//		this.cell = new Cell(x, y);
+		Cell[][] cellArray = CellArray.getCellArray();
 		return cellArray[x][y].makeRandomNumber();
 	}
 	
 
 	public void setBorderFilled(int x, int y, int borderType){
+		Cell[][] cellArray = CellArray.getCellArray();
 		cellArray[x][y].setBorder(borderType, true);
 	}
 
 
 
 	public Cell getCell(int x, int y) {
-			Cell tmpCell = cellArray[x][y];
+		Cell[][] cellArray = CellArray.getCellArray();
+		Cell tmpCell = cellArray[x][y];
 		return tmpCell;
 	}
 	
@@ -150,8 +152,28 @@ public class PerangKolomController extends Observable implements IPerangKolomCon
 	}
 	
 	public void setGridSize(int x, int y){
-		CellArrayDummy.setNumberOfColums(x);
-		CellArrayDummy.setNumberOfRows(y);
+		CellArray cellArrayDummy = CellArray.getInstance();
+		
+		cellArrayDummy.setNumberOfColums(x);
+		cellArrayDummy.setNumberOfRows(y);
 	}
+
+	public int getNumberOfRows(){
+		CellArray cellArrayDummy = CellArray.getInstance();
+		return cellArrayDummy.getNumberOfRows();
+	}
+	
+	public int getNumberOfColumns(){
+		CellArray cellArrayDummy = CellArray.getInstance();
+		return 	cellArrayDummy.getNumberOfColums();
+
+	}
+	
+	public CellArray getCellArray(){
+		CellArray cellArrayDummy = CellArray.getInstance();
+		return cellArrayDummy;
+	}
+	
+
 
 }

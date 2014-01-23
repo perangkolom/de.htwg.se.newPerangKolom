@@ -46,13 +46,14 @@ import de.htwg.se.PerangKolom.controller.impl.PerangKolomController;
 import de.htwg.se.PerangKolom.controller.impl.PerangKolomControllerTest;
 import de.htwg.se.PerangKolom.model.impl.Cell;
 import de.htwg.se.PerangKolom.model.impl.CellArray;
+import de.htwg.se.PerangKolom.util.observer.Event;
+import de.htwg.se.PerangKolom.util.observer.IObserver;
 
 import java.awt.SystemColor;
 
 import javax.swing.JMenu;
 
-public class GraphicalUI<E> extends JFrame {
-
+public class GraphicalUI<E> extends JFrame implements IObserver{
 	private final int BIG_SIZE = 7;
 	private final int SMALL_SIZE = 3;
 	private final int XCOORDINATES_BUTTON_OBJECT = 33;
@@ -60,8 +61,8 @@ public class GraphicalUI<E> extends JFrame {
 	private final int ADDITIONER_BUTTON_OBJECT = 60;
 	
 	IPerangKolomController perangKolomController;
-	public CellArray cellArrayDummy = CellArray.getInstance();
-	public Cell[][] cellArray = CellArray.getCellArray();
+//	public CellArray cellArrayDummy = CellArray.getInstance();
+//	public Cell[][] cellArray = CellArray.getCellArray();
 	
 	private JFrame frame;
 	private JPanel contentPane;
@@ -259,8 +260,9 @@ public class GraphicalUI<E> extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 //				perangKolomController.setGridSize(SMALL_SIZE, SMALL_SIZE);
+				perangKolomController.setGridSize(SMALL_SIZE, SMALL_SIZE);
 				perangKolomController.createNewGrid(SMALL_SIZE, SMALL_SIZE);
-				System.out.println("Spiel sollte hier mit KLEINEM Spielfeld neu gestartet werden");
+//				System.out.println("Spiel sollte hier mit KLEINEM Spielfeld neu gestartet werden");
 			}
 		});
 		
@@ -269,7 +271,7 @@ public class GraphicalUI<E> extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 //				perangKolomController.setGridSize(BIG_SIZE, BIG_SIZE);
 				perangKolomController.createNewGrid(BIG_SIZE, BIG_SIZE);
-				System.out.println("Spiel sollte hier mit GROSSEM Spielfeld neu gestartet werden");
+//				System.out.println("Spiel sollte hier mit GROSSEM Spielfeld neu gestartet werden");
 			}
 		});
 		
@@ -347,9 +349,9 @@ public class GraphicalUI<E> extends JFrame {
 		int counterX = XCOORDINATES_BUTTON_OBJECT;
 		int counterY = YCOORDINATES_BUTTON_OBJECT;
 		
-		for(int i = 0; i < cellArrayDummy.getNumberOfColums(); i++){
-			for(int j = 0; j < cellArrayDummy.getNumberOfRows(); j++){
-				int randomNumber = perangKolomController.getRandNumber(i, j);
+		for(int i = 0; i < perangKolomController.getNumberOfColumns(); i++){
+			for(int j = 0; j < perangKolomController.getNumberOfRows(); j++){
+				int randomNumber = perangKolomController.getCellValue(perangKolomController.getCell(i,j));
 				ButtonObject btnObject = new ButtonObject(counterX, counterY, i, j, Integer.toString(randomNumber));
 				JPanel btnPanel = btnObject.getPanel();
 				label.add(btnPanel);
@@ -359,6 +361,13 @@ public class GraphicalUI<E> extends JFrame {
 			counterX = XCOORDINATES_BUTTON_OBJECT;
 			counterY += ADDITIONER_BUTTON_OBJECT; 
 		}
+	}
+
+	@Override
+	public void update(Event e) {
+		repaint();
+		revalidate();
+		this.frame = new GraphicalUI<Object>();
 	}
 	
 
