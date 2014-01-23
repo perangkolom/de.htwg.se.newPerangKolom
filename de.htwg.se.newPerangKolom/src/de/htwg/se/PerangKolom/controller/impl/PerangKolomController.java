@@ -152,6 +152,7 @@ public class PerangKolomController extends Observable implements IPerangKolomCon
 	}
 	
 	public void setGridSize(int x, int y){
+
 		CellArray cellArrayDummy = CellArray.getInstance();
 		
 		cellArrayDummy.setNumberOfColums(x);
