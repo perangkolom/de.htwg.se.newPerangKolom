@@ -1,28 +1,11 @@
 package de.htwg.se.PerangKolom.aview.GUI;
 
-import java.awt.BorderLayout;import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Menu;
-import java.awt.MenuItem;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.ObjectOutputStream.PutField;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import javax.imageio.ImageIO;
-import javax.sound.midi.ControllerEventListener;
 import javax.swing.JPanel;
 
 import java.awt.EventQueue;
@@ -32,24 +15,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.OverlayLayout;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.Color;
 
-import javax.swing.JButton;
-
+import de.htwg.se.PerangKolom.controller.IPKController;
 import de.htwg.se.PerangKolom.controller.IPerangKolomController;
+import de.htwg.se.PerangKolom.controller.impl.PKController;
 import de.htwg.se.PerangKolom.controller.impl.PerangKolomController;
-import de.htwg.se.PerangKolom.controller.impl.PerangKolomControllerTest;
 import de.htwg.se.PerangKolom.model.impl.Cell;
-import de.htwg.se.PerangKolom.model.impl.CellArray;
 import de.htwg.se.PerangKolom.util.observer.Event;
 import de.htwg.se.PerangKolom.util.observer.IObserver;
-
-import java.awt.SystemColor;
 
 import javax.swing.JMenu;
 
@@ -65,7 +42,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 	private final int YCOORDINATES_BUTTON_OBJECT = 35;
 	private final int ADDITIONER_BUTTON_OBJECT = 60;
 	
-	IPerangKolomController perangKolomController;
+	IPKController perangKolomController;
 //	public CellArray cellArrayDummy = CellArray.getInstance();
 //	public Cell[][] cellArray = CellArray.getCellArray();
 	
@@ -87,11 +64,6 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
     private JMenuItem menuItemBigSize;
     private JMenuItem menuItemSmallSize;
     
-    private JTextField tfPlayerName1;
-    private JTextField tfPlayerName2;
-    private JTextField tfPoints1;
-    private JTextField tfPoints2;
-
     HashMap<Cell, ButtonObject> hashMapButton;
     
     
@@ -119,7 +91,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 	 */
 	public GraphicalUI() {
 		
-		perangKolomController = new PerangKolomController();
+		perangKolomController = new PKController();
 	
 		setResizable(false);
 		setBackground(new Color(0, 0, 0));
@@ -265,8 +237,9 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
-				perangKolomController.setGridSize(SMALL_SIZE, SMALL_SIZE);
-				constructPerangKolomPanels(perangKolomController);
+				perangKolomController.setNumberOfCols(SMALL_SIZE);
+				perangKolomController.setNumberOfRows(SMALL_SIZE);
+				constructPerangKolomPanels();
 		        revalidate();
 			}
 		});
@@ -274,8 +247,9 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 		menuItemBigSize.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				perangKolomController.setGridSize(BIG_SIZE, BIG_SIZE);
-				constructPerangKolomPanels(perangKolomController);
+				perangKolomController.setNumberOfCols(BIG_SIZE);
+				perangKolomController.setNumberOfRows(BIG_SIZE);
+				constructPerangKolomPanels();
 		        revalidate();
 			}
 		});
@@ -283,7 +257,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 		menuItemRerun.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				constructPerangKolomPanels(perangKolomController);
+				constructPerangKolomPanels();
 			}
 		});
 		
@@ -313,7 +287,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 		this.validate();
 	}
 	
-	public final void constructPerangKolomPanels(IPerangKolomController controller) {
+	public final void constructPerangKolomPanels() {
 //		if(btnObject != null){
 //			backgroundLabel.removeAll();
 //		}
@@ -329,11 +303,11 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 		int counterX = XCOORDINATES_BUTTON_OBJECT;
 		int counterY = YCOORDINATES_BUTTON_OBJECT;
 		
-		for(int i = 0; i < perangKolomController.getNumberOfColumns(); i++){
+		for(int i = 0; i < perangKolomController.getNumberOfCols(); i++){
 			for(int j = 0; j < perangKolomController.getNumberOfRows(); j++){
 //				int randomNumber = perangKolomController.getCellValue(perangKolomController.getCell(i,j));
-				int randomNumber = perangKolomController.getRandNumber(i, j);
-				btnObject = new ButtonObject(counterX, counterY, i, j, Integer.toString(randomNumber));
+				int randomNumber = perangKolomController.getCellValue(j, i);
+				btnObject = new ButtonObject(counterX, counterY, j, i, Integer.toString(randomNumber));
 				JPanel btnPanel = btnObject.getPanel();
 				backgroundLabel.add(btnPanel);
 //				hashMapButton.put(perangKolomController.getCell(i, j), btnObject);
@@ -349,7 +323,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 	@Override
 	public void update(Event e) {
 //		repaint();
-		revalidate();
+//		revalidate();
 		printBackground();
 //		this.frame = new GraphicalUI<Object>();
 	}
@@ -417,9 +391,9 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
         
 //        perangKolomController.notifyObservers();
         PanelBackground.revalidate();
-        PanelMenu.revalidate();
+//        PanelMenu.revalidate();
     	createCellObjects();
-        revalidate();
+//        revalidate();
 	}
 	
 

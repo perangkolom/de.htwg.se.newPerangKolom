@@ -317,12 +317,3 @@ public class TextUI2 implements IObserver  {
 		controller.getPlayer(playerNumber).setPlayersName(line);
 	}
 }
-
-
-
-
-
-
-
-
-

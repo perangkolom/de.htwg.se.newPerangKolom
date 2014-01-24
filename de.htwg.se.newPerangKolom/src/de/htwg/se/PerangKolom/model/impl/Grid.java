@@ -9,10 +9,12 @@ public class Grid {
 	private Cell2[][] cellArray;
 	private static int numberOfRows = 3;
 	private static int numberOfCols = 3;
+	private static GameSettings gameSettings;
 	
 	private Grid() {
 		
 		cellArray = new Cell2[numberOfRows][numberOfCols];
+		this.gameSettings = GameSettings.getInstance();
 		
 		for (int i = 0; i < numberOfRows; i++) {
 			for (int j = 0; j < numberOfCols; j++) {

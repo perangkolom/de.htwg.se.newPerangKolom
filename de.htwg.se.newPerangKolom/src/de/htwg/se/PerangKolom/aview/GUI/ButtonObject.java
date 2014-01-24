@@ -1,28 +1,27 @@
 package de.htwg.se.PerangKolom.aview.GUI;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.prefs.BackingStoreException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.OverlayLayout;
 
-import org.apache.log4j.helpers.AbsoluteTimeDateFormat;
-
+import de.htwg.se.PerangKolom.controller.IPKController;
 import de.htwg.se.PerangKolom.controller.IPerangKolomController;
+import de.htwg.se.PerangKolom.controller.impl.PKController;
 import de.htwg.se.PerangKolom.controller.impl.PerangKolomController;
 
 public class ButtonObject extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel buttonPanel;
 	private JPanel centrePanel;
 
@@ -33,7 +32,7 @@ public class ButtonObject extends JFrame{
 	private JButton buttonBottom;
 	private JButton buttonLeft;
 	
-	private IPerangKolomController controller;
+	private IPKController controller;
 	
 	private final int BUTTONWIDE = 45;
 	private final int BUTTONHEIGHT = 10;
@@ -56,7 +55,7 @@ public class ButtonObject extends JFrame{
 		this.buttonBottom = new JButton("");
 		this.buttonLeft = new JButton("");
 		this.treeMap = new TreeMap<Integer, JButton>();
-		this.controller = new PerangKolomController();
+		this.controller = new PKController();
 		this.x = x;
 		this.y = y;
 		
@@ -150,7 +149,7 @@ public class ButtonObject extends JFrame{
 		}
 		button.setBorderPainted(false);
 		button.setRolloverEnabled(false);
-		revalidate();
+//		this.revalidate();
 		centrePanel.validate();
 		controller.notifyObservers();
 	}
@@ -167,7 +166,7 @@ public class ButtonObject extends JFrame{
 		
 //		System.out.printf("FOUR BORDERS FILLED??? :  %s\n", controller.fourBordersFilled(x, y));
 		
-		if(controller.fourBordersFilled(x, y)){
+		if(controller.isCellFilled(x, y)){
 			centrePanel.setOpaque(true);
 			centrePanel.setBackground(Color.blue);
 			valueOfCellLabel.setBackground(Color.blue);
@@ -184,7 +183,7 @@ public class ButtonObject extends JFrame{
 		centrePanel.setOpaque(true);
 		centrePanel.validate();
 		
-		controller.setBorderFilled(x, y, buttonNumber);
+		controller.setBorder(buttonNumber, true, x, y);
 		fillCellTest();
 //		System.out.printf("is Border %d filled??? %s%n", buttonNumber, (controller.getCell(x, y).getBorder(buttonNumber)));
 		setModelValues(button, buttonNumber);

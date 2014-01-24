@@ -4,25 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
+import de.htwg.se.PerangKolom.model.ICell2;
 import de.htwg.se.PerangKolom.model.KI.ICurrentStrategy;
 import de.htwg.se.PerangKolom.model.KI.IKIChose;
 import de.htwg.se.PerangKolom.model.impl.Cell;
+import de.htwg.se.PerangKolom.model.impl.Cell2;
 import de.htwg.se.PerangKolom.model.impl.CellArray;
+import de.htwg.se.PerangKolom.model.impl.Grid;
 
 public class KIChose implements IKIChose{
 	
-	private TreeSet<Cell> cellArraySet;
+	private TreeSet<ICell2> cellArraySet;
 	
 	public KIChose(){
-		this.cellArraySet = new TreeSet<Cell>();
+		this.cellArraySet = new TreeSet<ICell2>();
 	}
 	
 
 	public void ComputerLogic() {
 
-		List<Cell> CellSetBufferWithThreeBorders = new ArrayList<Cell>();
-		List<Cell> CellSetBufferLessThanTwoBorders = new ArrayList<Cell>();
-		List<Cell> CellSetBufferWithTwoBorder = new ArrayList<Cell>();
+		List<ICell2> CellSetBufferWithThreeBorders = new ArrayList<ICell2>();
+		List<ICell2> CellSetBufferLessThanTwoBorders = new ArrayList<ICell2>();
+		List<ICell2> CellSetBufferWithTwoBorder = new ArrayList<ICell2>();
 		
 		/* fills CellArraySet with all Cells */
 		fillSet();
@@ -48,38 +51,38 @@ public class KIChose implements IKIChose{
 		/* fills the Set with all cells */
 		for(int i = 0; i < CellArray.getNumberOfRows(); i++){
 			for(int j = 0; j < CellArray.getNumberOfColums(); j++){
-				Cell[][] tmp = CellArray.getCellArray();
+				ICell2[][] tmp = Grid.getInstance().getCellArray();
 				cellArraySet.add(tmp[i][j]);
 			}
 		}
 	}
 
-	private void switchCellsInLists(List<Cell> CellSetBufferWithThreeBorders, List<Cell> CellSetBufferLessThanTwoBorders, List<Cell> CellSetBufferWithTwoBorder){
+	private void switchCellsInLists(List<ICell2> cellSetBufferWithThreeBorders, List<ICell2> cellSetBufferLessThanTwoBorders, List<ICell2> cellSetBufferWithTwoBorder){
 		
-		for(Cell c : cellArraySet){
+		for(ICell2 c : cellArraySet){
 				/*** 'NotPutForward' Algorithm ***/
 			if(c.getNumberOfFilledBorders() < 2){
-				CellSetBufferLessThanTwoBorders.add(c);
+				cellSetBufferLessThanTwoBorders.add(c);
 			/*** 'SacrificeLowestValue' Algorithm ***/
 			}else if(c.getNumberOfFilledBorders() == 2){
-				CellSetBufferWithTwoBorder.add(c);
+				cellSetBufferWithTwoBorder.add(c);
 			/*** 'ClosePossibleBorder' Algorithm ***/
 			} else if(c.getNumberOfFilledBorders() == 3){
-				CellSetBufferWithThreeBorders.add(c);
+				cellSetBufferWithThreeBorders.add(c);
 			} 
 		}
 	}
 	
 	/* 'ClosePossibleBorder' Algorithm */
-	public void ClosePossibleBorderAlgo(List<Cell> CellSetBufferWithThreeBorders){
+	public void ClosePossibleBorderAlgo(List<ICell2> cellSetBufferWithThreeBorders){
 		
 		/* Objects */
 		ICurrentStrategy strategyOne = new Algo_ClosePossibleBorder();
 		ComputerPlayerLogic algorithmOne = new ComputerPlayerLogic();
 		algorithmOne.setStrategy(strategyOne);
 		
-		Cell cellBuf = CellSetBufferWithThreeBorders.get(0);
-		for(Cell c : CellSetBufferWithThreeBorders){
+		ICell2 cellBuf = CellSetBufferWithThreeBorders.get(0);
+		for(ICell2 c : CellSetBufferWithThreeBorders){
 			if(c.getCellValue() >= cellBuf.getCellValue()){
 				cellBuf = c;
 			}
@@ -92,13 +95,13 @@ public class KIChose implements IKIChose{
 	}
 	
 	/* 'NotPutForward' Algorithm */
-	public void NotPutForwardAlgo(List<Cell> CellSetBufferLessThanTwoBorders){
+	public void NotPutForwardAlgo(List<ICell2> cellSetBufferLessThanTwoBorders){
 		
 		ICurrentStrategy strategyTwo = new Algo_NotPutForward();
 		ComputerPlayerLogic algorithmTwo = new ComputerPlayerLogic();
 		algorithmTwo.setStrategy(strategyTwo);
 		
-		for(Cell c : CellSetBufferLessThanTwoBorders){
+		for(Cell2 c : cellSetBufferLessThanTwoBorders){
 			if(c.getNumberOfFilledBorders() == 1){
 				algorithmTwo.chooseStrategy(c);
 				return;
@@ -107,24 +110,28 @@ public class KIChose implements IKIChose{
 			
 			
 		}
-		algorithmTwo.chooseStrategy(CellSetBufferLessThanTwoBorders.get(0)); //prüfen ob cell 1 border oder 0 borders gefüllt hat, cell mit 1 border eine weitere füllen
+		algorithmTwo.chooseStrategy(cellSetBufferLessThanTwoBorders.get(0)); //prüfen ob cell 1 border oder 0 borders gefüllt hat, cell mit 1 border eine weitere füllen
 		
 	}
 	
 	/* 'SacrificeLowestValue' Algorithm */
-	public void SacrificeLowestValueAlgo(List<Cell> CellSetBufferWithTwoBorder){
+	public void SacrificeLowestValueAlgo(List<Cell2> CellSetBufferWithTwoBorder){
 		
 		ComputerPlayerLogic algorithmThree = new ComputerPlayerLogic();
 		ICurrentStrategy strategyThree = new Algo_SacrificeLowestValue();
 		algorithmThree.setStrategy(strategyThree);
 		
-		Cell cellBuf = CellSetBufferWithTwoBorder.get(0);
-		for(Cell c : CellSetBufferWithTwoBorder){
+		Cell2 cellBuf = CellSetBufferWithTwoBorder.get(0);
+		for(Cell2 c : CellSetBufferWithTwoBorder){
 			if(c.getCellValue() <= cellBuf.getCellValue()){
 				cellBuf = c;
 			}
 		}
 		algorithmThree.chooseStrategy(cellBuf);
 	}
+
+
+
+
 
 }
