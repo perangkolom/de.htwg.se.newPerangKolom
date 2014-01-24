@@ -1,28 +1,11 @@
 package de.htwg.se.PerangKolom.aview.GUI;
 
-import java.awt.BorderLayout;import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Menu;
-import java.awt.MenuItem;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.ObjectOutputStream.PutField;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import javax.imageio.ImageIO;
-import javax.sound.midi.ControllerEventListener;
 import javax.swing.JPanel;
 
 import java.awt.EventQueue;
@@ -32,24 +15,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.OverlayLayout;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.Color;
 
-import javax.swing.JButton;
 
 import de.htwg.se.PerangKolom.controller.IPerangKolomController;
 import de.htwg.se.PerangKolom.controller.impl.PerangKolomController;
-import de.htwg.se.PerangKolom.controller.impl.PerangKolomControllerTest;
 import de.htwg.se.PerangKolom.model.impl.Cell;
-import de.htwg.se.PerangKolom.model.impl.CellArray;
 import de.htwg.se.PerangKolom.util.observer.Event;
 import de.htwg.se.PerangKolom.util.observer.IObserver;
 
-import java.awt.SystemColor;
 
 import javax.swing.JMenu;
 
