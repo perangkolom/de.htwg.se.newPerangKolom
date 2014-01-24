@@ -7,8 +7,8 @@ public class Grid {
 
 	private static Grid instance;
 	private Cell2[][] cellArray;
-	private static int numberOfRows = 3;
-	private static int numberOfCols = 3;
+	private static int numberOfRows = 7;
+	private static int numberOfCols = 7;
 	private static GameSettings gameSettings;
 	
 	private Grid() {
