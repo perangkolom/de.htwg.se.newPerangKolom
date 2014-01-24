@@ -8,7 +8,6 @@ import org.apache.log4j.Logger;
 import de.htwg.se.PerangKolom.controller.IPerangKolomController;
 import de.htwg.se.PerangKolom.model.IPlayer2;
 import de.htwg.se.PerangKolom.model.impl.CellArray;
-import de.htwg.se.PerangKolom.model.impl.GameData;
 import de.htwg.se.PerangKolom.model.impl.GameSettings;
 import de.htwg.se.PerangKolom.model.impl.MessagesForUser2;
 import de.htwg.se.PerangKolom.util.observer.Event;
@@ -146,7 +145,7 @@ public class TextUI2 implements IObserver  {
 			
 			case OPTION_CHOICE_SHOW_OVERVIEW:  	//finally create the new grid and set optionChoice = 0 again
 				initSubChoice();
-				showOverviewOfGameOptions(line);
+				showOverviewOfGameOptions();
 				break;
 			}
 		
