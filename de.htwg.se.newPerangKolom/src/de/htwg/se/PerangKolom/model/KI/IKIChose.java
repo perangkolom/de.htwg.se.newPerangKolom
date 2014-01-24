@@ -2,7 +2,9 @@ package de.htwg.se.PerangKolom.model.KI;
 
 import java.util.List;
 
+import de.htwg.se.PerangKolom.model.ICell2;
 import de.htwg.se.PerangKolom.model.impl.Cell;
+import de.htwg.se.PerangKolom.model.impl.Cell2;
 
 public interface IKIChose {
 	
@@ -16,17 +18,17 @@ public interface IKIChose {
 	/*
 	 * 'ClosePossibleBorder' Algorithm
 	 */
-	public void ClosePossibleBorderAlgo(List<Cell> CellSetBufferWithThreeBorders);
+	public void ClosePossibleBorderAlgo(List<ICell2> CellSetBufferWithThreeBorders);
 	
 	/*
 	 * 'NotPutForward' Algorithm
 	 */
-	public void NotPutForwardAlgo(List<Cell> CellSetBufferLessThanTwoBorders);
+	public void NotPutForwardAlgo(List<ICell2> CellSetBufferLessThanTwoBorders);
 	
 	/*
 	 * 'SacrificeLowestValue' Algorithm
 	 */
-	public void SacrificeLowestValueAlgo(List<Cell> CellSetBufferWithTwoBorder);
+	public void SacrificeLowestValueAlgo(List<ICell2> CellSetBufferWithTwoBorder);
 	
 
 }
