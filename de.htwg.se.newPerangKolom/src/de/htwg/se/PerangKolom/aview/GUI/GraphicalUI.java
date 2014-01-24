@@ -240,7 +240,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 				perangKolomController.setNumberOfCols(SMALL_SIZE);
 				perangKolomController.setNumberOfRows(SMALL_SIZE);
 				constructPerangKolomPanels();
-		        revalidate();
+//		        revalidate();
 			}
 		});
 		
@@ -250,7 +250,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 				perangKolomController.setNumberOfCols(BIG_SIZE);
 				perangKolomController.setNumberOfRows(BIG_SIZE);
 				constructPerangKolomPanels();
-		        revalidate();
+//		        revalidate();
 			}
 		});
 		
@@ -390,7 +390,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
         PanelMenu.add(schriftLabel);
         
 //        perangKolomController.notifyObservers();
-        PanelBackground.revalidate();
+//        PanelBackground.revalidate();
 //        PanelMenu.revalidate();
     	createCellObjects();
 //        revalidate();
