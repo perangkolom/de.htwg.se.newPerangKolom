@@ -24,7 +24,7 @@ public class AbstractCell2 implements ICell2{
 	private int positionX; 
 	private int positionY;
 	private int cellValue;
-	private static int cellSize = 0;
+	private static int cellSize = 8;
 	private IPlayer2 cellOwner 		= null;
 	
 	private char[][] charArray;

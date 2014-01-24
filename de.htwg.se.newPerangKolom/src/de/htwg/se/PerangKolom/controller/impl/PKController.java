@@ -102,7 +102,7 @@ public class PKController extends Observable implements IPKController {
 		
 		if(fillBorder == true){
 			checkPlayerFinished(cell);
-			setLogicForNextTurn();
+//			setLogicForNextTurn();
 		}		
 	}
 	

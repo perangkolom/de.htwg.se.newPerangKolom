@@ -99,10 +99,14 @@ public class MethodsForTui {
 			tmpCharArray[i] = valueString.charAt(i);
 		}
 		
+		char[][] tmpMatrix = controller.getCharArray(cell);
+				
 		//put the value into cellOutputStringArray
 		for (int i = 0; i < lengthOfNumber; i++) {
-			cell.getCharArray()[middle_Vertical][middle_Horizontal + i] = tmpCharArray[i];
+		
+			tmpMatrix[middle_Vertical][middle_Horizontal + i] = tmpCharArray[i];
 		}
+		controller.setCharArray(tmpMatrix, cell);
 	}
 	
 	/**
@@ -202,10 +206,12 @@ public class MethodsForTui {
 		int cellStartsAt_X = (gameFieldRow * controller.getCellSize()) ;
 		int cellStartsAt_Y = (gameFieldColumn * controller.getCellSize());
 		
+		
+		
 		if (gameFieldRow > 0 ) 
-			cellStartsAt_X -= 1;
+			cellStartsAt_X -= gameFieldRow;
 		if (gameFieldColumn > 0)
-			cellStartsAt_Y -= 1;
+			cellStartsAt_Y -= gameFieldColumn;
 		
 		//for each row
 		for (int i = 0; i < controller.getCellSize(); i++) {

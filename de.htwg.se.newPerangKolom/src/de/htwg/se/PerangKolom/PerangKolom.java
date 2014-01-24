@@ -47,6 +47,9 @@ public final class PerangKolom<E> {
 		// continue to read user input on the TUI until the user decides to quit
 		boolean continueGame = true;
 		scanner = new Scanner(System.in);
+		PerangKolom.getInstance().logger.info(MessagesForUser2.help_inputInstructionForConsole);
+		PerangKolom.getInstance().logger.info("\nPlease type n to start a new game... \n");
+		
 		while (continueGame) {
 			continueGame = tui.processInputLine(scanner.next());
 		}
