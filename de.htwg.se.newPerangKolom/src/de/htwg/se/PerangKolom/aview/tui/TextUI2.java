@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 
 import de.htwg.se.PerangKolom.controller.impl.PKController;
 import de.htwg.se.PerangKolom.model.IPlayer2;
+import de.htwg.se.PerangKolom.model.impl.Cell;
 import de.htwg.se.PerangKolom.model.impl.CellArray;
 import de.htwg.se.PerangKolom.model.impl.MessagesForUser2;
 import de.htwg.se.PerangKolom.util.observer.Event;
@@ -25,6 +26,8 @@ public class TextUI2 implements IObserver  {
 	private static final int SUBCHOICE_THIRD_CASE = 3;
 	private static final int SUBCHOICE_FOURTH_CASE = 4;
 	
+	
+	private MethodsForTui gridMaker;
 	private PKController controller;
 	//private Logger logger = Logger.getLogger("de.htwg.se.perangkolom.aview.tui.TextUI");
 	private Logger logger = Logger.getLogger(this.getClass().toString());
@@ -49,6 +52,10 @@ public class TextUI2 implements IObserver  {
 
 
 	public void printTUI() {
+		
+		gridMaker.buildCharMatrixForEachSingleCell();
+		gridMaker.combineAllToOneBigMatrix();
+		gridMaker.printBigMatrix();
 		//logger.info(newLine + controller.getGridString());
 		//logger.info(newLine + controller.getStatus());
 		//logger.info(newLine + controller.getShortInstructions());
@@ -317,4 +324,6 @@ public class TextUI2 implements IObserver  {
 		logger.info("Please enter a name for player nr." + playerNumber + ": \n");
 		controller.getPlayer(playerNumber).setPlayersName(line);
 	}
+	
+	
 }
