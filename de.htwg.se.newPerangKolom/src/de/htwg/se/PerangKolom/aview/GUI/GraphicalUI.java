@@ -64,11 +64,6 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
     private JMenuItem menuItemBigSize;
     private JMenuItem menuItemSmallSize;
     
-    private JTextField tfPlayerName1;
-    private JTextField tfPlayerName2;
-    private JTextField tfPoints1;
-    private JTextField tfPoints2;
-
     HashMap<Cell, ButtonObject> hashMapButton;
     
     
@@ -244,7 +239,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 
 				perangKolomController.setGridSize(SMALL_SIZE, SMALL_SIZE);
 				constructPerangKolomPanels(perangKolomController);
-		        revalidate();
+//		        revalidate();
 			}
 		});
 		
@@ -253,7 +248,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 			public void actionPerformed(ActionEvent arg0) {
 				perangKolomController.setGridSize(BIG_SIZE, BIG_SIZE);
 				constructPerangKolomPanels(perangKolomController);
-		        revalidate();
+//		        revalidate();
 			}
 		});
 		
@@ -326,7 +321,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 	@Override
 	public void update(Event e) {
 //		repaint();
-		revalidate();
+//		revalidate();
 		printBackground();
 //		this.frame = new GraphicalUI<Object>();
 	}
@@ -394,7 +389,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
         
 //        perangKolomController.notifyObservers();
         PanelBackground.revalidate();
-        PanelMenu.revalidate();
+//        PanelMenu.revalidate();
     	createCellObjects();
         revalidate();
 	}

@@ -1,28 +1,26 @@
 package de.htwg.se.PerangKolom.aview.GUI;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.prefs.BackingStoreException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.OverlayLayout;
 
-import org.apache.log4j.helpers.AbsoluteTimeDateFormat;
 
 import de.htwg.se.PerangKolom.controller.IPerangKolomController;
 import de.htwg.se.PerangKolom.controller.impl.PerangKolomController;
 
 public class ButtonObject extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel buttonPanel;
 	private JPanel centrePanel;
 
@@ -150,7 +148,7 @@ public class ButtonObject extends JFrame{
 		}
 		button.setBorderPainted(false);
 		button.setRolloverEnabled(false);
-		revalidate();
+//		this.revalidate();
 		centrePanel.validate();
 		controller.notifyObservers();
 	}
