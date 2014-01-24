@@ -20,7 +20,7 @@ For example:
 
 ## What was the reason for this project?
 
-The Game-project was built in the course of Software Egineering at the HTWG University of Konstanz in Germany
+The Game-project was built in the course of Software Egineering at the HTWG University of Applied Science in Konstanz in Germany
 
 ## How the game works?
 
@@ -70,7 +70,7 @@ The Player with the most Points at the End of the game wins the game.
 
 ## Graphical-User-Interface
 
-![image](https://raw.github.com/miofferg/de.htwg.se.dog/master/de.htwg.se.dog/src/resources/dog_game.JPG)
+![image](https://raw2.github.com/perangkolom/de.htwg.se.newPerangKolom/master/de.htwg.se.newPerangKolom/src/utilities/PerangKolomGUI1.jpg)
 
 Contact:
 * [David Rotärmel](mailto:darotaer@htwg-konstanz.de)
