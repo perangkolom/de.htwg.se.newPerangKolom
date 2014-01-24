@@ -391,7 +391,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
         PanelBackground.revalidate();
 //        PanelMenu.revalidate();
     	createCellObjects();
-        revalidate();
+//        revalidate();
 	}
 	
 
