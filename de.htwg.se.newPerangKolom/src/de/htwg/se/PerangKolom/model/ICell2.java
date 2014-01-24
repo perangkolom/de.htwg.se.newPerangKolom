@@ -29,10 +29,6 @@ public interface ICell2 {
 	
 	int makeRandomNumber();
 	
-	int getCellSize();
-	
-	void setCellSize(int size);
-	
 	char[][] getCharArray();
 	
 	void setCharArray(char[][] charArray);

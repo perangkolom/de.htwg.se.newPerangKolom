@@ -50,14 +50,10 @@ public interface IPKController extends IObservable {
 	boolean getBorder(int borderNr, int row, int col);
 
 	boolean getBorder(int borderNr, ICell2 cell);
-		
-	int getCellSize(int row, int col);
 
-	int getCellSize(ICell2 cell);
+	int getCellSize();
 
-	void setCellSize(int size, int row, int col);
-
-	void setCellSize(int size, ICell2 cell);
+	void setCellSize(int size);
 	
 	char[][] getCharArray(int row, int col);
 

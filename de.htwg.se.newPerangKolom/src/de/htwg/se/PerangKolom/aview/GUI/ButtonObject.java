@@ -136,7 +136,7 @@ public class ButtonObject extends JFrame{
 	}
 	
 	public void setModelValues(JButton button, int buttonNumber){
-		System.out.printf("Cell %d %d, is Border %d filled??? %s%n", x, y, buttonNumber, (controller.getCell(x, y).getBorder(buttonNumber)));
+//		System.out.printf("Cell %d %d, is Border %d filled??? %s%n", x, y, buttonNumber, (controller.getCell(x, y).getBorder(buttonNumber)));
 		if(controller.getCell(x, y).getBorder(buttonNumber)){
 			button.setContentAreaFilled(true);
 			button.setOpaque(true);

@@ -5,6 +5,7 @@ import de.htwg.se.PerangKolom.model.ICell2;
 import de.htwg.se.PerangKolom.model.IPlayer2;
 import de.htwg.se.PerangKolom.model.KI.IKIChose;
 import de.htwg.se.PerangKolom.model.KI.impl.KIChose;
+import de.htwg.se.PerangKolom.model.impl.Cell2;
 import de.htwg.se.PerangKolom.model.impl.GameSettings;
 import de.htwg.se.PerangKolom.model.impl.Grid;
 import de.htwg.se.PerangKolom.util.observer.Observable;
@@ -126,25 +127,13 @@ public class PKController extends Observable implements IPKController {
 	}
 
 	@Override
-	public int getCellSize(int row, int col) {
-		ICell2[][] array = Grid.getInstance().getCellArray();
-		return array[row][col].getCellSize();
+	public int getCellSize() {
+		return Cell2.getCellSize();
 	}
 
 	@Override
-	public int getCellSize(ICell2 cell) {
-		return cell.getCellSize();
-	}
-
-	@Override
-	public void setCellSize(int size, int row, int col) {
-		ICell2[][] array = Grid.getInstance().getCellArray();
-		array[row][col].setCellSize(size);
-	}
-
-	@Override
-	public void setCellSize(int size, ICell2 cell) {
-		cell.setCellSize(size);
+	public void setCellSize(int size) {
+		Cell2.setCellSize(size);
 	}
 
 	@Override

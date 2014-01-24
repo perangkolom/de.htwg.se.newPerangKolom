@@ -246,14 +246,12 @@ public class AbstractCell2 implements ICell2{
 	}
 
 
-	@Override
-	public int getCellSize() {
+	public static int getCellSize() {
 		return cellSize;
 	}
 
 
-	@Override
-	public void setCellSize(int size) {
+	public static void setCellSize(int size) {
 		cellSize = size;
 	}
 

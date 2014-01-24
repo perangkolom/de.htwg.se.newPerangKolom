@@ -8,6 +8,7 @@ public class Cell2 extends AbstractCell2{
 			this.setPositionX(x);
 			this.setPositionY(y);
 			this.setCellValue(this.makeRandomNumber());
+			this.setCharArray(new char[Cell2.getCellSize()][Cell2.getCellSize()]);
 		}
 
 }
