@@ -23,27 +23,27 @@ public class KIChose implements IKIChose{
 
 	public void ComputerLogic() {
 
-		List<ICell2> CellSetBufferWithThreeBorders = new ArrayList<ICell2>();
-		List<ICell2> CellSetBufferLessThanTwoBorders = new ArrayList<ICell2>();
-		List<ICell2> CellSetBufferWithTwoBorder = new ArrayList<ICell2>();
+		List<ICell2> cellSetBufferWithThreeBorders = new ArrayList<ICell2>();
+		List<ICell2> cellSetBufferLessThanTwoBorders = new ArrayList<ICell2>();
+		List<ICell2> cellSetBufferWithTwoBorder = new ArrayList<ICell2>();
 		
 		/* fills CellArraySet with all Cells */
 		fillSet();
 		
 		/**** rout all cells in different Lists ****/
-		switchCellsInLists(CellSetBufferWithThreeBorders, CellSetBufferLessThanTwoBorders, CellSetBufferWithTwoBorder);
+		switchCellsInLists(cellSetBufferWithThreeBorders, cellSetBufferLessThanTwoBorders, cellSetBufferWithTwoBorder);
 		
 		
 		/* CHOOSE ALGO */
 		/****** IF-Clause for the 'ClosePossibleBorder' Algorithm ******/
-		if(!CellSetBufferWithThreeBorders.isEmpty()){
-			ClosePossibleBorderAlgo(CellSetBufferWithThreeBorders);
+		if(!cellSetBufferWithThreeBorders.isEmpty()){
+			ClosePossibleBorderAlgo(cellSetBufferWithThreeBorders);
 		/****** IF-Clause for the 'NotPutForward Algorithm ******/
-		} else if(!CellSetBufferLessThanTwoBorders.isEmpty()){
-			NotPutForwardAlgo(CellSetBufferLessThanTwoBorders);
+		} else if(!cellSetBufferLessThanTwoBorders.isEmpty()){
+			NotPutForwardAlgo(cellSetBufferLessThanTwoBorders);
 		/****** IF-Clause for the 'SacrificeLowestValue' Algorithm ******/
-		} else if(!CellSetBufferWithTwoBorder.isEmpty()){
-			SacrificeLowestValueAlgo(CellSetBufferWithTwoBorder);
+		} else if(!cellSetBufferWithTwoBorder.isEmpty()){
+			SacrificeLowestValueAlgo(cellSetBufferWithTwoBorder);
 		}
 	}
 	
@@ -81,8 +81,8 @@ public class KIChose implements IKIChose{
 		ComputerPlayerLogic algorithmOne = new ComputerPlayerLogic();
 		algorithmOne.setStrategy(strategyOne);
 		
-		ICell2 cellBuf = CellSetBufferWithThreeBorders.get(0);
-		for(ICell2 c : CellSetBufferWithThreeBorders){
+		ICell2 cellBuf = cellSetBufferWithThreeBorders.get(0);
+		for(ICell2 c : cellSetBufferWithThreeBorders){
 			if(c.getCellValue() >= cellBuf.getCellValue()){
 				cellBuf = c;
 			}
@@ -101,7 +101,7 @@ public class KIChose implements IKIChose{
 		ComputerPlayerLogic algorithmTwo = new ComputerPlayerLogic();
 		algorithmTwo.setStrategy(strategyTwo);
 		
-		for(Cell2 c : cellSetBufferLessThanTwoBorders){
+		for(ICell2 c : cellSetBufferLessThanTwoBorders){
 			if(c.getNumberOfFilledBorders() == 1){
 				algorithmTwo.chooseStrategy(c);
 				return;
