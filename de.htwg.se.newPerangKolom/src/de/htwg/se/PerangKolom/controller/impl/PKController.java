@@ -16,7 +16,7 @@ public class PKController extends Observable implements IPKController{
 
 	@Override
 	public ICell2[][] getCellArray() {
-		return null;
+		return Grid.getInstance().getCellArray();
 	}
 
 	@Override
@@ -116,8 +116,7 @@ public class PKController extends Observable implements IPKController{
 	@Override
 	public int getCellSize(int row, int col) {
 		ICell2[][] array = Grid.getInstance().getCellArray();
-		array[row][col].getCellSize();
-		return 0;
+		return array[row][col].getCellSize();
 	}
 
 	@Override

@@ -38,8 +38,12 @@ public class GameSettings {
 	public static IPlayer2 getPlayer(IPlayer2 player) {
 		if (player == player1) {
 			return player1;
-		} else {
-			return player2;
+		} 	
+			else if (player == player1) {
+				return player2;
+			} 
+			else {
+				return player;
 		}
 	}
 	

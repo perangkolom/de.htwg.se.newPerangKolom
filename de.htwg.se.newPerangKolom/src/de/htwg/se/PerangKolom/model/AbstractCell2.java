@@ -1,6 +1,6 @@
 package de.htwg.se.PerangKolom.model;
 
-import de.htwg.se.PerangKolom.model.impl.CellArray;
+import de.htwg.se.PerangKolom.model.impl.Grid;
 
 public class AbstractCell2 implements ICell2{
 	
@@ -9,6 +9,8 @@ public class AbstractCell2 implements ICell2{
 	public static final int BORDER_RIGHT 	= 2;
 	public static final int BORDER_BOTTOM 	= 3;
 	public static final int BORDER_LEFT 	= 4;
+	
+	private static final int INDEX_LOWEST 	= 0;
 	
 	//these values multiplied with 25 determine the maximum/minimum value for a cell
 	private static final int RANDOM_MIN 	= 1;
@@ -22,8 +24,7 @@ public class AbstractCell2 implements ICell2{
 	private int positionX; 
 	private int positionY;
 	private int cellValue;
-	private int cellSize = 0;
-	private boolean cellFilled 		= false;
+	private static int cellSize = 0;
 	private IPlayer2 cellOwner 		= null;
 	
 	private char[][] charArray;
@@ -87,25 +88,25 @@ public class AbstractCell2 implements ICell2{
 		
 		if (borderNr == BORDER_TOP) {
 			topBorder = fillBorder;
-			setNeighbourBorder(BORDER_BOTTOM, fillBorder);
+			setNeighbourBorder(BORDER_TOP, fillBorder);
 			return;
-		} else {}
+		} 
 		
 		if (borderNr == BORDER_BOTTOM) {
 			bottomBorder = fillBorder;
-			setNeighbourBorder(BORDER_TOP, fillBorder);
+			setNeighbourBorder(BORDER_BOTTOM, fillBorder);
 			return;
 		}
 		
 		if (borderNr == BORDER_LEFT) {
 			leftBorder = fillBorder;
-			setNeighbourBorder(BORDER_RIGHT, fillBorder);
+			setNeighbourBorder(BORDER_LEFT, fillBorder);
 			return;
 		}
 	
 		if (borderNr == BORDER_RIGHT) {
 			rightBorder = fillBorder;
-			setNeighbourBorder(BORDER_LEFT, fillBorder);
+			setNeighbourBorder(BORDER_RIGHT, fillBorder);
 			return;
 		}	
 	}
@@ -113,44 +114,101 @@ public class AbstractCell2 implements ICell2{
 	
 	private void setNeighbourBorder(int borderNr, boolean fillBorder) {
 
+		//if so leave return without doing anything
+		if (isNeighbourOutOfBounds(borderNr)) {
+			return;
+		}
+		
 		if (borderNr == BORDER_TOP) {
 			int neighbour_row = positionX - 1;
-			//if it's not indexOutOfBounds
-			if ( neighbour_row >= 0) {
-				CellArray.getSpecificCell(neighbour_row, positionY).bottomBorder = fillBorder;
-			} else 
-				return;
+			ICell2 tmpCell = Grid.getInstance().getCell(neighbour_row, positionY);
+			tmpCell.setBorderWithoutNeighbour(BORDER_BOTTOM, fillBorder);
 		}
 		
 		if (borderNr == BORDER_BOTTOM) {
 			int neighbour_row = positionX + 1;
-			//if it's not indexOutOfBounds
-			if ( neighbour_row < (CellArray.getNumberOfRows()) ) {
-				CellArray.getSpecificCell(neighbour_row, positionY).topBorder = fillBorder;
-			} else 
-				return;
+			ICell2 tmpCell = Grid.getInstance().getCell(neighbour_row, positionY);
+			tmpCell.setBorderWithoutNeighbour(BORDER_TOP, fillBorder);
 		}
 		
 		if (borderNr == BORDER_LEFT) {
 			int neighbour_col = positionY - 1 ;
-			//if it's not indexOutOfBounds
-			if (neighbour_col >= 0) {
-				CellArray.getSpecificCell(positionX, neighbour_col).rightBorder = fillBorder;
-			} else
-				return;
+			ICell2 tmpCell = Grid.getInstance().getCell(positionX, neighbour_col);
+			tmpCell.setBorderWithoutNeighbour(BORDER_RIGHT, fillBorder);
 		}
 	
 		if (borderNr == BORDER_RIGHT) {
 			int neighbour_col = positionY + 1 ;
-			//if it's not indexOutOfBounds
-			if (neighbour_col < CellArray.getNumberOfColums()) {
-				CellArray.getSpecificCell(positionX, neighbour_col).leftBorder = fillBorder; 
-			} else 
-				return;
+			ICell2 tmpCell = Grid.getInstance().getCell(positionX, neighbour_col);
+			tmpCell.setBorderWithoutNeighbour(BORDER_RIGHT, fillBorder);
+		}
+	
+	}
+
+	
+	private boolean isNeighbourOutOfBounds(int borderNr) {
+		
+		if (borderNr == BORDER_TOP) {
+			if ( (positionX - 1) < INDEX_LOWEST ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
+		if (borderNr == BORDER_BOTTOM) {	
+			if ( (positionX + 1) >= Grid.getNumberOfRows() ) {
+				return true;
+			} else {
+				return false;
+			}
+				
+		}
+		
+		if (borderNr == BORDER_LEFT) {
+			if ( (positionY - 1) < INDEX_LOWEST ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
+		if (borderNr == BORDER_RIGHT) {
+			if ( (positionY + 1) >= Grid.getNumberOfCols() ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
+		return false;
+	}
+
+	
+	public void setBorderWithoutNeighbour(int borderNr, boolean fillBorder) {
+		
+		if (borderNr == BORDER_TOP) {
+			topBorder = fillBorder;
+			return;
+		} 
+		
+		if (borderNr == BORDER_BOTTOM) {
+			bottomBorder = fillBorder;
+			return;
+		}
+		
+		if (borderNr == BORDER_LEFT) {
+			leftBorder = fillBorder;
+			return;
+		}
+	
+		if (borderNr == BORDER_RIGHT) {
+			rightBorder = fillBorder;
+			return;
 		}	
 	}
-		
-
+	
+	
 	@Override
 	public boolean getBorder(int borderNr) {
 

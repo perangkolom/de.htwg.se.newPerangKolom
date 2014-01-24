@@ -10,10 +10,9 @@ public class Grid {
 	private static int numberOfRows = 3;
 	private static int numberOfCols = 3;
 	
-	private Grid(int x, int y) {
-		numberOfRows = x;
-		numberOfCols = y;
-		cellArray = new Cell2[x][y];
+	private Grid() {
+		
+		cellArray = new Cell2[numberOfRows][numberOfCols];
 		
 		for (int i = 0; i < numberOfRows; i++) {
 			for (int j = 0; j < numberOfCols; j++) {
@@ -25,16 +24,13 @@ public class Grid {
 	
 	public static Grid getInstance() {
 		if (instance == null) {
-			return new Grid(numberOfRows, numberOfCols);
+			instance = new Grid();
 		} 
-		else {
 			return instance;
-		}
 	}
 
 
 	public ICell2[][] getCellArray() {
-		numberOfCols = 100;
 		return cellArray;
 	}
 
