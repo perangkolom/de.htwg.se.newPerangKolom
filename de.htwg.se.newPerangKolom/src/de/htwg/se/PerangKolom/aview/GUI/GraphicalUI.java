@@ -264,32 +264,26 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 		menuItemSmallSize.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+
 //				perangKolomController.setGridSize(SMALL_SIZE, SMALL_SIZE);
-//				perangKolomController.setGridSize(SMALL_SIZE, SMALL_SIZE);
-//				perangKolomController.createNewGrid(SMALL_SIZE, SMALL_SIZE);
-				perangKolomController.setGridSize(SMALL_SIZE, SMALL_SIZE);
 				constructPerangKolomPanels(perangKolomController);
-//		        revalidate();
-//				System.out.println("Spiel sollte hier mit KLEINEM Spielfeld neu gestartet werden");
+		        revalidate();
 			}
 		});
 		
 		menuItemBigSize.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-//				perangKolomController.setGridSize(BIG_SIZE, BIG_SIZE);
-//				perangKolomController.createNewGrid(BIG_SIZE, BIG_SIZE);
-//				System.out.println("Spiel sollte hier mit GROSSEM Spielfeld neu gestartet werden");
 				perangKolomController.setGridSize(BIG_SIZE, BIG_SIZE);
 				constructPerangKolomPanels(perangKolomController);
-//		        revalidate();
+		        revalidate();
 			}
 		});
 		
 		menuItemRerun.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("Spiel sollte hier neu gestartet werden");
+				constructPerangKolomPanels(perangKolomController);
 			}
 		});
 		
@@ -312,7 +306,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 		
 
 
-	
+		createCellObjects();
 
 		
 		setVisible(true); 
@@ -337,7 +331,8 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 		
 		for(int i = 0; i < perangKolomController.getNumberOfColumns(); i++){
 			for(int j = 0; j < perangKolomController.getNumberOfRows(); j++){
-				int randomNumber = perangKolomController.getCellValue(perangKolomController.getCell(i,j));
+//				int randomNumber = perangKolomController.getCellValue(perangKolomController.getCell(i,j));
+				int randomNumber = perangKolomController.getRandNumber(i, j);
 				btnObject = new ButtonObject(counterX, counterY, i, j, Integer.toString(randomNumber));
 				JPanel btnPanel = btnObject.getPanel();
 				backgroundLabel.add(btnPanel);
@@ -391,28 +386,28 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 		lblPlayer1 = new JLabel();
 		lblPlayer1.setBounds(124, 50, 140, 25);
 		lblPlayer1.setFont (lblPlayer1.getFont ().deriveFont (25.0f));
-		lblPlayer1.setText("Olaf Bibirossssooososo");
+		lblPlayer1.setText("Olaf");
 		lblPlayer1.setForeground(Color.gray);
 		schriftLabel.add(lblPlayer1);
 		
 		JLabel lblPoints1 = new JLabel();
 		lblPoints1.setBounds(100, 80, 140, 25);
 		lblPoints1.setFont (lblPoints1.getFont ().deriveFont (25.0f));
-		lblPoints1.setText("100000");
+		lblPoints1.setText("0");
 		lblPoints1.setForeground(Color.gray);
 		schriftLabel.add(lblPoints1);
 		
 		JLabel lblPlayer2 = new JLabel();
 		lblPlayer2.setBounds(384, 50, 120, 25);
 		lblPlayer2.setFont (lblPlayer2.getFont ().deriveFont (25.0f));
-		lblPlayer2.setText("Boris Becker");
+		lblPlayer2.setText("Boris");
 		lblPlayer2.setForeground(Color.gray);
 		schriftLabel.add(lblPlayer2);
 		
 		JLabel lblPoints2 = new JLabel();
 		lblPoints2.setBounds(360, 80, 120, 25);
 		lblPoints2.setFont (lblPoints2.getFont ().deriveFont (25.0f));
-		lblPoints2.setText("200");
+		lblPoints2.setText("0");
 		lblPoints2.setForeground(Color.gray);
 		schriftLabel.add(lblPoints2);
 		

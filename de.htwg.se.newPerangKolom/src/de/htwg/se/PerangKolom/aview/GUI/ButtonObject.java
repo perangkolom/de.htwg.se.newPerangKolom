@@ -169,8 +169,8 @@ public class ButtonObject extends JFrame{
 		
 		if(controller.fourBordersFilled(x, y)){
 			centrePanel.setOpaque(true);
-			centrePanel.setBackground(Color.yellow);
-			valueOfCellLabel.setBackground(Color.yellow);
+			centrePanel.setBackground(Color.blue);
+			valueOfCellLabel.setBackground(Color.blue);
 			valueOfCellLabel.setForeground(Color.BLACK);
 		}
 	}
