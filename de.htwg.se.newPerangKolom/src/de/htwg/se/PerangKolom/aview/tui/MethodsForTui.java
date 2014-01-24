@@ -18,7 +18,7 @@ public class MethodsForTui {
 	private static int HEIGHT 	= Grid.getNumberOfCols() * Cell2.getCellSize();
 	private PKController controller;
 	private static char INNER_BORDER_CHAR = '+';
-	private static char OUTER_BORDER_CHAR = '#';
+	private static char OUTER_BORDER_CHAR = 'O';
 	
 	private MethodsForTui() {
 		
@@ -54,6 +54,8 @@ public class MethodsForTui {
 					printVerticalBorders(true,controller.getBorder(Cell2.BORDER_LEFT, cell), cell);
 					//...right-Border:
 					printVerticalBorders(false, controller.getBorder(Cell2.BORDER_RIGHT, cell), cell);
+
+
 				}
 				insertValueIntoCharMatrix(cell);
 			}
@@ -131,13 +133,17 @@ public class MethodsForTui {
 		}
 		
 		//print the inner Border:
-		printSingleHorizontalBorder(rowIndexInner, Col_Start_Inner, Col_End_Inner, INNER_BORDER_CHAR, cell);
-		
-		//if necessary print outer Border:
 		if (printOuterBorderToo) {
-			printSingleHorizontalBorder(rowIndexOuter, Col_Start_Outer, Col_End_Outer, OUTER_BORDER_CHAR, cell);
+			printSingleHorizontalBorder(rowIndexInner, Col_Start_Inner, Col_End_Inner, OUTER_BORDER_CHAR, cell);
+		} else {
+			printSingleHorizontalBorder(rowIndexInner, Col_Start_Inner, Col_End_Inner, INNER_BORDER_CHAR, cell);
 		}
+		//if necessary print outer Border:
+//		if (printOuterBorderToo) {
+//			printSingleHorizontalBorder(rowIndexOuter, Col_Start_Outer, Col_End_Outer, OUTER_BORDER_CHAR, cell);
+//		}
 	}
+	
 	
 	
 	private void printSingleHorizontalBorder(int rowIndex, int startCol, int endCol, char borderChar, ICell2 cell) {
@@ -166,12 +172,18 @@ public class MethodsForTui {
 		}
 		
 		//print the inner Border:
-		printSingleVerticalBorder(colIndexInner, row_Start_Inner, row_End_Inner, INNER_BORDER_CHAR, cell);
+		
+		if (printOuterBorderToo) {
+			printSingleVerticalBorder(colIndexInner, row_Start_Inner, row_End_Inner, OUTER_BORDER_CHAR, cell);
+		} else {
+			printSingleVerticalBorder(colIndexInner, row_Start_Inner, row_End_Inner, INNER_BORDER_CHAR, cell);
+		}
+		
 		
 		//if necessary print outer Border:
-		if (printOuterBorderToo) {
-			printSingleVerticalBorder(colIndexOuter, row_Start_Outer, row_End_Outer, OUTER_BORDER_CHAR, cell);
-		}
+//		if (printOuterBorderToo) {
+//			printSingleVerticalBorder(colIndexOuter, row_Start_Outer, row_End_Outer, OUTER_BORDER_CHAR, cell);
+//		}
 	}
 	
 	
@@ -206,12 +218,10 @@ public class MethodsForTui {
 		int cellStartsAt_X = (gameFieldRow * controller.getCellSize()) ;
 		int cellStartsAt_Y = (gameFieldColumn * controller.getCellSize());
 		
-		
-		
-		if (gameFieldRow > 0 ) 
-			cellStartsAt_X -= gameFieldRow;
-		if (gameFieldColumn > 0)
-			cellStartsAt_Y -= gameFieldColumn;
+//		if (gameFieldRow > 0 ) 
+//			cellStartsAt_X -= gameFieldRow;
+//		if (gameFieldColumn > 0)
+//			cellStartsAt_Y -= gameFieldColumn;
 		
 		//for each row
 		for (int i = 0; i < controller.getCellSize(); i++) {
@@ -231,9 +241,6 @@ public class MethodsForTui {
 		int stepsForRows = controller.getNumberOfRows() * controller.getCellSize();
 		int stepsForCols = controller.getNumberOfCols() * controller.getCellSize();
 	
-		logger.debug("stepsForRows: " + stepsForRows + "\n");
-		logger.debug("stepsForCols: " + stepsForCols + "\n");
-		
 		StringBuilder sbOut = new StringBuilder();
 		for (int i = 0; i < stepsForRows; i++ ) {		
 		

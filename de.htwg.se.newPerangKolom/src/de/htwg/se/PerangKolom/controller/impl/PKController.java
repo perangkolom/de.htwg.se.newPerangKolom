@@ -16,11 +16,22 @@ public class PKController extends Observable implements IPKController {
 	public Grid getInstance() {
 		return Grid.getInstance();
 	}
+	
+	public void setInstanceNull() {
+		Grid.setInstanceNull();
+		notifyObservers();
+	}
 
 	@Override
 	public ICell2[][] getCellArray() {
 		return Grid.getInstance().getCellArray();
 	}
+	
+	public void setAllBordersFilled() {
+		Grid.setAllBordersFilled();
+		notifyObservers();
+	}
+	
 
 	@Override
 	public int getNumberOfRows() {

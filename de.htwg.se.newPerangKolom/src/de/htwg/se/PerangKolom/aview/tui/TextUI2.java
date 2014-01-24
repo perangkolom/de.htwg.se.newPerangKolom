@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
+import de.htwg.se.PerangKolom.PerangKolom;
 import de.htwg.se.PerangKolom.controller.impl.PKController;
 import de.htwg.se.PerangKolom.model.IPlayer2;
 import de.htwg.se.PerangKolom.model.impl.MessagesForUser2;
@@ -40,7 +41,7 @@ public class TextUI2 implements IObserver  {
 	//subChoice is needed to determine which options to choose in submethods
 	private int subChoice = NOTHING_CHOSEN;
 	private boolean finishedAfterSwitchCase = false;
-	private int loopCounter = 0; 
+	private boolean tempSave = false;
 	
 	public TextUI2(PKController controller) {
 		this.controller = controller;
@@ -101,7 +102,15 @@ public class TextUI2 implements IObserver  {
 	private boolean inputCheckNormalMenu(char c, String line) {
 		
 		switch (c) {
-
+			
+			case 'a':		//only once at start (initialization round) 
+				
+				logger.info(MessagesForUser2.startOfTheGame);
+				logger.info(MessagesForUser2.help_inputInstructionForConsole);
+				logger.info("\nPlease type n to start a new game... \n");
+				finishedAfterSwitchCase = true;
+				break;
+		
 			case 'n':		//new game
 				optionChoice = OPTION_CHOICE_CHOOSE_OPPONENT;
 				finishedAfterSwitchCase = true;
@@ -200,14 +209,14 @@ public class TextUI2 implements IObserver  {
 			
 			//if human was chosen
 			if ( size == 1 ) {		
-				controller.getPlayer(size).setPlayerHuman(true);
+				controller.getPlayer(2).setPlayerHuman(true);
 				resetSubChoice();
 				optionChoice = OPTION_CHOICE_ENTER_NAMES;
 				logger.info("\nPlease enter a name for player nr. 1: \n");
 
 			//if computer was chosen
 			} else if (size == SHALL_BE_COMPUTER) {				
-				controller.getPlayer(size).setPlayerHuman(false);
+				controller.getPlayer(2).setPlayerHuman(false);
 				resetSubChoice();
 				optionChoice = OPTION_CHOICE_ENTER_NAMES;
 				logger.info("\nPlease enter a name for player nr. 1: \n");
@@ -228,10 +237,11 @@ public class TextUI2 implements IObserver  {
 		
 		switch (subChoice) {
 		
-		case SUBCHOICE_FIRST_CASE:	
+		case SUBCHOICE_FIRST_CASE:
+			int size = 0;
 					
 			if ( line.matches("[2-9]") ) {				//if input was correct
-				int size = Integer.parseInt(line);
+				size = Integer.parseInt(line);
 				//controller.setGridSize(size, size);
 				logger.info("\nThanks. The grid will be set up with a size of (" +size+", "+size+").\n");
 				resetSubChoice();
@@ -242,8 +252,14 @@ public class TextUI2 implements IObserver  {
 				controller.setNumberOfRows(3);
 				controller.setNumberOfCols(3);
 				} else if (size == 7 ) {
+					controller.setInstanceNull();
 					controller.setNumberOfRows(7);
 					controller.setNumberOfCols(7);
+					controller.getInstance();
+					
+				
+					
+					
 			} 
 			else { 			//if input not correct				
 				logger.info("\nYour input was not correct. Please try again.\n");
@@ -272,11 +288,10 @@ public class TextUI2 implements IObserver  {
 			enterNameforPlayer(line, player1, PLAYER_ONE);
 			if (controller.getPlayer(PLAYER_TWO).isPlayerAHuman()) {
 				logger.info("\nPlease enter a name for player nr. 2: \n");
-				subChoice = SUBCHOICE_SECOND_CASE;
+				tempSave = true;
+
 			}
-			else {
-				System.out.println("klappt nicht ");
-			}
+			subChoice = SUBCHOICE_SECOND_CASE;			
 			break;
 			
 		case SUBCHOICE_SECOND_CASE:
@@ -286,11 +301,13 @@ public class TextUI2 implements IObserver  {
 			}
 			else {
 				controller.setPlayersName("computer", player2);
+				controller.setPlayerHuman(false, player2);
 			}
 			
 			subChoice = NOTHING_CHOSEN;
 			optionChoice = OPTION_CHOICE_CHOOSE_GRID_SIZE;
 			logger.info("\nNow please enter \'3\' or \'7\' to determine the quadratic gamefield-size: \n");
+			tempSave = false;	//gets resetted
 		}
 		
 //		logger.info("\nNow please enter a number between 2 and 9 to determine the quadratic gamefield-size: \n");
@@ -308,7 +325,7 @@ public class TextUI2 implements IObserver  {
 	private void determineBorderToFill(char c, String line) {
 		boolean isFine = true;
 		//format to fill Border z of a given cell(x,y)
-		if (line.matches("[0-9][0-9][0-9]")) {
+		if (line.matches("[1-9][1-9][1-4]")) {
 			int[] arg = readToArray(line);
 			
 			//if wrong input
@@ -323,7 +340,7 @@ public class TextUI2 implements IObserver  {
 				int x = arg[0];
 				int y = arg[1];
 				int z = arg[2];
-				controller.setBorder( z, true, controller.getCell(x -1 , y - 1));
+				controller.setBorder( z, true, controller.getCell(x-1, y-1));
 				logger.info(MessagesForUser2.shortInstruction);
 				finishedAfterSwitchCase = true;
 			} else ;
@@ -350,7 +367,7 @@ public class TextUI2 implements IObserver  {
 	}
 
 	private void enterNameforPlayer(String line, IPlayer2 player, int playerNumber) {
-		if (playerNumber == 2) {
+		if (playerNumber == 2 && tempSave == false) {
 			logger.info("\nPlease enter a name for player nr." + playerNumber + ": \n");
 		}
 		controller.getPlayer(playerNumber).setPlayersName(line);

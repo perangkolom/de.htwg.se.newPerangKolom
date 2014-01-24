@@ -23,6 +23,10 @@ public interface IPKController extends IObservable {
 	
 	ICell2 getCell(int x, int y);
 	
+	void setAllBordersFilled();
+	
+	void setInstanceNull(); 
+	
 
 	
 //methods for ICell2

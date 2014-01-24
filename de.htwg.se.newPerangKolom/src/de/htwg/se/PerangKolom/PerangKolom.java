@@ -47,12 +47,19 @@ public final class PerangKolom<E> {
 		// continue to read user input on the TUI until the user decides to quit
 		boolean continueGame = true;
 		scanner = new Scanner(System.in);
-		PerangKolom.getInstance().logger.info(MessagesForUser2.help_inputInstructionForConsole);
-		PerangKolom.getInstance().logger.info("\nPlease type n to start a new game... \n");
+//		PerangKolom.getInstance().logger.info(MessagesForUser2.help_inputInstructionForConsole);
+//		PerangKolom.getInstance().logger.info("\nPlease type n to start a new game... \n");
+
+		String line = "a";
+		do {
+			continueGame = tui.processInputLine(line);
+			line = scanner.next();
+		} while (continueGame);
 		
-		while (continueGame) {
-			continueGame = tui.processInputLine(scanner.next());
-		}
+		
+//		while (continueGame) {
+//			continueGame = tui.processInputLine(scanner.next());
+//		}
 	}
 	
 }

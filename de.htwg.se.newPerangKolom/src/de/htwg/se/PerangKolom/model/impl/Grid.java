@@ -24,11 +24,28 @@ public class Grid {
 	}
 	
 	
+	public static void setAllBordersFilled() {
+		getInstance();
+		for (int i = 0; i < numberOfRows; i++) {
+			for (int j = 0; j < numberOfCols; j++) {
+				ICell2 cell = getInstance().cellArray[i][j];
+				cell.setBorder(Cell2.BORDER_BOTTOM, true);
+				cell.setBorder(Cell2.BORDER_TOP, true);
+				cell.setBorder(Cell2.BORDER_LEFT, true);
+				cell.setBorder(Cell2.BORDER_RIGHT, true);
+			}
+		}
+	}
+	
 	public static Grid getInstance() {
 		if (instance == null) {
 			instance = new Grid();
 		} 
 			return instance;
+	}
+	
+	public static void setInstanceNull() {
+		instance = null;
 	}
 
 

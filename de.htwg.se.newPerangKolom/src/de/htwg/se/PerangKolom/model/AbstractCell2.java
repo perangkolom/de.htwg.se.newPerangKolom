@@ -140,7 +140,7 @@ public class AbstractCell2 implements ICell2{
 		if (borderNr == BORDER_RIGHT) {
 			int neighbour_col = positionY + 1 ;
 			ICell2 tmpCell = Grid.getInstance().getCell(positionX, neighbour_col);
-			tmpCell.setBorderWithoutNeighbour(BORDER_RIGHT, fillBorder);
+			tmpCell.setBorderWithoutNeighbour(BORDER_LEFT, fillBorder);
 		}
 	
 	}
