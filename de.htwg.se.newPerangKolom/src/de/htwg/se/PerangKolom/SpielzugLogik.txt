@@ -1,0 +1,16 @@
+SPIELZUGLOGIK:
+
+
+Spielerwechsel steuern
+
+	dafür erstmals die setBorder() viel besser testen
+	
+	in setBorder() wird checkIfPlayerFinished() (im controller) aufgerufen
+
+istSpielBeendet
+//werHatGewonnen
+
+
+
+
+

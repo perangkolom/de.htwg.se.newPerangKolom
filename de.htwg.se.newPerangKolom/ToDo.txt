@@ -1,19 +1,4 @@
 #ToDo.txt
-
-CHRIS HEUTE:
-
-model erneuern:
-	interfaces mit bedacht festlegen
-	Tests für die Methoden schreiben
-	abstrakte Klassen erneuern
-	Implementierungsklassen erneuern
-	
-
-Controller erneuern 
-	controller-interface mit bedacht festlegen
-	tests schreiben
-	controller implementieren
-	
 	
 Tui:
 	methodenaufrufe durch controller-methoden ersetzen
