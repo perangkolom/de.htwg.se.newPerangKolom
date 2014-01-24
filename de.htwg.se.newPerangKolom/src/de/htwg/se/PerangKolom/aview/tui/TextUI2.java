@@ -35,9 +35,9 @@ public class TextUI2 implements IObserver  {
 
 	private boolean continueGame = true;
 	//optionChoice is needed to be able to ask for extra input (to be able to leave the loop)	
-	private int optionChoice = 0;
+	private int optionChoice = NOTHING_CHOSEN;
 	//subChoice is needed to determine which options to choose in submethods
-	private int subChoice = 0;
+	private int subChoice = NOTHING_CHOSEN;
 	private boolean finishedAfterSwitchCase = false;
 	
 	public TextUI2(PKController controller) {
@@ -97,15 +97,18 @@ public class TextUI2 implements IObserver  {
 
 			case 'n':		//new game
 				optionChoice = OPTION_CHOICE_CHOOSE_OPPONENT;
+				finishedAfterSwitchCase = true;
 				break;
 			
 			case 'q':		//quit
 				continueGame = false;
+				finishedAfterSwitchCase = true;
 				logger.info("You decided to quit the game. Nethertheless, we hope you enjoyed playing this AWESOME game!");
 				break;
 	
 			case 'h':		//show help
 				//logger.info(controller.showHelp());
+				finishedAfterSwitchCase = true;
 				break;
 				
 			default:		//if none of the above cases applied 
