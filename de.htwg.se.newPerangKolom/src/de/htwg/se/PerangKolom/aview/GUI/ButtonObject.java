@@ -49,7 +49,7 @@ public class ButtonObject extends JFrame{
 		
 		this.buttonPanel = new JPanel();
 		this.centrePanel = new JPanel();
-		this.centrePanelColor = Color.BLUE;
+		this.centrePanelColor = Color.DARK_GRAY;
 		this.valueOfCellLabel = new JLabel(cellValue);
 		this.buttonTop = new JButton("");
 		this.buttonRight = new JButton("");
@@ -66,27 +66,13 @@ public class ButtonObject extends JFrame{
 		treeMap.put(4, buttonLeft);
 		valueOfCellLabel.setBackground(null);
 		buttonPanel.setLayout(null);
+		
+		setModelValues(buttonTop, BUTTON_TOP);
+		setModelValues(buttonRight, BUTTON_RIGHT);
+		setModelValues(buttonBottom, BUTTON_BOTTOM);
+		setModelValues(buttonLeft, BUTTON_LEFT);
+		
 
-		buttonTop.setContentAreaFilled(false);
-		buttonTop.setBorderPainted(false);
-		buttonTop.setOpaque(false);
-		buttonTop.setRolloverEnabled(false);
-//		buttonTop.setBackground(new Color(0,0,0,0));
-		
-		buttonRight.setContentAreaFilled(false);
-		buttonRight.setBorderPainted(false);
-		buttonRight.setOpaque(false);
-		buttonRight.setRolloverEnabled(false);
-		
-		buttonBottom.setContentAreaFilled(false);
-		buttonBottom.setBorderPainted(false);
-		buttonBottom.setOpaque(false);
-		buttonBottom.setRolloverEnabled(false);
-		
-		buttonLeft.setContentAreaFilled(false);
-		buttonLeft.setBorderPainted(false);
-		buttonLeft.setOpaque(false);
-		buttonLeft.setRolloverEnabled(false);
 		
 //		entrePanel.setOpaque(false);
 		
@@ -94,6 +80,7 @@ public class ButtonObject extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+
 				buttonMethod(buttonTop, BUTTON_TOP);
 			}
 		});
@@ -102,6 +89,7 @@ public class ButtonObject extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				
 				buttonMethod(buttonRight, BUTTON_RIGHT);
 			}
 		});
@@ -137,6 +125,7 @@ public class ButtonObject extends JFrame{
 		buttonPanel.add(buttonLeft).setBounds(0, 13, BUTTONHEIGHT, BUTTONWIDE);
 		buttonPanel.add(centrePanel);
 		centrePanel.add(valueOfCellLabel).setBounds(40, 45, 20, 20);
+		valueOfCellLabel.setFont (valueOfCellLabel.getFont ().deriveFont (25.0f));
 		valueOfCellLabel.setBackground(Color.DARK_GRAY);
 		valueOfCellLabel.setForeground(Color.WHITE);
 		valueOfCellLabel.setVisible(true);
@@ -145,6 +134,25 @@ public class ButtonObject extends JFrame{
 
 
 		
+	}
+	
+	public void setModelValues(JButton button, int buttonNumber){
+		System.out.printf("Cell %d %d, is Border %d filled??? %s%n", x, y, buttonNumber, (controller.getCell(x, y).getBorder(buttonNumber)));
+		if(controller.getCell(x, y).getBorder(buttonNumber)){
+			button.setContentAreaFilled(true);
+			button.setOpaque(true);
+			button.setBackground(Color.gray);
+			button.setEnabled(false);
+
+		}else{
+			button.setContentAreaFilled(false);
+			button.setOpaque(false);
+		}
+		button.setBorderPainted(false);
+		button.setRolloverEnabled(false);
+		revalidate();
+		centrePanel.validate();
+		controller.notifyObservers();
 	}
 	 
 	public JPanel getPanel(){
@@ -157,27 +165,29 @@ public class ButtonObject extends JFrame{
 	
 	public void fillCellTest(){
 		
-		System.out.printf("FOUR BORDERS FILLED??? :  %s\n", controller.fourBordersFilled(x, y));
+//		System.out.printf("FOUR BORDERS FILLED??? :  %s\n", controller.fourBordersFilled(x, y));
 		
 		if(controller.fourBordersFilled(x, y)){
 			centrePanel.setOpaque(true);
 			centrePanel.setBackground(Color.yellow);
-			valueOfCellLabel.setBackground(centrePanelColor);
+			valueOfCellLabel.setBackground(Color.yellow);
+			valueOfCellLabel.setForeground(Color.BLACK);
 		}
 	}
 	
 	/*******button management method ****/
 	public void buttonMethod(JButton button, int buttonNumber){
-		button.setContentAreaFilled(true);
-		button.setBackground(Color.gray);
-		button.setEnabled(false);
+
+//		button.setContentAreaFilled(true);
+//		button.setBackground(Color.gray);
+//		button.setEnabled(false);
 		centrePanel.setOpaque(true);
 		centrePanel.validate();
 		
 		controller.setBorderFilled(x, y, buttonNumber);
 		fillCellTest();
-		System.out.printf("is Border %d filled??? %s%n", buttonNumber, (controller.getCell(x, y).getBorderState(buttonNumber)));
-
+//		System.out.printf("is Border %d filled??? %s%n", buttonNumber, (controller.getCell(x, y).getBorder(buttonNumber)));
+		setModelValues(button, buttonNumber);
 	}
 	
 }

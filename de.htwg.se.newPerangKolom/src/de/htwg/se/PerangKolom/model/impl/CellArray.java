@@ -3,6 +3,8 @@ package de.htwg.se.PerangKolom.model.impl;
 import org.apache.log4j.Logger;
 
 import de.htwg.se.PerangKolom.model.AbstractCell;
+import de.htwg.se.PerangKolom.model.ICell;
+import de.htwg.se.PerangKolom.model.ICell2;
 import de.htwg.se.PerangKolom.model.impl.Cell;
 
 public final class CellArray {
@@ -172,6 +174,10 @@ public final class CellArray {
 				CellArray.cellArray[i][j].setBorder(Cell.BORDER_TOP, true);
 			}
 		}
+	}
+	
+	public ICell getCell(int x, int y) {
+		return cellArray[x][y];
 	}
 	
 }

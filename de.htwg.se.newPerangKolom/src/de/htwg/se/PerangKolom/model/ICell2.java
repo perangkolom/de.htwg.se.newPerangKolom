@@ -39,6 +39,10 @@ public interface ICell2 {
 	
 	int getNumberOfFilledBorders();
 	
+/********* DAVID ***********/
+	
+	public boolean isBorderFilled(int border);
+	
 }
 
 /*

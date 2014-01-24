@@ -6,6 +6,7 @@ import de.htwg.se.PerangKolom.controller.IPerangKolomController;
 import de.htwg.se.PerangKolom.model.ICell;
 import de.htwg.se.PerangKolom.model.impl.Cell;
 import de.htwg.se.PerangKolom.model.impl.CellArray;
+import de.htwg.se.PerangKolom.model.impl.Grid;
 import de.htwg.se.PerangKolom.model.impl.MessagesForUser2;
 import de.htwg.se.PerangKolom.model.impl.Player;
 import de.htwg.se.PerangKolom.util.observer.Observable;
@@ -171,6 +172,11 @@ public class PerangKolomController extends Observable implements IPerangKolomCon
 		CellArray cellArrayDummy = CellArray.getInstance();
 		cellArrayDummy.setNumberOfColums(x);
 		cellArrayDummy.setNumberOfRows(y);
+	}
+	
+	public boolean isBorderFilled(int x, int y, int border){
+		CellArray cellArrayDummy = CellArray.getInstance();
+		return cellArrayDummy.getCell(x, y).isBorderFilled(border);
 	}
 	
 

@@ -353,7 +353,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 
 	@Override
 	public void update(Event e) {
-		repaint();
+//		repaint();
 		revalidate();
 		printBackground();
 //		this.frame = new GraphicalUI<Object>();
@@ -401,7 +401,6 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 		lblPoints1.setText("100000");
 		lblPoints1.setForeground(Color.gray);
 		schriftLabel.add(lblPoints1);
-		System.out.println(lblPoints1.getText());
 		
 		JLabel lblPlayer2 = new JLabel();
 		lblPlayer2.setBounds(384, 50, 120, 25);
