@@ -7,9 +7,7 @@ import java.util.TreeSet;
 import de.htwg.se.PerangKolom.model.ICell2;
 import de.htwg.se.PerangKolom.model.KI.ICurrentStrategy;
 import de.htwg.se.PerangKolom.model.KI.IKIChose;
-import de.htwg.se.PerangKolom.model.impl.Cell;
 import de.htwg.se.PerangKolom.model.impl.Cell2;
-import de.htwg.se.PerangKolom.model.impl.CellArray;
 import de.htwg.se.PerangKolom.model.impl.Grid;
 
 public class KIChose implements IKIChose{
@@ -49,8 +47,8 @@ public class KIChose implements IKIChose{
 	
 	private void fillSet(){
 		/* fills the Set with all cells */
-		for(int i = 0; i < CellArray.getNumberOfRows(); i++){
-			for(int j = 0; j < CellArray.getNumberOfColums(); j++){
+		for(int i = 0; i < Grid.getNumberOfRows(); i++){
+			for(int j = 0; j < Grid.getNumberOfCols(); j++){
 				ICell2[][] tmp = Grid.getInstance().getCellArray();
 				cellArraySet.add(tmp[i][j]);
 			}
@@ -115,20 +113,22 @@ public class KIChose implements IKIChose{
 	}
 	
 	/* 'SacrificeLowestValue' Algorithm */
-	public void SacrificeLowestValueAlgo(List<Cell2> CellSetBufferWithTwoBorder){
+	public void SacrificeLowestValueAlgo(List<ICell2> cellSetBufferWithTwoBorder){
 		
 		ComputerPlayerLogic algorithmThree = new ComputerPlayerLogic();
 		ICurrentStrategy strategyThree = new Algo_SacrificeLowestValue();
 		algorithmThree.setStrategy(strategyThree);
 		
-		Cell2 cellBuf = CellSetBufferWithTwoBorder.get(0);
-		for(Cell2 c : CellSetBufferWithTwoBorder){
+		ICell2 cellBuf = cellSetBufferWithTwoBorder.get(0);
+		for(ICell2 c : cellSetBufferWithTwoBorder){
 			if(c.getCellValue() <= cellBuf.getCellValue()){
 				cellBuf = c;
 			}
 		}
 		algorithmThree.chooseStrategy(cellBuf);
 	}
+
+
 
 
 

@@ -2,7 +2,6 @@ package de.htwg.se.PerangKolom.model.KI.impl;
 
 import de.htwg.se.PerangKolom.model.ICell2;
 import de.htwg.se.PerangKolom.model.KI.ICurrentStrategy;
-import de.htwg.se.PerangKolom.model.impl.Cell;
 import de.htwg.se.PerangKolom.model.impl.Cell2;
 
 public class Algo_NotPutForward implements ICurrentStrategy{

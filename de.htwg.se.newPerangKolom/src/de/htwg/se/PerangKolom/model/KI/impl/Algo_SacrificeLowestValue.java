@@ -4,7 +4,6 @@ import de.htwg.se.PerangKolom.model.ICell2;
 import de.htwg.se.PerangKolom.model.KI.ICurrentStrategy;
 import de.htwg.se.PerangKolom.model.impl.Cell2;
 
-
 public class Algo_SacrificeLowestValue implements ICurrentStrategy{
 
 	@Override
