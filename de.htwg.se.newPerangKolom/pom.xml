@@ -4,9 +4,6 @@
   <artifactId>de.htwg.se.newPerangKolom</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>SE2013WS-04-PerangKolom</name>
-  
-  <groupId>de.htwg.se.PerangKolom</groupId>
-  <artifactId>PerangKolom</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
