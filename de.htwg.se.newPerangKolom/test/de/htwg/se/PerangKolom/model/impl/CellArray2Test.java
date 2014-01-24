@@ -63,8 +63,8 @@ public class CellArray2Test {
 	@Test
 	public void testGetCell() {
 		
-		for (int i = 0; i < test1.getNumberOfRows(); i++) {
-			for (int j = 0; j < test1.getNumberOfCols(); j++) {
+		for (int i = 0; i < Grid.getNumberOfRows(); i++) {
+			for (int j = 0; j < Grid.getNumberOfCols(); j++) {
 				
 				int tmp = i*5;
 				array[i][j].setCellValue(tmp);
