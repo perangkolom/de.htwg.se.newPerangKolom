@@ -67,3 +67,16 @@ The Player with the most Points at the End of the game wins the game.
 ++++++++  ++++++++  ++++++++
 
 ```
+
+## Graphical-User-Interface
+
+![image](https://raw.github.com/miofferg/de.htwg.se.dog/master/de.htwg.se.dog/src/resources/dog_game.JPG)
+
+Contact:
+* [David Rotärmel](mailto:darotaer@htwg-konstanz.de)
+* [Christian Stegmaier](mailto:chstegma@htwg-konstanz.de)
+</p></article>
+  </div>
+
+  </div>
+</div>
