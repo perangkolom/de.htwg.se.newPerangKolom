@@ -97,8 +97,8 @@ public class PKController extends Observable implements IPKController {
 	public void setBorder(int borderNr, boolean fillBorder, ICell2 cell) {
 		
 		cell.setBorder(borderNr, fillBorder);
-
 		notifyObservers();
+		
 		if(fillBorder == true){
 			checkPlayerFinished(cell);
 			setLogicForNextTurn();
@@ -237,6 +237,7 @@ public class PKController extends Observable implements IPKController {
 	
 	private void checkPlayerFinished(ICell2 cell){
 		if(!cell.isCellFilled()){
+
 			GameSettings.changeTurn();
 		}
 		//check if game finished

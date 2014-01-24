@@ -8,7 +8,6 @@ import org.apache.log4j.Logger;
 import de.htwg.se.PerangKolom.controller.impl.PKController;
 import de.htwg.se.PerangKolom.model.IPlayer2;
 import de.htwg.se.PerangKolom.model.impl.CellArray;
-import de.htwg.se.PerangKolom.model.impl.GameSettings;
 import de.htwg.se.PerangKolom.model.impl.MessagesForUser2;
 import de.htwg.se.PerangKolom.util.observer.Event;
 import de.htwg.se.PerangKolom.util.observer.IObserver;
@@ -149,8 +148,11 @@ public class TextUI2 implements IObserver  {
 				
 			
 			case OPTION_CHOICE_SHOW_OVERVIEW:  	//finally create the new grid and set optionChoice = 0 again
-				initSubChoice();
-				showOverviewOfGameOptions();
+				//initSubChoice();
+				//showOverviewOfGameOptions();
+				resetOptionChoice();
+				resetSubChoice();
+				logger.info("Now we hope you enjoy playing the game which starts NOW...\n");
 				break;
 			}
 		
@@ -168,7 +170,7 @@ public class TextUI2 implements IObserver  {
 		
 		case SUBCHOICE_FIRST_CASE:		//ask user for input
 			logger.info("Do you want to compete a human player or the mighty artificial intelligence?!?\n");
-			logger.info("Type 1 for human opponent or 2 to play against the computer:\n");
+			logger.info("Type "+ SHALL_BE_HUMAN+" for human opponent or "+SHALL_BE_COMPUTER+" to play against the computer:\n");
 			subChoice = SUBCHOICE_SECOND_CASE;
 			break;
 
@@ -238,7 +240,7 @@ public class TextUI2 implements IObserver  {
 			
 		case SUBCHOICE_FIRST_CASE:
 			
-			logger.info("Now you habe to enter names for your players:\n");
+			logger.info("Now you have to enter names for your players:\n");
 			enterNameforPlayer(line, player1, PLAYER_ONE);
 			subChoice = SUBCHOICE_SECOND_CASE;
 			break;
@@ -263,8 +265,7 @@ public class TextUI2 implements IObserver  {
 	private void showOverviewOfGameOptions() {
 		
 		logger.info("Now a new game will be started with the following settings: \n");
-		logger.info("An overview of the game settings will be shown here. This has to be done after the "
-				+ "controller has been set up correctly! DONT FORGET IT!\n");
+	
 	}
 	
 	
