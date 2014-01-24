@@ -20,13 +20,13 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.Color;
 
-
+import de.htwg.se.PerangKolom.controller.IPKController;
 import de.htwg.se.PerangKolom.controller.IPerangKolomController;
+import de.htwg.se.PerangKolom.controller.impl.PKController;
 import de.htwg.se.PerangKolom.controller.impl.PerangKolomController;
 import de.htwg.se.PerangKolom.model.impl.Cell;
 import de.htwg.se.PerangKolom.util.observer.Event;
 import de.htwg.se.PerangKolom.util.observer.IObserver;
-
 
 import javax.swing.JMenu;
 
@@ -42,7 +42,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 	private final int YCOORDINATES_BUTTON_OBJECT = 35;
 	private final int ADDITIONER_BUTTON_OBJECT = 60;
 	
-	IPerangKolomController perangKolomController;
+	IPKController perangKolomController;
 //	public CellArray cellArrayDummy = CellArray.getInstance();
 //	public Cell[][] cellArray = CellArray.getCellArray();
 	
@@ -91,7 +91,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 	 */
 	public GraphicalUI() {
 		
-		perangKolomController = new PerangKolomController();
+		perangKolomController = new PKController();
 	
 		setResizable(false);
 		setBackground(new Color(0, 0, 0));
@@ -237,25 +237,27 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
-				perangKolomController.setGridSize(SMALL_SIZE, SMALL_SIZE);
-				constructPerangKolomPanels(perangKolomController);
-//		        revalidate();
+				perangKolomController.setNumberOfCols(SMALL_SIZE);
+				perangKolomController.setNumberOfRows(SMALL_SIZE);
+				constructPerangKolomPanels();
+		        revalidate();
 			}
 		});
 		
 		menuItemBigSize.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				perangKolomController.setGridSize(BIG_SIZE, BIG_SIZE);
-				constructPerangKolomPanels(perangKolomController);
-//		        revalidate();
+				perangKolomController.setNumberOfCols(BIG_SIZE);
+				perangKolomController.setNumberOfRows(BIG_SIZE);
+				constructPerangKolomPanels();
+		        revalidate();
 			}
 		});
 		
 		menuItemRerun.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				constructPerangKolomPanels(perangKolomController);
+				constructPerangKolomPanels();
 			}
 		});
 		
@@ -285,7 +287,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 		this.validate();
 	}
 	
-	public final void constructPerangKolomPanels(IPerangKolomController controller) {
+	public final void constructPerangKolomPanels() {
 //		if(btnObject != null){
 //			backgroundLabel.removeAll();
 //		}
@@ -301,11 +303,11 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 		int counterX = XCOORDINATES_BUTTON_OBJECT;
 		int counterY = YCOORDINATES_BUTTON_OBJECT;
 		
-		for(int i = 0; i < perangKolomController.getNumberOfColumns(); i++){
+		for(int i = 0; i < perangKolomController.getNumberOfCols(); i++){
 			for(int j = 0; j < perangKolomController.getNumberOfRows(); j++){
 //				int randomNumber = perangKolomController.getCellValue(perangKolomController.getCell(i,j));
-				int randomNumber = perangKolomController.getRandNumber(i, j);
-				btnObject = new ButtonObject(counterX, counterY, i, j, Integer.toString(randomNumber));
+				int randomNumber = perangKolomController.getCellValue(j, i);
+				btnObject = new ButtonObject(counterX, counterY, j, i, Integer.toString(randomNumber));
 				JPanel btnPanel = btnObject.getPanel();
 				backgroundLabel.add(btnPanel);
 //				hashMapButton.put(perangKolomController.getCell(i, j), btnObject);

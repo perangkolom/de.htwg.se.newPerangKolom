@@ -11,8 +11,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
+import de.htwg.se.PerangKolom.controller.IPKController;
 import de.htwg.se.PerangKolom.controller.IPerangKolomController;
+import de.htwg.se.PerangKolom.controller.impl.PKController;
 import de.htwg.se.PerangKolom.controller.impl.PerangKolomController;
 
 public class ButtonObject extends JFrame{
@@ -31,7 +32,7 @@ public class ButtonObject extends JFrame{
 	private JButton buttonBottom;
 	private JButton buttonLeft;
 	
-	private IPerangKolomController controller;
+	private IPKController controller;
 	
 	private final int BUTTONWIDE = 45;
 	private final int BUTTONHEIGHT = 10;
@@ -54,7 +55,7 @@ public class ButtonObject extends JFrame{
 		this.buttonBottom = new JButton("");
 		this.buttonLeft = new JButton("");
 		this.treeMap = new TreeMap<Integer, JButton>();
-		this.controller = new PerangKolomController();
+		this.controller = new PKController();
 		this.x = x;
 		this.y = y;
 		
@@ -165,7 +166,7 @@ public class ButtonObject extends JFrame{
 		
 //		System.out.printf("FOUR BORDERS FILLED??? :  %s\n", controller.fourBordersFilled(x, y));
 		
-		if(controller.fourBordersFilled(x, y)){
+		if(controller.isCellFilled(x, y)){
 			centrePanel.setOpaque(true);
 			centrePanel.setBackground(Color.blue);
 			valueOfCellLabel.setBackground(Color.blue);
@@ -182,7 +183,7 @@ public class ButtonObject extends JFrame{
 		centrePanel.setOpaque(true);
 		centrePanel.validate();
 		
-		controller.setBorderFilled(x, y, buttonNumber);
+		controller.setBorder(buttonNumber, true, x, y);
 		fillCellTest();
 //		System.out.printf("is Border %d filled??? %s%n", buttonNumber, (controller.getCell(x, y).getBorder(buttonNumber)));
 		setModelValues(button, buttonNumber);

@@ -3,6 +3,9 @@ package de.htwg.se.PerangKolom.controller.impl;
 import de.htwg.se.PerangKolom.controller.IPKController;
 import de.htwg.se.PerangKolom.model.ICell2;
 import de.htwg.se.PerangKolom.model.IPlayer2;
+import de.htwg.se.PerangKolom.model.KI.IKIChose;
+import de.htwg.se.PerangKolom.model.KI.impl.KIChose;
+import de.htwg.se.PerangKolom.model.impl.Cell2;
 import de.htwg.se.PerangKolom.model.impl.GameSettings;
 import de.htwg.se.PerangKolom.model.impl.Grid;
 import de.htwg.se.PerangKolom.util.observer.Observable;
@@ -93,19 +96,28 @@ public class PKController extends Observable implements IPKController {
 
 	@Override
 	public void setBorder(int borderNr, boolean fillBorder, int row, int col) {
-		ICell2[][] array = Grid.getInstance().getCellArray();
-		array[row][col].setBorder(borderNr, fillBorder);
+		
+		ICell2 cell = Grid.getInstance().getCell(row, col);
+		setBorder(borderNr, fillBorder, cell);
 	}
 
 	@Override
 	public void setBorder(int borderNr, boolean fillBorder, ICell2 cell) {
 		cell.setBorder(borderNr, fillBorder);
+		notifyObservers();
+		if(fillBorder == true){
+			checkPlayerFinished(cell);
+			setLogicForNextTurn();
+		}
+
+		
 	}
 
 	@Override
 	public boolean getBorder(int borderNr, int row, int col) {
 		ICell2[][] array = Grid.getInstance().getCellArray();
 		return array[row][col].getBorder(borderNr);
+
 	}
 
 	@Override
@@ -221,6 +233,20 @@ public class PKController extends Observable implements IPKController {
 	@Override
 	public String getPlayersName(IPlayer2 player) {
 		return player.getPlayersName();
+	}
+	
+	private void checkPlayerFinished(ICell2 cell){
+		if(!cell.isCellFilled()){
+			GameSettings.changeTurn();
+		}
+		//check if game finished
+	}
+	
+	public void setLogicForNextTurn(){
+		if(isPlayerAHuman(GameSettings.getPlayer(getWhoseTurnItIs()))){
+			IKIChose ki = new KIChose();
+			ki.ComputerLogic();
+		}
 	}
 
 }
