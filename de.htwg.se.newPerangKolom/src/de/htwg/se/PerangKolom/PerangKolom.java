@@ -5,7 +5,7 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import de.htwg.se.PerangKolom.aview.GUI.GraphicalUI;
+import de.htwg.se.PerangKolom.aview.GUI.GraphicalUI2222;
 import de.htwg.se.PerangKolom.aview.tui.TextUI2;
 import de.htwg.se.PerangKolom.controller.IPKController;
 import de.htwg.se.PerangKolom.controller.impl.PKController;
@@ -16,14 +16,14 @@ public final class PerangKolom<E> {
 
 	private static Scanner scanner;
 	private IPKController controller;
-	private static GraphicalUI graphicalUI;
+	private static GraphicalUI2222 graphicalUI;
 	private static TextUI2 tui;
 	private static PerangKolom instance = null;
 	private Logger logger;
 	
 	private PerangKolom() {
 		controller = new PKController();
-		graphicalUI = new GraphicalUI<E>();
+		graphicalUI = new GraphicalUI2222<E>();
 		tui = new TextUI2(new PKController());
 		logger = Logger.getLogger("de.htwg.se.PerangKolom.PerangKolom");
 	}
