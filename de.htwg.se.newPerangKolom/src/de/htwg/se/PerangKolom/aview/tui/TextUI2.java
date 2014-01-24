@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
-import de.htwg.se.PerangKolom.controller.IPerangKolomController;
+import de.htwg.se.PerangKolom.controller.impl.PKController;
 import de.htwg.se.PerangKolom.model.IPlayer2;
 import de.htwg.se.PerangKolom.model.impl.CellArray;
 import de.htwg.se.PerangKolom.model.impl.GameSettings;
@@ -26,7 +26,7 @@ public class TextUI2 implements IObserver  {
 	private static final int SUBCHOICE_THIRD_CASE = 3;
 	private static final int SUBCHOICE_FOURTH_CASE = 4;
 	
-	private IPerangKolomController controller;
+	private PKController controller;
 	//private Logger logger = Logger.getLogger("de.htwg.se.perangkolom.aview.tui.TextUI");
 	private Logger logger = Logger.getLogger(this.getClass().toString());
 	private String newLine = System.getProperty("line.separator");
@@ -38,7 +38,7 @@ public class TextUI2 implements IObserver  {
 	private int subChoice = 0;
 	private boolean finishedAfterSwitchCase = false;
 	
-	public TextUI2(IPerangKolomController controller) {
+	public TextUI2(PKController controller) {
 		this.controller = controller;
 		controller.addObserver(this);
 	}
@@ -48,15 +48,17 @@ public class TextUI2 implements IObserver  {
 		printTUI();
 	}
 
-	
+
 	public void printTUI() {
-		logger.info(newLine + controller.getGridString());
+		//logger.info(newLine + controller.getGridString());
 		//logger.info(newLine + controller.getStatus());
 		//logger.info(newLine + controller.getShortInstructions());
 	}
 	
 	
 	public boolean processInputLine(String line) {
+		
+		//IPlayer2 actualPlayer = GameSettings.getWhoseTurnItIs();
 		continueGame = true;
 		finishedAfterSwitchCase = false;
 		
@@ -69,10 +71,13 @@ public class TextUI2 implements IObserver  {
 			inputCheckForGameOptions(c, line);
 		}
 		
-		//if c didn't match the above cases: determine border to fill
+		//if c didn't match the cases above user has to determine a border to fill
+		
 		if ( !finishedAfterSwitchCase) {
 			determineBorderToFill(c, line);
 		}
+		
+		
 		
 		if (finishedAfterSwitchCase && continueGame)
 			logger.info(MessagesForUser2.shortInstruction);
@@ -94,7 +99,7 @@ public class TextUI2 implements IObserver  {
 				break;
 	
 			case 'h':		//show help
-				logger.info(controller.showHelp());
+				//logger.info(controller.showHelp());
 				break;
 				
 			default:		//if none of the above cases applied 
@@ -226,6 +231,9 @@ public class TextUI2 implements IObserver  {
 		final int PLAYER_ONE = 1;
 		final int PLAYER_TWO = 2;
 		
+		IPlayer2 player1 = controller.getPlayer(PLAYER_ONE);
+		IPlayer2 player2 = controller.getPlayer(PLAYER_TWO);
+		
 		switch (subChoice) {
 			
 		case SUBCHOICE_FIRST_CASE:
@@ -236,12 +244,12 @@ public class TextUI2 implements IObserver  {
 			break;
 			
 		case SUBCHOICE_SECOND_CASE:
-			
-			if (player2.isHuman) {
+						
+			if (player2.isPlayerAHuman()) {
 				enterNameforPlayer(line, player2, PLAYER_TWO);
 			}
 			else {
-				controller.getPlayer(player2).setName("computer");
+				controller.setPlayersName("computer", player2);
 			}
 			
 			subChoice = NOTHING_CHOSEN;
@@ -275,7 +283,10 @@ public class TextUI2 implements IObserver  {
 			} 
 			//if input was correct
 			if (isFine) {
-				controller.fillBorder(arg[0], arg[1], arg[2]);
+				int x = arg[0];
+				int y = arg[1];
+				int z = arg[2];
+				controller.setBorder( z, true, controller.getCell(x, y));
 				logger.info(MessagesForUser2.shortInstruction);
 				finishedAfterSwitchCase = true;
 			} else ;
@@ -291,7 +302,6 @@ public class TextUI2 implements IObserver  {
 		optionChoice = 0;
 	}
 	
-	
 	private void resetSubChoice() {
 		subChoice = 0;
 	}
@@ -302,9 +312,17 @@ public class TextUI2 implements IObserver  {
 		}
 	}
 
-	
 	private void enterNameforPlayer(String line, IPlayer2 player, int playerNumber) {
 		logger.info("Please enter a name for player nr." + playerNumber + ": \n");
-		controller.getPlayer(player).setName("line");
+		controller.getPlayer(playerNumber).setPlayersName(line);
 	}
 }
+
+
+
+
+
+
+
+
+
