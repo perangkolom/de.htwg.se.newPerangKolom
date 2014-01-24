@@ -265,7 +265,7 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
-//				perangKolomController.setGridSize(SMALL_SIZE, SMALL_SIZE);
+				perangKolomController.setGridSize(SMALL_SIZE, SMALL_SIZE);
 				constructPerangKolomPanels(perangKolomController);
 		        revalidate();
 			}
