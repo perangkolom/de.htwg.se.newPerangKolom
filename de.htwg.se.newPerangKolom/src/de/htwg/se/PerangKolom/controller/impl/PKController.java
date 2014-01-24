@@ -92,16 +92,22 @@ public class PKController extends Observable implements IPKController {
 	}
 
 	@Override
-	public void setBorder(int borderNr, boolean fillBorder, int row, int col) {
-		ICell2[][] array = Grid.getInstance().getCellArray();
-		array[row][col].setBorder(borderNr, fillBorder);
-	}
-
-	@Override
 	public void setBorder(int borderNr, boolean fillBorder, ICell2 cell) {
+		
 		cell.setBorder(borderNr, fillBorder);
+	
+		
+	}
+	
+	@Override
+	public void setBorder(int borderNr, boolean fillBorder, int row, int col) {
+		ICell2 cell = Grid.getInstance().getCell(row, col);
+		setBorder(borderNr, fillBorder, cell);
 	}
 
+	
+	
+	
 	@Override
 	public boolean getBorder(int borderNr, int row, int col) {
 		ICell2[][] array = Grid.getInstance().getCellArray();
