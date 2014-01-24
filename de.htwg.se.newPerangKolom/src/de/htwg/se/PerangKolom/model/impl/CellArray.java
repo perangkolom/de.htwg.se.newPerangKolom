@@ -3,6 +3,8 @@ package de.htwg.se.PerangKolom.model.impl;
 import org.apache.log4j.Logger;
 
 import de.htwg.se.PerangKolom.model.AbstractCell;
+import de.htwg.se.PerangKolom.model.ICell;
+import de.htwg.se.PerangKolom.model.ICell2;
 import de.htwg.se.PerangKolom.model.impl.Cell;
 
 public final class CellArray {
@@ -13,8 +15,8 @@ public final class CellArray {
 	 */
 	
 	private static CellArray instance;
-	private static final int DEFAULT_NUMBEROFROWS = 7;
-	private static final int DEFAULT_NUMBEROFCOLUMS = 7;
+	private static final int DEFAULT_NUMBEROFROWS = 3;
+	private static final int DEFAULT_NUMBEROFCOLUMS = 3;
 	private static Cell[][] cellArray = null;
 	private static int numberOfRows = DEFAULT_NUMBEROFROWS;
 	private static int numberOfColums = DEFAULT_NUMBEROFCOLUMS;
@@ -63,12 +65,12 @@ public final class CellArray {
 	}
 
 	public static void setNumberOfRows(int x) {
-		if (cellArray == null) 
+//		if (cellArray == null) 
 			numberOfRows = x;
 	}
 
 	public static void setNumberOfColums(int x) {
-		if (cellArray == null) 
+//		if (cellArray == null) 
 			numberOfColums = x;
 	}
 
@@ -172,6 +174,10 @@ public final class CellArray {
 				CellArray.cellArray[i][j].setBorder(Cell.BORDER_TOP, true);
 			}
 		}
+	}
+	
+	public ICell getCell(int x, int y) {
+		return cellArray[x][y];
 	}
 	
 }

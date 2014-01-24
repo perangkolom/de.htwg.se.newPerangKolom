@@ -72,8 +72,29 @@ public abstract class AbstractCell implements ICell{
 		this.cellOwner = cellOwner;
 	}
 	
-	public int getNumberOfFilledBorders(){
-		return numberOfFilledBorders;
+	@Override
+	public int getNumberOfFilledBorders() {
+		
+		int sum = 0;
+		
+		if (bottomBorder) {
+			sum++;
+		}
+		
+		if (leftBorder) {
+			sum++;
+		}
+		
+		if (rightBorder) {
+			sum++;
+		}
+		
+		if (topBorder) {
+			sum++;
+		}
+		
+		return sum;
+		
 	}
 	
 	public void setBorder(int borderNr, boolean fillBorder) {
@@ -144,21 +165,29 @@ public abstract class AbstractCell implements ICell{
 	}
 	
 	
-	public boolean getBorderState(int borderNr) {
+	@Override
+	public boolean getBorder(int borderNr) {
+
 		if (borderNr < 1 || borderNr > 4)
 			throw new IndexOutOfBoundsException();
 		
 		if (borderNr == BORDER_TOP) 
 			return topBorder;
+		
 		if (borderNr == BORDER_BOTTOM) 
 			return bottomBorder;
+		
 		if (borderNr == BORDER_LEFT) 
 			return leftBorder;
+		
 		if (borderNr == BORDER_RIGHT) 
 			return rightBorder;
+		
 		//dummy return to make the compiler happy
 		return false;
 	}
+	
+
 
 	public void fillCharArray() {
 	
@@ -167,13 +196,13 @@ public abstract class AbstractCell implements ICell{
 		} else {
 			//print chars for the...
 			//...top-Border:
-			printHorizontalBorders(true, getBorderState(BORDER_TOP));
+			printHorizontalBorders(true, getBorder(BORDER_TOP));
 			//...bottom-Border:
-			printHorizontalBorders(false, getBorderState(BORDER_BOTTOM));
+			printHorizontalBorders(false, getBorder(BORDER_BOTTOM));
 			//...left-Border:
-			printVerticalBorders(true, getBorderState(BORDER_LEFT));
+			printVerticalBorders(true, getBorder(BORDER_LEFT));
 			//...right-Border:
-			printVerticalBorders(false, getBorderState(BORDER_RIGHT));
+			printVerticalBorders(false, getBorder(BORDER_RIGHT));
 		}
 		
 		insertValueIntoCharMatrix();
@@ -336,6 +365,9 @@ public abstract class AbstractCell implements ICell{
 		
 	}
 
+	public boolean isBorderFilled(int border){
+		return getBorder(border);
+	}
 
 
 }

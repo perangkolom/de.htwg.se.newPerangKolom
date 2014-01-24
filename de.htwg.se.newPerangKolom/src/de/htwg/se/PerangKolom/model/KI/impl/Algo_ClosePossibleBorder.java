@@ -13,16 +13,16 @@ public class Algo_ClosePossibleBorder implements ICurrentStrategy{
 	 */
 	public void StrategyAlgorithm(Cell cell) {
 		
-		if(cell.getBorderState(cell.BORDER_BOTTOM) == false){
+		if(cell.getBorder(cell.BORDER_BOTTOM) == false){
 			cell.setBorder(cell.BORDER_BOTTOM, true);
 		}
-		if(cell.getBorderState(cell.BORDER_LEFT) == false){
+		if(cell.getBorder(cell.BORDER_LEFT) == false){
 			cell.setBorder(cell.BORDER_LEFT, true);
 		}
-		if(cell.getBorderState(cell.BORDER_RIGHT) == false){
+		if(cell.getBorder(cell.BORDER_RIGHT) == false){
 			cell.setBorder(cell.BORDER_RIGHT, true);
 		}
-		if(cell.getBorderState(cell.BORDER_TOP) == false){
+		if(cell.getBorder(cell.BORDER_TOP) == false){
 			cell.setBorder(cell.BORDER_TOP, true);
 		}
 	

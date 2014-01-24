@@ -39,7 +39,9 @@ public interface ICell2 {
 	
 	int getNumberOfFilledBorders();
 	
+
 	void setBorderWithoutNeighbour(int borderNr, boolean fillBorder);
+
 	
 }
 

@@ -20,7 +20,7 @@ public interface ICell {
 
 	public void setBorder(int borderNr, boolean fillBorder);
 	
-	public boolean getBorderState(int borderNr);
+	public boolean getBorder(int borderNr);
 	
 	public void fillCharArray();
 	
@@ -29,6 +29,12 @@ public interface ICell {
 	public int makeRandomNumber();
 	
 	public void fillCellCompletelyWithOwnersString(boolean isPlayerOne);
+
+	public boolean isBorderFilled(int border);
+
+	public int getNumberOfFilledBorders();
+
+
 	
 	
 }

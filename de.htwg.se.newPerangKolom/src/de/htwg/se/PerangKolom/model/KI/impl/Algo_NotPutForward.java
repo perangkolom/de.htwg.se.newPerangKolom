@@ -11,19 +11,19 @@ public class Algo_NotPutForward implements ICurrentStrategy{
 
 
 		
-		if(cell.getBorderState(cell.BORDER_BOTTOM) == false){
+		if(cell.getBorder(cell.BORDER_BOTTOM) == false){
 			cell.setBorder(cell.BORDER_BOTTOM, true);
 			return;
 		}
-		if(cell.getBorderState(cell.BORDER_RIGHT) == false){
+		if(cell.getBorder(cell.BORDER_RIGHT) == false){
 			cell.setBorder(cell.BORDER_RIGHT, true);
 			return;
 		}
-		if(cell.getBorderState(cell.BORDER_TOP) == false){
+		if(cell.getBorder(cell.BORDER_TOP) == false){
 			cell.setBorder(cell.BORDER_TOP, true);
 			return;
 		}
-		if(cell.getBorderState(cell.BORDER_LEFT) == false){
+		if(cell.getBorder(cell.BORDER_LEFT) == false){
 			cell.setBorder(cell.BORDER_LEFT, true);
 			return;
 		}

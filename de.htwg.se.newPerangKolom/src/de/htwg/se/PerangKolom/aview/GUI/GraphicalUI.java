@@ -54,6 +54,11 @@ import java.awt.SystemColor;
 import javax.swing.JMenu;
 
 public class GraphicalUI<E> extends JFrame implements IObserver{
+	
+	ButtonObject btnObject;
+	
+	
+	
 	private final int BIG_SIZE = 7;
 	private final int SMALL_SIZE = 3;
 	private final int XCOORDINATES_BUTTON_OBJECT = 33;
@@ -68,11 +73,13 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 	private JPanel contentPane;
 	private JPanel PanelMenu;
 	private JPanel PanelBackground;
-	private JLabel label;
+	private JLabel backgroundLabel;
 	private JLabel schriftLabel;
+	private JLabel lblPlayer1;
 	private ImageIcon backgroundplay;
+	private ImageIcon backgroundplaySmall;
 	private ImageIcon letterBackground;
-    private BufferedImage backgroundplaySmall;
+//    private BufferedImage backgroundplaySmall;
     private JMenuBar menubar;
     private JMenu menuOptions;
     private JMenuItem menuItemRerun;
@@ -111,10 +118,6 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 	 * Create the frame.
 	 */
 	public GraphicalUI() {
-		
-		schriftLabel = new JLabel();
-
-
 		
 		perangKolomController = new PerangKolomController();
 	
@@ -234,6 +237,8 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 //			}
 //		});
 		
+		/****************************!!!!! MENU !!!!!**********************************************/
+		
 		/********* JMenu ******/
 		menubar = new JMenuBar();
 		setJMenuBar(menubar);
@@ -259,116 +264,165 @@ public class GraphicalUI<E> extends JFrame implements IObserver{
 		menuItemSmallSize.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-//				perangKolomController.setGridSize(SMALL_SIZE, SMALL_SIZE);
+
 				perangKolomController.setGridSize(SMALL_SIZE, SMALL_SIZE);
-				perangKolomController.createNewGrid(SMALL_SIZE, SMALL_SIZE);
-//				System.out.println("Spiel sollte hier mit KLEINEM Spielfeld neu gestartet werden");
+				constructPerangKolomPanels(perangKolomController);
+		        revalidate();
 			}
 		});
 		
 		menuItemBigSize.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-//				perangKolomController.setGridSize(BIG_SIZE, BIG_SIZE);
-				perangKolomController.createNewGrid(BIG_SIZE, BIG_SIZE);
-//				System.out.println("Spiel sollte hier mit GROSSEM Spielfeld neu gestartet werden");
+				perangKolomController.setGridSize(BIG_SIZE, BIG_SIZE);
+				constructPerangKolomPanels(perangKolomController);
+		        revalidate();
 			}
 		});
 		
 		menuItemRerun.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("Spiel sollte hier neu gestartet werden");
+				constructPerangKolomPanels(perangKolomController);
 			}
 		});
 		
+		/****************************!!!! !!!!*****************************************
 		
 		
+		/* import Pictures */
 		backgroundplay = new ImageIcon("src/utilities/PerangKolomGameField.jpg");
+		backgroundplaySmall = new ImageIcon("src/utilities/PerangKolomGamefieldSmall.jpg");
+		letterBackground = new ImageIcon("src/utilities/GameFieldWName.png");
+		
+		/* Set Menu and Background Panels */
 		PanelBackground.setOpaque(false);
 		PanelMenu.setOpaque(false);
 		
-		label = new JLabel();
-		label.setBounds(297, 16, 0, 0);
-		label.setIcon(backgroundplay);
+		
+
+		printBackground();
+//		constructPerangKolomPanels(perangKolomController);
+		
+
+
+		createCellObjects();
+
+		
+		setVisible(true); 
+		this.validate();
+	}
+	
+	public final void constructPerangKolomPanels(IPerangKolomController controller) {
+//		if(btnObject != null){
+//			backgroundLabel.removeAll();
+//		}
+//		createCellObjects();
+		printBackground();
+		
+
+	}
+	
+	/******* BUILD Cells ********/
+	public void createCellObjects(){
+		
+		int counterX = XCOORDINATES_BUTTON_OBJECT;
+		int counterY = YCOORDINATES_BUTTON_OBJECT;
+		
+		for(int i = 0; i < perangKolomController.getNumberOfColumns(); i++){
+			for(int j = 0; j < perangKolomController.getNumberOfRows(); j++){
+//				int randomNumber = perangKolomController.getCellValue(perangKolomController.getCell(i,j));
+				int randomNumber = perangKolomController.getRandNumber(i, j);
+				btnObject = new ButtonObject(counterX, counterY, i, j, Integer.toString(randomNumber));
+				JPanel btnPanel = btnObject.getPanel();
+				backgroundLabel.add(btnPanel);
+//				hashMapButton.put(perangKolomController.getCell(i, j), btnObject);
+				counterX += ADDITIONER_BUTTON_OBJECT;
+			}
+			counterX = XCOORDINATES_BUTTON_OBJECT;
+			counterY += ADDITIONER_BUTTON_OBJECT; 
+		}
+
+	}
+	
+
+	@Override
+	public void update(Event e) {
+//		repaint();
+		revalidate();
+		printBackground();
+//		this.frame = new GraphicalUI<Object>();
+	}
+	
+	
+	public void printBackground(){
+		
+		if(backgroundLabel != null){
+			backgroundLabel.removeAll();
+			PanelBackground.removeAll();
+		}
+		if(schriftLabel != null){
+			schriftLabel.removeAll();
+			PanelMenu.removeAll();
+		}
+
+		backgroundLabel = new JLabel();
+		backgroundLabel.setBounds(297, 16, 0, 0);
+		
+		if(perangKolomController.getNumberOfRows() == BIG_SIZE){
+			backgroundLabel.setIcon(backgroundplay);
+		}else if(perangKolomController.getNumberOfRows() == SMALL_SIZE){
+			backgroundLabel.setIcon(backgroundplaySmall);
+		}
+
 //		label.add(btnNewButton).setBounds(46, 35, 45, 10);;
 		
 		/* ÜberschriftLabel 'PerangKolom' */
-		letterBackground = new ImageIcon("src/utilities/GameFieldWName.png");
-		schriftLabel.setBounds(0, 0, 0, 0);
 		schriftLabel = new JLabel();
+		schriftLabel.setBounds(0, 0, 0, 0);
 		schriftLabel.setIcon(letterBackground);
-
-		/* JTextField Player and Points */
-		tfPlayerName1 = new JTextField(15);
-		tfPlayerName1.setBounds(122, 60, 80, 10);
-		tfPlayerName2 = new JTextField(15);
-		tfPoints1 = new JTextField(15);
-		tfPoints2 = new JTextField(15);
 		
 		/* Labels for Player and Points*/
-		JLabel lblPlayer1 = new JLabel();
+		lblPlayer1 = new JLabel();
 		lblPlayer1.setBounds(124, 50, 140, 25);
 		lblPlayer1.setFont (lblPlayer1.getFont ().deriveFont (25.0f));
-		lblPlayer1.setText("Olaf Bibirossssooososo");
+		lblPlayer1.setText("Olaf");
 		lblPlayer1.setForeground(Color.gray);
 		schriftLabel.add(lblPlayer1);
 		
 		JLabel lblPoints1 = new JLabel();
 		lblPoints1.setBounds(100, 80, 140, 25);
 		lblPoints1.setFont (lblPoints1.getFont ().deriveFont (25.0f));
-		lblPoints1.setText("100000");
+		lblPoints1.setText("0");
 		lblPoints1.setForeground(Color.gray);
 		schriftLabel.add(lblPoints1);
 		
 		JLabel lblPlayer2 = new JLabel();
 		lblPlayer2.setBounds(384, 50, 120, 25);
 		lblPlayer2.setFont (lblPlayer2.getFont ().deriveFont (25.0f));
-		lblPlayer2.setText("Boris Becker");
+		lblPlayer2.setText("Boris");
 		lblPlayer2.setForeground(Color.gray);
 		schriftLabel.add(lblPlayer2);
 		
 		JLabel lblPoints2 = new JLabel();
 		lblPoints2.setBounds(360, 80, 120, 25);
 		lblPoints2.setFont (lblPoints2.getFont ().deriveFont (25.0f));
-		lblPoints2.setText("200");
+		lblPoints2.setText("0");
 		lblPoints2.setForeground(Color.gray);
 		schriftLabel.add(lblPoints2);
 		
-		/******* BUILD Cells ********/
-
-		createCellObjects();
 		
+		PanelBackground.add(backgroundLabel);
         PanelMenu.add(schriftLabel);
-		PanelBackground.add(label);
-		setVisible(true); 
-		this.validate();
+        
+//        perangKolomController.notifyObservers();
+        PanelBackground.revalidate();
+        PanelMenu.revalidate();
+    	createCellObjects();
+        revalidate();
 	}
 	
-	public void createCellObjects(){
-		int counterX = XCOORDINATES_BUTTON_OBJECT;
-		int counterY = YCOORDINATES_BUTTON_OBJECT;
-		
-		for(int i = 0; i < perangKolomController.getNumberOfColumns(); i++){
-			for(int j = 0; j < perangKolomController.getNumberOfRows(); j++){
-				int randomNumber = perangKolomController.getCellValue(perangKolomController.getCell(i,j));
-				ButtonObject btnObject = new ButtonObject(counterX, counterY, i, j, Integer.toString(randomNumber));
-				JPanel btnPanel = btnObject.getPanel();
-				label.add(btnPanel);
-				hashMapButton.put(perangKolomController.getCell(i, j), btnObject);
-				counterX += ADDITIONER_BUTTON_OBJECT;
-			}
-			counterX = XCOORDINATES_BUTTON_OBJECT;
-			counterY += ADDITIONER_BUTTON_OBJECT; 
-		}
-	}
 
-	@Override
-	public void update(Event e) {
-		repaint();
-		revalidate();
-		this.frame = new GraphicalUI<Object>();
-	}
 	
 
 

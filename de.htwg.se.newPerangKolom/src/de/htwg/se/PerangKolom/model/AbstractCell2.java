@@ -299,4 +299,10 @@ public class AbstractCell2 implements ICell2{
 		return sum;
 		
 	}
+	
+	/********* DAVID ***********/
+	
+	public boolean isBorderFilled(int border){
+		return getBorder(border);
+	}
 }

@@ -52,6 +52,8 @@ public interface IPerangKolomController extends IObservable {
 	public int getNumberOfColumns();
 	
 	public CellArray getCellArray();
+	
+	public boolean isBorderFilled(int x, int y, int border);
 
 	
 }
