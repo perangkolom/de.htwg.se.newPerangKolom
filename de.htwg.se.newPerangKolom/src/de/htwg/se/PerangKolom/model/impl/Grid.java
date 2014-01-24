@@ -2,6 +2,7 @@ package de.htwg.se.PerangKolom.model.impl;
 
 import de.htwg.se.PerangKolom.model.ICell2;
 
+
 public class Grid {
 
 	private static Grid instance;
@@ -9,10 +10,9 @@ public class Grid {
 	private static int numberOfRows = 3;
 	private static int numberOfCols = 3;
 	
-	private Grid(int x, int y) {
-		numberOfRows = x;
-		numberOfCols = y;
-		cellArray = new Cell2[x][y];
+	private Grid() {
+		
+		cellArray = new Cell2[numberOfRows][numberOfCols];
 		
 		for (int i = 0; i < numberOfRows; i++) {
 			for (int j = 0; j < numberOfCols; j++) {
@@ -21,14 +21,12 @@ public class Grid {
 		}
 	}
 	
-		
+	
 	public static Grid getInstance() {
 		if (instance == null) {
-			return new Grid(numberOfRows, numberOfCols);
+			instance = new Grid();
 		} 
-		else {
 			return instance;
-		}
 	}
 
 
@@ -41,23 +39,22 @@ public class Grid {
 		return numberOfRows;
 	}
 
-
+ 
 	public static void setNumberOfRows(int x) {
 		numberOfRows = x;
 		
 	}
 
-
+ 
 	public static int getNumberOfCols() {
 		return numberOfCols;
 	}
 
 
-
+ 
 	public static void setNumberOfCols(int y) {
 		numberOfCols = y;
 	}
-
 
 
 	public ICell2 getCell(int x, int y) {

@@ -91,6 +91,63 @@ String getPlayersName();
 ===================================
 ===================================
 ===================================
-===================================
-===================================
-===================================
+!!!WEGEN KONFLIKT ZUM MERKEN REINKOPIERT; KANN IGNORIERT WERDEN!!!
+
+	void setPlayerHuman(boolean isHuman, IPlayer2 player);
+	
+	boolean isPlayerAHuman(IPlayer2 player);
+	
+	int getNumberOfPoints(IPlayer2 player);
+
+	void addPointsToPlayersAccount(int newPoints, IPlayer2 player);
+
+	void setPlayersName(String name, IPlayer2 player);
+
+	String getPlayersName(IPlayer2 player);
+
+	int getCellValue(int row, int col);
+
+	int getCellValue(ICell2 cell);
+
+	IPlayer2 getCellOwner(int row, int col);
+
+	IPlayer2 getCellOwner(ICell2 cell);
+
+	void setCellOwner(IPlayer2 player, int row, int col);
+
+	void setCellOwner(IPlayer2 player, ICell2 cell);
+
+	void setBorder(int borderNr, boolean fillBorder, int row, int col);
+
+	void setBorder(int borderNr, boolean fillBorder, ICell2 cell);
+
+
+	boolean getBorder(int borderNr, int row, int col);
+
+	boolean getBorder(int borderNr, ICell2 cell);
+
+
+	int getCellSize(int row, int col);
+
+	int getCellSize(ICell2 cell);
+
+
+	void setCellSize(int size, int row, int col);
+
+	void setCellSize(int size, ICell2 cell);
+
+
+
+	char[][] getCharArray(int row, int col);
+
+	char[][] getCharArray(ICell2 cell);
+
+
+	void setCharArray(char[][] charArray, int row, int col);
+
+	
+	void setCharArray(char[][] charArray, ICell2 cell);
+
+
+	boolean isCellFilled(ICell2 cell);
+	public boolean isCellFilled(int row, int col)

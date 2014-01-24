@@ -27,28 +27,45 @@ public interface IPKController extends IObservable {
 	
 //methods for ICell2
 
-	boolean isCellFilled();
+	boolean isCellFilled(int row, int col);
 	
-	int getCellValue();
-		
-	IPlayer2 getCellOwner();
+	boolean isCellFilled(ICell2 cell);
 	
-	void setCellOwner(IPlayer2 player);
-	
-	void setBorder(int borderNr, boolean fillBorder);
-	
-	boolean getBorder(int borderNr);
-	
-	String toString();
-		
-	int getCellSize();
-	
-	void setCellSize(int size);
-	
-	char[][] getCharArray();
-	
-	void setCharArray(char[][] charArray);
+	int getCellValue(int row, int col);
 
+	int getCellValue(ICell2 cell);
+		
+	IPlayer2 getCellOwner(int row, int col);
+
+	IPlayer2 getCellOwner(ICell2 cell);
+
+	void setCellOwner(IPlayer2 player, int row, int col);
+
+	void setCellOwner(IPlayer2 player, ICell2 cell);
+	
+	void setBorder(int borderNr, boolean fillBorder, int row, int col);
+
+	void setBorder(int borderNr, boolean fillBorder, ICell2 cell);
+	
+	boolean getBorder(int borderNr, int row, int col);
+
+	boolean getBorder(int borderNr, ICell2 cell);
+		
+	int getCellSize(int row, int col);
+
+	int getCellSize(ICell2 cell);
+
+	void setCellSize(int size, int row, int col);
+
+	void setCellSize(int size, ICell2 cell);
+	
+	char[][] getCharArray(int row, int col);
+
+	char[][] getCharArray(ICell2 cell);
+	
+	void setCharArray(char[][] charArray, ICell2 cell);
+
+	void setCharArray(char[][] charArray, int row, int col);
 
 //methods for IGameSettings
 
@@ -69,16 +86,17 @@ public interface IPKController extends IObservable {
 
 //methods for IPlayer2
 
-	void setPlayerHuman(boolean isHuman);
+	void setPlayerHuman(boolean isHuman, IPlayer2 player);
 	
-	boolean isPlayerAHuman();
+	boolean isPlayerAHuman(IPlayer2 player);
 	
-	int getNumberOfPoints();
+	int getNumberOfPoints(IPlayer2 player);
 	
-	void addPointsToPlayersAccount(int newPoints);	
+	void addPointsToPlayersAccount(int newPoints, IPlayer2 player);
 	
-	void setPlayersName(String name);
+	void setPlayersName(String name, IPlayer2 player);
 	
-	String getPlayersName();
+	String getPlayersName(IPlayer2 player);
+
 	
 }

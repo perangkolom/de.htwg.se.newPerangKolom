@@ -8,20 +8,21 @@ import de.htwg.se.PerangKolom.model.ICell2;
 import de.htwg.se.PerangKolom.model.impl.Cell2;
 import de.htwg.se.PerangKolom.model.IPlayer2;
 import de.htwg.se.PerangKolom.model.impl.Player2;
-import de.htwg.se.PerangKolom.model.impl.CellArray;
+import de.htwg.se.PerangKolom.model.impl.Grid;
+
 
 
 public class CellTest2 {
 	
 	ICell2 cell;
 	IPlayer2 player;
-	CellArray array;
+	ICell2[][] array;
 
 	@Before
 	public void setUp() throws Exception {
 		 cell = new Cell2(0, 0);
 		 player = new Player2();
-		 array = CellArray.getInstance();
+		 array = Grid.getInstance().getCellArray();
 	}
 	
 	
